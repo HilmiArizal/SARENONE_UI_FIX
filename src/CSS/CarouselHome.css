@@ -1,0 +1,16 @@
+.carousel-Img{
+    width: 100vw;
+    height: 90vh;
+   display: block;
+   margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 600px){
+    .carousel-Img{
+        width: 94vw;
+        height: 30vh;
+    }
+}
+
+
