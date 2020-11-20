@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTransactionHistory } from '../Redux/Actions';
-import NavbarWithout from '../Components/NavbarWithout';
-import { MDBContainer, MDBModal, MDBModalHeader, MDBModalBody, MDBModalFooter, MDBBtn } from 'mdbreact';
+// import NavbarWithout from '../Components/NavbarWithout';
+import { MDBContainer, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
 import Axios from 'axios';
 import { API_URL_1 } from '../Helpers/API_URL';
+import NavbarOther from '../Components/Navbar/NavbarOther';
 
 
 class HistoryTransaction extends Component {
@@ -29,18 +30,15 @@ class HistoryTransaction extends Component {
     }
 
     getDetailTransactionHistory = async () => {
-        let token = localStorage.getItem('token')
-        const res = await Axios.get(API_URL_1 + `transaction/getDetailTransaction`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
+        let userId = this.props.iduser;
+        const res = await Axios.get(API_URL_1 + `transaction/getDetailTransaction?userId=${userId}`)
         this.setState({ dataHistoryTransaction: res.data })
     }
 
     renderDetailTransactionHistory = () => {
         return this.state.dataHistoryTransaction.map((item, index) => {
-            if (this.state.timeTransaction === item.timetransaction)
+            if (this.state.timeTransaction === item.datetime) {
+
                 return (
                     <tr className="text-center">
                         <td>{item.productname}</td>
@@ -50,6 +48,11 @@ class HistoryTransaction extends Component {
                         <td>{item.totalprice.toLocaleString()}</td>
                     </tr>
                 )
+            } else {
+                return (
+                    <div></div>
+                )
+            }
         })
     }
 
@@ -58,11 +61,10 @@ class HistoryTransaction extends Component {
             return (
                 <tr className="text-center">
                     <td>{index + 1}</td>
-                    <td>{item.transactiondate} - {item.transactiontime}</td>
-                    <td>{item.name}</td>
+                    <td>{item.datetime}</td>
                     <td>Rp. {item.totaltransaction.toLocaleString()}</td>
                     <td>{item.statustransaction}</td>
-                    <td><div style={{ backgroundColor: 'black', color: 'white', cursor: 'pointer', borderRadius: 50 }} onClick={() => { this.toggle(); this.setState({ timeTransaction: item.transactiontime }) }}>LIHAT DETAIL</div>
+                    <td><div style={{ backgroundColor: 'black', color: 'white', cursor: 'pointer', borderRadius: 50 }} onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>LIHAT DETAIL</div>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
                             <MDBModalHeader toggle={this.toggle}>DETAIL BELANJA</MDBModalHeader>
                             <MDBModalBody>
@@ -89,11 +91,9 @@ class HistoryTransaction extends Component {
     }
 
     render() {
-        console.log(this.state.dataHistoryTransaction)
-        console.log(this.state.timeTransaction)
         return (
             <div>
-                <NavbarWithout />
+                <NavbarOther />
                 <MDBContainer>
                     <div className="text-center" style={{ fontSize: 50 }}>RIWAYAT TRANSAKSI</div>
                     {
@@ -104,7 +104,6 @@ class HistoryTransaction extends Component {
                                     <tr className="text-center">
                                         <th scope="col">No.</th>
                                         <th scope="col">Jam &amp; Tanggal Transaksi</th>
-                                        <th scope="col">Nama Transaksi</th>
                                         <th scope="col">Total Transaksi </th>
                                         <th scope="col">Status Transaksi </th>
                                         <th scope="col">Detail Belanja</th>
@@ -127,6 +126,7 @@ class HistoryTransaction extends Component {
 
 const mapStatetoProps = ({ user, transactionhistory }) => {
     return {
+        iduser: user.iduser,
         username: user.username,
         dataTransactionHistory: transactionhistory.dataTransactionHistory
     }

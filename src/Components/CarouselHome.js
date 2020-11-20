@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet'
 import { MDBBtn, MDBView, MDBMask } from 'mdbreact';
-import Carousel1 from '../Images/Carousel1.png';
-import Carousel2 from '../Images/Carousel2.png';
+import Carousel1 from '../Images/Carousel4.png';
+import Carousel2 from '../Images/Carousel5.png';
 import Carousel3 from '../Images/Carousel3.png';
 import '../CSS/CarouselHome.css';
 
@@ -20,25 +20,13 @@ class CarouselHome extends Component {
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                 </Helmet>
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" id="section1" >
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <MDBView>
-                                <img src={Carousel3} className="carousel-Img" alt="carousel-Produk" />
-                                <div class="carousel-caption d-none d-md-block">
-                                    <MDBBtn href="/product" color="#b71c1c red darken-4" size="md" style={{ width: 180, borderRadius: 50, marginBottom: 20 }}>belanja sekarang</MDBBtn>
-                                </div>
-                                <MDBMask pattern={5}>
-
-                                </MDBMask>
-                            </MDBView>
-                        </div>
-                        <div class="carousel-item">
                             <MDBView>
                                 <img src={Carousel1} className="carousel-Img" alt="carousel-Produk" />
                                 <div class="carousel-caption d-none d-md-block">

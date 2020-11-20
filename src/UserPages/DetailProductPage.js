@@ -4,10 +4,12 @@ import { API_URL_1 } from '../Helpers/API_URL';
 import { MDBRow, MDBCol, MDBBtn, MDBContainer } from 'mdbreact';
 import '../CSS/DetailProduct.css';
 import '../CSS/InputNumber.css'
-import NavbarWithout from '../Components/NavbarWithout';
+// import NavbarWithout from '../Components/NavbarWithout';
 import { addCart } from '../Redux/Actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import '../CSS/CategoriesProduct.css';
+import NavbarOther from '../Components/Navbar/NavbarOther';
 
 
 class DetailProdukPage extends Component {
@@ -88,26 +90,29 @@ class DetailProdukPage extends Component {
         const { dataProduct } = this.state;
         return (
             <MDBRow>
-                <MDBCol size="6">
+                <MDBCol size="4">
                     <img src={API_URL_1 + dataProduct.productimage} alt="imgDetailProduct" className="img-detailProduct" />
                 </MDBCol>
-                <MDBCol size="6">
+                <MDBCol size="8">
                     <h1>{dataProduct.productname}</h1>
                     <p>{dataProduct.productdescription}</p>
-                    <MDBRow style={{ marginTop: 40 }}>
-                        <MDBCol size="6">
-                            <center>
-                                <div style={{ borderBottom: '2px solid black', marginBottom: 20 }}>Pilih berat kemasan</div>
+                    <center>
+                        <MDBRow>
+                            <MDBCol size="3"></MDBCol>
+                            <MDBCol size="6">
+                                <b>Pilih berat kemasan</b>
                                 {this.renderList()}
-                            </center>
-                        </MDBCol>
-                        <MDBCol size="6">
-                            <center>
-                                <div style={{ borderBottom: '2px solid black', marginBottom: 20 }}>Jumlah yang akan dibeli</div>
-                                {this.renderInputValueNumber()}
-                            </center>
-                        </MDBCol>
-                    </MDBRow>
+                                <div style={{ margin: 20, borderBottom: '2px solid black' }}></div>
+                            </MDBCol>
+                            <MDBCol size="3"></MDBCol>
+                        </MDBRow>
+                    </center>
+                    <div>
+                        <center>
+                            <b>Jumlah yang akan dibeli</b>
+                            {this.renderInputValueNumber()}
+                        </center>
+                    </div>
                 </MDBCol>
             </MDBRow>
         )
@@ -116,30 +121,46 @@ class DetailProdukPage extends Component {
     renderList = () => {
         return this.state.dataList.map((item, index) => {
             return (
-                <MDBRow key={index}>
-                    <MDBCol size="2">
-                        <input type="radio" name="list" onClick={() => this.setState({
-                            newStockId: item.idstock, newWeightId: item.idweight, newPriceId: item.idprice, newPriceName: item.pricelist, chooseWeight: true
-                        })} />
-                    </MDBCol>
-                    <MDBCol size="4">
-                        <div>{item.weightlist}gr</div>
-                    </MDBCol>
-                    <MDBCol size="6">
-                        <div>Rp. {item.pricelist.toLocaleString()}</div>
-                    </MDBCol>
-                </MDBRow>
+                <div className="font-BestProduct">
+                    <MDBRow key={index}>
+                        <MDBCol size="2">
+                            <input type="radio" name="list" onClick={() => this.setState({
+                                newStockId: item.idstock, newWeightId: item.idweight, newPriceId: item.idprice, newPriceName: item.pricelist, chooseWeight: true
+                            })} />
+                        </MDBCol>
+                        <MDBCol size="4">
+                            <div>{item.weightlist}gr</div>
+                        </MDBCol>
+                        <MDBCol size="6">
+                            <div>Rp. {item.pricelist.toLocaleString()}</div>
+                        </MDBCol>
+                    </MDBRow>
+                </div>
             )
         })
     }
 
     renderInputValueNumber = () => {
         return (
-            <div className="def-number-input number-input">
-                <button onClick={this.minClick} className="minus"></button>
-                <input className="quantity" name="quantity" value={this.state.valueNumber} onChange={() => console.log('change')}
-                    type="number" />
-                <button onClick={this.addClick} className="plus"></button>
+            <div>
+                <div className="def-number-input number-input">
+                    <button onClick={this.minClick} className="minus"></button>
+                    <input className="quantity" name="quantity" value={this.state.valueNumber} onChange={() => console.log('change')}
+                        type="number" />
+                    <button onClick={this.addClick} className="plus"></button>
+                </div>
+                {/* <hr class="my-4" /> */}
+                <div className="text-center">
+                    {this.props.iduser === 0 ?
+                        <MDBBtn color="elegant" href="/login" style={{ borderRadius: 50 }}>LOGIN</MDBBtn> :
+                        <div>
+                            {this.state.valueNumber * this.state.newPriceName === 0 ?
+                                <div> Total Harga Rp. ,-</div> :
+                                <div> Total Harga Rp. {this.state.valueNumber * this.state.newPriceName},-</div>}
+                            <MDBBtn color="elegant" onClick={this.addToCart}>TAMBAH KERANJANG</MDBBtn>
+                        </div>
+                    }
+                </div>
             </div>
         )
     }
@@ -153,24 +174,12 @@ class DetailProdukPage extends Component {
             )
         }
         return (
-            <div>
-                <NavbarWithout />
+            <div id="font-BestProduct">
+                <NavbarOther />
                 <div style={{ marginTop: 80 }}>
                     <MDBContainer>
                         <div class="jumbotron">
                             {this.renderProduct()}
-                            <hr class="my-4" />
-                            <div className="text-center">
-                                {this.props.iduser === 0 ?
-                                    <MDBBtn color="elegant" href="/login" style={{ borderRadius: 50 }}>LOGIN</MDBBtn> :
-                                    <div>
-                                        {this.state.valueNumber * this.state.newPriceName === 0 ?
-                                            <div> Total Harga Rp. ,-</div> :
-                                            <div> Total Harga Rp. {this.state.valueNumber * this.state.newPriceName},-</div>}
-                                        <MDBBtn color="elegant" onClick={this.addToCart}>TAMBAH KERANJANG</MDBBtn>
-                                    </div>
-                                }
-                            </div>
                         </div>
                     </MDBContainer>
                 </div>

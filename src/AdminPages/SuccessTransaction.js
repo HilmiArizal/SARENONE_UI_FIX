@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { API_URL_1 } from '../Helpers/API_URL';
-import { MDBIcon, MDBCol, MDBRow, MDBBtn } from 'mdbreact';
+import { MDBIcon, MDBCol, MDBRow, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
 import SidebarAdmin from '../Components/SidebarAdmin';
-import { editStatusTransaction } from '../Redux/Actions';
+import { editStatusTransaction, deleteTransaction } from '../Redux/Actions';
 import { connect } from 'react-redux';
 
 
@@ -12,16 +12,41 @@ class SuccessTransaction extends Component {
 
     state = {
         dataTransactionSuccess: [],
-        newStatusTransaction: ''
+        dataTransactionSuccessNoGroupBy: [],
+
+        newStatusTransaction: '',
+        timeTransaction: '',
+        address: '',
+
+        modal1: false,
+        modal2: false
+    }
+
+    toggle = () => {
+        this.setState({
+            modal1: !this.state.modal1
+        });
+    }
+
+    toggle2 = () => {
+        this.setState({
+            modal2: !this.state.modal2
+        });
     }
 
     componentDidMount() {
         this.getTransactionSuccess();
+        this.getTransactionSuccessNoGrouBy();
     }
 
     getTransactionSuccess = async () => {
         const res = await Axios.get(API_URL_1 + `transaction/getTransactionSuccess`)
         this.setState({ dataTransactionSuccess: res.data })
+    }
+
+    getTransactionSuccessNoGrouBy = async () => {
+        const res = await Axios.get(API_URL_1 + `transaction/getTransactionSuccessNoGroupBy`)
+        this.setState({ dataTransactionSuccessNoGroupBy: res.data })
     }
 
     functionModalImg = () => {
@@ -45,12 +70,51 @@ class SuccessTransaction extends Component {
         }
     }
 
-    editStatusTransaction = (idtransaction) => {
+    editStatusTransaction = (datetime) => {
         let statustransaction = this.state.newStatusTransaction;
         let datatransaction = { statustransaction };
-        this.props.editStatusTransaction(idtransaction, datatransaction)
-        alert('Berhasil')
+        if (statustransaction === '') {
+            alert('Maaf anda belum memilih status transaksi!')
+        } else {
+            this.props.editStatusTransaction(datetime, datatransaction)
+            alert('Status transaksi berhasil di ubah')
+            this.getTransactionSuccess()
+        }
+    }
+
+    deleteTransaction = (datetime) => {
+        this.props.deleteTransaction(datetime)
         this.getTransactionSuccess()
+    }
+
+    renderAddress = () => {
+        return this.state.dataTransactionSuccess.map((item, index) => {
+            if (this.state.address === item.address) {
+                return (
+                    <div className="row" style={{ color: 'black' }}>
+                        <div className="col-4">Alamat</div>:<div className="col-6">{item.address}</div>
+                        <div className="col-4">Keterangan</div>:<div className="col-6">{item.description}</div>
+                        </div>
+                )
+            }
+        })
+    }
+
+    renderDetailTransaction = () => {
+        return this.state.dataTransactionSuccessNoGroupBy.map((item, index) => {
+            if (this.state.timeTransaction === item.datetime){
+                return (
+                    <tr className="text-center">
+                        <td>{item.username}</td>
+                        <td>{item.productname}</td>
+                        <td>{item.pricelist.toLocaleString()}</td>
+                        <td>{item.weightlist} gr</td>
+                        <td>{item.qty} pack</td>
+                        <td>{item.totalprice.toLocaleString()}</td>
+                    </tr>
+                )
+            }
+            })
     }
 
     renderTransactionSuccess = () => {
@@ -58,9 +122,43 @@ class SuccessTransaction extends Component {
             return (
                 <tr className="text-center" key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.username.toUpperCase()}</td>
+                    <td>
+                        <div style={{ backgroundColor: 'black', cursor: 'pointer', color: 'white', fontSize: 12, padding: 1 }} onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>
+                            <center>BELANJA</center>
+                            <MDBModal isOpen={this.state.modal1} toggle={this.toggle} size="lg">
+                                <MDBModalHeader toggle={this.toggle}></MDBModalHeader>
+                                <MDBModalBody>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr className="text-center">
+                                                <th scope="col"> Akun</th>
+                                                <th scope="col">Nama Produk</th>
+                                                <th scope="col">Harga </th>
+                                                <th scope="col">Berat</th>
+                                                <th scope="col">Kuantitas</th>
+                                                <th scope="col">Total Harga</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderDetailTransaction()}
+                                        </tbody>
+                                    </table>
+                                </MDBModalBody>
+                            </MDBModal>
+                        </div>
+                    </td>
                     <td>{item.name}</td>
-                    <td>{item.address}</td>
+                    <td>
+                        <div style={{ backgroundColor: 'black', cursor: 'pointer', color: 'white', fontSize: 12, padding: 1 }} onClick={() => { this.toggle2(); this.setState({ address: item.address }) }}>
+                            <center>ALAMAT</center>
+                            <MDBModal isOpen={this.state.modal2} toggle={this.toggle2} size="lg">
+                                <MDBModalHeader toggle={this.toggle2}></MDBModalHeader>
+                                <MDBModalBody>
+                                    {this.renderAddress()}
+                                </MDBModalBody>
+                            </MDBModal>
+                        </div>
+                    </td>
                     <td>0{item.phonenumber}</td>
                     <td>Rp. {item.totaltransaction.toLocaleString()},- </td>
                     <td>{item.bankname}</td>
@@ -80,8 +178,17 @@ class SuccessTransaction extends Component {
                         </select>
                     </td>
                     <td>
-                        <div style={{ backgroundColor: 'black', cursor: 'pointer' }} onClick={() => this.editStatusTransaction(item.idtransaction)}>
-                            <MDBIcon icon="check" style={{ color: 'white' }} />
+                        <div className="row">
+                            <div className="col-6">
+                                <div style={{ backgroundColor: 'black', cursor: 'pointer' }} onClick={() => this.editStatusTransaction(item.datetime)}>
+                                    <MDBIcon icon="check" style={{ color: 'white' }} />
+                                </div>
+                            </div>
+                            <div className="col-6">
+                                <div style={{ backgroundColor: 'black', cursor: 'pointer' }} onClick={() => this.deleteTransaction(item.datetime)}>
+                                    <MDBIcon icon="trash" size="sm" style={{ color: 'white' }} />
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>
@@ -136,4 +243,4 @@ class SuccessTransaction extends Component {
 }
 
 
-export default connect(null, { editStatusTransaction })(SuccessTransaction);
+export default connect(null, { editStatusTransaction, deleteTransaction })(SuccessTransaction);

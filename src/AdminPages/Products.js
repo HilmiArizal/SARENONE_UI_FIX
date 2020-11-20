@@ -5,6 +5,7 @@ import SidebarAdmin from '../Components/SidebarAdmin';
 import { MDBRow, MDBCol, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput, MDBIcon } from 'mdbreact';
 import NoImage from '../Images/NoImage.png';
 import { API_URL_1 } from '../Helpers/API_URL';
+import { Redirect } from 'react-router-dom';
 
 
 class Products extends Component {
@@ -25,7 +26,9 @@ class Products extends Component {
         previewImage: undefined,
         addImage: false,
 
-        modal4: false
+        modal4: false,
+
+        redirectAllProduct: false
     }
 
     componentDidMount() {
@@ -105,6 +108,7 @@ class Products extends Component {
             if (productname && productcategoryId && productdescription && image) {
                 this.setState({ modal4: false })
                 this.props.addProducts(data, image)
+                this.setState({redirectAllProduct: true})
             } else {
                 alert('Tolong isi dengan benar')
             }
@@ -292,6 +296,13 @@ class Products extends Component {
     }
 
     render() {
+        if(this.state.redirectAllProduct){
+            return(
+                <Redirect to="manageallproduct">
+
+                </Redirect>
+            )
+        }
         return (
             <div>
                 <SidebarAdmin />

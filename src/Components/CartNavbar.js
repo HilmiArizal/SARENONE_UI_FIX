@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
-import '../CSS/NavbarUser.css';
 import Axios from 'axios';
 import { API_URL_1 } from '../Helpers/API_URL';
+import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
+import './Navbar/NavbarHome.css';
 
 
 class CartNavbar extends Component {
@@ -23,7 +23,7 @@ class CartNavbar extends Component {
                 'Authorization': `Bearer ${token}`
             }
         })
-        this.setState({dataQtyCart: res.data})
+        this.setState({ dataQtyCart: res.data })
     }
 
     renderCart = () => {
@@ -44,17 +44,12 @@ class CartNavbar extends Component {
                         ?
                         ''
                         :
-                        <MDBRow>
-                            <MDBCol size="2"></MDBCol>
-                            <MDBCol size="2"></MDBCol>
-                            <MDBCol size="2"></MDBCol>
-                            <MDBCol size="2">
-                                <MDBIcon icon="shopping-cart" size="lg" />
-                            </MDBCol>
-                            <MDBCol size="2">
-                                <div className="cart-Navbar"> {this.renderCart()} </div>
-                            </MDBCol>
-                        </MDBRow>
+                        <div id="cart-Navbar">
+                            <div>
+                                <MDBIcon icon="shopping-cart" size="md" />
+                            </div>
+                            <div id="qty-Cart" > {this.renderCart()} </div>
+                        </div>
                 }
             </div>
         );

@@ -145,7 +145,7 @@ class DetailProduct extends Component {
             dataproducts,
             datastock,
         }
-        if (productcategoryId === '') {
+        if (productcategoryId && productgrade === '') {
             alert('Pilih lagi kategori!')
         } else {
             if (productname && productdescription) {
@@ -244,7 +244,7 @@ class DetailProduct extends Component {
                         <div className="col-6">
                             <div style={{ marginTop: 30 }}>KELAS PRODUK</div>
                             <select className="form-control" onChange={(e) => this.setState({ selectGrade: e.target.value })} style={{ width: '50%', marginTop: 10 }} >
-                                <option disabled hidden selected>PILIH GRADE/KELAS</option>
+                                <option disabled hidden selected>{dataProduct.productgrade}</option>
                                 <option>Premium Grade</option>
                                 <option>Second Grade</option>
                             </select>
@@ -252,7 +252,7 @@ class DetailProduct extends Component {
                         <div className="col-6">
                             <div style={{ marginTop: 30 }}>NAMA KATEGORI</div>
                             <select className="form-control" onChange={this.onChangeSelectCategory} style={{ width: '50%', marginTop: 10 }} >
-                                <option disabled hidden selected>PILIH KATEGORI</option>
+                                <option disabled hidden selected>{dataProduct.categoryname}</option>
                                 {this.renderSelectOptionCategory()}
                             </select>
                         </div>

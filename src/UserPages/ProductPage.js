@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getGroupByProduct, getCategory } from '../Redux/Actions';
-import NavbarWithout from '../Components/NavbarWithout';
+// import NavbarWithout from '../Components/NavbarWithout';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 import { API_URL_1 } from '../Helpers/API_URL';
 import '../CSS/ProductPage.css';
 import Footer from '../Components/Footer';
 import Axios from 'axios';
+import NavbarOther from '../Components/Navbar/NavbarOther';
 
 class ProductPage extends Component {
 
@@ -140,7 +141,7 @@ class ProductPage extends Component {
     render() {
         return (
             <div >
-                <NavbarWithout />
+                <NavbarOther />
                 <MDBContainer>
                     <div className="text-Product" style={{ marginTop: 30 }}>PILIH BERDASARKAN KATEGORI
                         <center>
@@ -160,13 +161,8 @@ class ProductPage extends Component {
                     </div>
                     <div className="jumbotron" style={{ minHeight: '75vh' }}>
                         <center>
-                            <div style={{ fontSize: 50, marginBottom: 50 }}> PREMIUM GRADE</div>
                             <MDBRow>
                                 {this.renderProducts()}
-                            </MDBRow>
-                            <div style={{ fontSize: 50, margin: 50 }}> SECOND GRADE</div>
-                            <MDBRow>
-                                {this.renderProductSecondGrade()}
                             </MDBRow>
                         </center>
                     </div>

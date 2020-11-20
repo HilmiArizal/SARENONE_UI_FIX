@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import '../CSS/AboutHome.css';
 import FoodCharacter from '../Images/CharacterFood.png';
-import CompanyProfile from '../Images/CompanyProfileFIX.pdf';
+import CompanyProfile from '../Images/CompanyProfileHilmi.pdf';
 import CompanyProfileImg from '../Images/CompanyProfile.png';
 
 
 class AboutHome extends Component {
 
-
     render() {
         return (
-            <div>
+            <div id="section3">
                 <div class="jumbotron jumbotron-fluid">
                     <div className="d-flex justify-content-center produkKami-Categories">TENTANG KAMI</div>
                     <MDBContainer>

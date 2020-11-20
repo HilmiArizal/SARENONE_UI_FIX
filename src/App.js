@@ -23,7 +23,8 @@ import ManageTransaction from './AdminPages/ManageTransaction';
 import SuccessTransaction from './AdminPages/SuccessTransaction';
 import FailTransaction from './AdminPages/FailTransaction';
 import HistoryTransaction from './UserPages/HistoryTransaction';
-
+import './CSS/CategoriesProduct.css';
+import './App.css';
 
 class App extends Component {
 
@@ -38,7 +39,7 @@ class App extends Component {
   render() {
     if (this.props.role === 'admin') {
       return (
-        <div>
+        <div id="font-BestProduct" className="App">
           <Route path="/adminlogin" component={LoginAdmin} />
           <Route path="/homeadmin" component={HomeAdmin} />
           <Route path="/manageuser" component={ManageUsers} />
@@ -52,9 +53,25 @@ class App extends Component {
           <Route path="/transactionfail" component={FailTransaction} />
         </div>
       )
+    } else if (this.props.role === 'user') {
+      return (
+        <div className="App">
+          <Route path="/" component={HomePage} exact />
+          <Route path="/unverified" component={UnverifiedPage} />
+          <Route path="/adminlogin" component={LoginAdmin} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/verified" component={VerifiedPage} />
+          <Route path="/product" component={ProductPage} />
+          <Route path="/detailproduct" component={DetailProdukPage} />
+          <Route path="/cart" component={CartPage} />
+          <Route path="/transaction" component={TransactionPage} />
+          <Route path="/historytransaction" component={HistoryTransaction} />
+        </div>
+      );
     }
     return (
-      <div>
+      <div className="App">
         <Route path="/" component={HomePage} exact />
         <Route path="/unverified" component={UnverifiedPage} />
         <Route path="/adminlogin" component={LoginAdmin} />
@@ -64,10 +81,8 @@ class App extends Component {
         <Route path="/product" component={ProductPage} />
         <Route path="/detailproduct" component={DetailProdukPage} />
         <Route path="/cart" component={CartPage} />
-        <Route path="/transaction" component={TransactionPage} />
-        <Route path="/historytransaction" component={HistoryTransaction} />
       </div>
-    );
+    )
   }
 }
 

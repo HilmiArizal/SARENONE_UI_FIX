@@ -58,7 +58,7 @@ class CategoriesProduct extends Component {
 
     render() {
         return (
-            <div>
+            <div id="section2">
                 <div className="jumbotron jumbotron-fluid">
                 <div className="d-flex justify-content-center produkKami-Categories">PRODUK KAMI</div>
                     <MDBContainer>
@@ -68,7 +68,7 @@ class CategoriesProduct extends Component {
                             </MDBRow>
                         </div>
                         <center>
-                            <MDBBtn href="product" color="#b71c1c red darken-4" size="sm" style={{ color: 'white', margin: 30 }}> LIHAT DETAIL PRODUK</MDBBtn>
+                            <MDBBtn id="font-BestProduct" href="product" color="#b71c1c red darken-4" size="sm" style={{ color: 'white', margin: 30 }}> LIHAT DETAIL PRODUK</MDBBtn>
                         </center>
                         <div><BestProduct /></div>
                     </MDBContainer>

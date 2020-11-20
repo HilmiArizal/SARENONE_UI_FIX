@@ -6,11 +6,15 @@ import form1 from '../Images/FORM-1.png';
 import form2 from '../Images/FORM-2.png';
 import { getAllUsers, registerUser } from '../Redux/Actions';
 import { connect } from 'react-redux';
+import '../CSS/Login.css';
 
 
 class RegisterPage extends Component {
 
     state = {
+        showPassword: false,
+        showConfirmPassword: false,
+
         char: false,
         num: false,
         show: false,
@@ -136,18 +140,21 @@ class RegisterPage extends Component {
                                                     label="Password"
                                                     icon="lock"
                                                     group
-                                                    type="password"
+                                                    type={this.state.showPassword ? "text" : "password"}
                                                     validate
                                                     size="sm"
                                                     ref="password"
                                                     inputRef={(password) => this.password = password}
                                                     onChange={this.handleChange} onFocus={this.showOption}
                                                 />
+                                                <i className={this.state.showPassword ? "fa fa-eye-slash register" : "fa fa-eye register"}
+                                                    onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
+                                                </i>
                                                 <MDBInput
                                                     label="Confirm password"
                                                     icon="exclamation-triangle"
                                                     group
-                                                    type="password"
+                                                    type={this.state.showConfirmPassword ? "text" : "password"}
                                                     validate
                                                     error="wrong"
                                                     success="right"
@@ -155,6 +162,9 @@ class RegisterPage extends Component {
                                                     inputRef={(confirmPassword) => this.confirmPassword = confirmPassword}
                                                     style={{ borderColor: border ? 'green' : 'red' }}
                                                 />
+                                                <i className={this.state.showConfirmPassword ? "fa fa-eye-slash confirmRegis" : "fa fa-eye confirmRegis"}
+                                                    onClick={() => this.setState({ showConfirmPassword: !this.state.showConfirmPassword })}>
+                                                </i>
                                             </div>
                                             <div>
                                                 {
@@ -165,15 +175,11 @@ class RegisterPage extends Component {
                                                                 char
                                                                     ?
                                                                     <center>
-                                                                        <div style={{ color: 'green' }}>
-                                                                            <MDBAnimation type="bounce" infinite>
-                                                                                <MDBIcon icon="thumbs-up" />
-                                                                            </MDBAnimation>
-                                                                        </div>
+                                                                        <div style={{ color: 'green', fontSize:12 }}>Password 8 karakter oke</div>
                                                                     </center>
                                                                     :
                                                                     <center>
-                                                                        <div style={{ color: 'red' }}>Password Harus 8 Karakter</div>
+                                                                        <div style={{ color: 'red', fontSize: 12 }}>Password harus 8 karakter!</div>
                                                                     </center>
 
                                                             }
@@ -181,15 +187,11 @@ class RegisterPage extends Component {
                                                                 num
                                                                     ?
                                                                     <center>
-                                                                        <div style={{ color: 'green' }}>
-                                                                            <MDBAnimation type="bounce" infinite>
-                                                                                <MDBIcon icon="thumbs-up" />
-                                                                            </MDBAnimation>
-                                                                        </div>
+                                                                        <div style={{ color: 'green', fontSize:12 }}>Password berikut angka oke juga</div>
                                                                     </center>
                                                                     :
                                                                     <center>
-                                                                        <div style={{ color: 'red' }}>Password Harus Ada Number</div>
+                                                                        <div style={{ color: 'red', fontSize: 12 }}>Password disertai angka!</div>
                                                                     </center>
 
                                                             }
@@ -200,9 +202,17 @@ class RegisterPage extends Component {
                                             </div>
                                         </MDBContainer>
                                         <center>
-                                            <MDBBtn onClick={this.onBtnRegister} color="#c62828 red darken-3" size="sm" style={{ width: '80%', color: 'white', borderRadius: 50 }}>
-                                                DAFTAR
+                                            {
+                                                this.state.char && this.state.num
+                                                    ?
+                                                    <MDBBtn onClick={this.onBtnRegister} color="#c62828 red darken-3" size="sm" style={{ width: '80%', color: 'white', borderRadius: 50 }}>
+                                                        DAFTAR
                                             </MDBBtn>
+                                                    :
+                                                    <MDBBtn disabled={this.onBtnRegister} color="#c62828 red darken-3" size="sm" style={{ width: '80%', color: 'white', borderRadius: 50 }}>
+                                                        DAFTAR
+                                            </MDBBtn>
+                                            }
                                             <div>Sudah punyak akun ? <Link to="login">Masuk disini</Link></div>
                                         </center>
                                     </form>

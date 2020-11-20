@@ -13,6 +13,12 @@ export const addProfileData = (profiledata) => {
     }
 }
 
+export const editProfileData = (profiledata) => {
+    return async () => {
+        await Axios.patch(API_URL_1 + `buyer/editProfileData?transactionId=${profiledata.transactionId}`, profiledata)
+    }
+}
+
 export const editProfileBuyer = (idprofilebuyer) => {
     return async (dispatch) => {
         try {

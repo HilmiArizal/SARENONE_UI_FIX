@@ -9,10 +9,14 @@ import fbButton from '../Images/FacebookButton.png';
 import twitterButton from '../Images/TwitterButton.png';
 import { loginUser } from '../Redux/Actions'
 import { connect } from 'react-redux';
+import '../CSS/Login.css';
 
 
 class LoginPage extends Component {
 
+    state = {
+        showPassword: true
+    }
 
     onBtnLogin = () => {
         let username = this.username.value;
@@ -76,11 +80,14 @@ class LoginPage extends Component {
                                                     label="Password"
                                                     icon="lock"
                                                     group
-                                                    type="password"
+                                                    type={this.state.showPassword ? "password" : "text"}
                                                     validate
                                                     size="sm"
                                                     inputRef={(password) => this.password = password}
                                                 />
+                                                <i className={this.state.showPassword ? "fa fa-eye password-icon" : "fa fa-eye-slash password-icon"}
+                                                    onClick={() => this.setState({ showPassword: !this.state.showPassword })}>
+                                                </i>
                                             </div>
                                             <center>
                                                 <div>
@@ -103,7 +110,7 @@ class LoginPage extends Component {
                                             </MDBCard>
                                         </MDBContainer>
                                         <center>
-                                            <MDBBtn onClick={this.onBtnLogin} color="#c62828 red darken-3" size="sm" style={{ width: '80%', color: 'white', borderRadius: 50, marginTop: 30 }}>
+                                            <MDBBtn id="myBtn" onClick={this.onBtnLogin} color="#c62828 red darken-3" size="sm" style={{ width: '80%', color: 'white', borderRadius: 50, marginTop: 30 }}>
                                                 MASUK
                                             </MDBBtn>
                                             <div>Belum punyak akun ? <Link to="register">Klik disini</Link></div>

@@ -37,15 +37,31 @@ export const addTransaction = (datatransaction, image) => {
     }
 }
 
-export const editStatusTransaction = (idtransaction, datatransaction) => {
+export const editStatusTransaction = (datetime, datatransaction) => {
     return async (dispatch) => {
         try{
-            await Axios.patch(API_URL_1 + `transaction/editStatusTransaction?idtransaction=${idtransaction}`, datatransaction)
+            await Axios.patch(API_URL_1 + `transaction/editStatusTransaction?datetime=${datetime}`, datatransaction)
             const res = await Axios.get(API_URL_1 + `transaction/getTransactionComplete`)
             dispatch({
                 type: 'TRANSACTION_COMPLETE_SUCCESS',
                 payload: res.data
             })
+        }catch(err){
+            // console.log(err)
+        }
+    }
+}
+
+export const deleteTransaction = (datetime) => {
+    return async (dispatch) => {
+        try{
+            if(window.confirm('Anda yakin menghapus transaksi ini?'))
+            await Axios.delete(API_URL_1 + `transaction/deleteTransaction?datetime=${datetime}`)
+            const res = await Axios.get(API_URL_1 + `transaction/getTransactionComplete`)
+            dispatch({
+                type: 'TRANSACTION_COMPLETE_SUCCESS',
+                payload: res.data
+            })  
         }catch(err){
             // console.log(err)
         }

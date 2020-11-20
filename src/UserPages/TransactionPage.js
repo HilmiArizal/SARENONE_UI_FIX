@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory } from '../Redux/Actions';
+import { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory, editProfileData } from '../Redux/Actions';
 import { connect } from 'react-redux';
 import { MDBRow, MDBCol, MDBContainer, MDBBtn } from 'mdbreact';
-import NavbarWithout from '../Components/NavbarWithout';
+// import NavbarWithout from '../Components/NavbarWithout';
 import Axios from 'axios';
 import { API_URL_1 } from '../Helpers/API_URL';
 import NoImage from '../Images/NoImage.png'
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Success from '../Images/Confirmation.png';
+import NavbarOther from '../Components/Navbar/NavbarOther';
 
 
 class TransactionPage extends Component {
@@ -116,7 +117,7 @@ class TransactionPage extends Component {
                 transactionId: parseInt(transactionId)
             }
             this.setState({ addOldData: profiledata })
-            this.props.addProfileData(profiledata)
+            this.props.editProfileData(profiledata)
         })
     }
 
@@ -151,16 +152,18 @@ class TransactionPage extends Component {
             let statustransaction = 'Dalam Proses';
             let metodetransactionId = this.state.methodeId;
             let username = this.props.username;
+            let stockId = item.stockId
             let productname = item.productname;
             let weightlist = item.weightlist;
             let pricelist = item.pricelist;
             let qty = item.qty;
-            let totalprice = item.totalprice
+            let totalprice = item.totalprice;
+            let transactionId = this.getTransactionId();
             let datahistorytransaction = {
-                userId, username, productname, weightlist, pricelist, qty, totalprice
+                userId, username, productname, weightlist, pricelist, qty, totalprice, stockId, transactionId
             }
             let datatransaction = {
-                userId, totaltransaction, statustransaction, metodetransactionId
+                userId, totaltransaction, statustransaction, metodetransactionId,
             }
             if (image) {
                 if (userId && totaltransaction && statustransaction && metodetransactionId) {
@@ -218,7 +221,7 @@ class TransactionPage extends Component {
                         {
                             this.state.methodeId === 0 ? ''
                                 :
-                                this.state.methodeId === item.idmetodetransaction ? item.rekeningname
+                                this.state.methodeId === item.idmetodetransaction ? <div style={{ fontSize: '150%' }}>{item.rekeningname}</div>
                                     :
                                     ''
                         }
@@ -391,7 +394,7 @@ class TransactionPage extends Component {
                                 <center>
                                     <div style={{ marginTop: 30 }}>
                                         <MDBBtn size="md" color="elegant" onClick={this.addNewProfileData}> CEK PROFIL PEMBELI </MDBBtn>
-                                        <MDBBtn size="md" color="elegant" onClick={() => this.setState({ inputData: true })}> Pakai data profil lama </MDBBtn>
+                                        {/* <MDBBtn size="md" color="indigo" onClick={() => this.setState({ inputData: true })}> Pakai profil lama </MDBBtn> */}
                                     </div>
                                 </center>
                             </div>
@@ -416,7 +419,7 @@ class TransactionPage extends Component {
                             <center>
                                 <div style={{ marginTop: 30 }}>
                                     <MDBBtn size="md" color="elegant" onClick={this.btnSelectIdFix}> GUNAKAN PROFIL INI </MDBBtn>
-                                    <MDBBtn size="md" color="elegant" onClick={() => this.setState({ inputData: false })}> Buat profil baru </MDBBtn>
+                                    <MDBBtn size="md" color="indigo" onClick={() => this.setState({ inputData: false })}> Buat profil baru </MDBBtn>
                                 </div>
                             </center>
                         </div>
@@ -481,7 +484,7 @@ class TransactionPage extends Component {
         }
         return (
             <div>
-                <NavbarWithout />
+                <NavbarOther />
                 <MDBContainer>
                     {this.renderDataTransaction()}
                 </MDBContainer>
@@ -501,4 +504,4 @@ const mapStatetoProps = ({ user, cart, buyer, transaction, transactionmethod }) 
     }
 }
 
-export default connect(mapStatetoProps, { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory })(TransactionPage);
+export default connect(mapStatetoProps, { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory, editProfileData })(TransactionPage);

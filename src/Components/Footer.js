@@ -13,7 +13,7 @@ const Footer = () => {
             <center>
 
               <MDBIcon icon="at" style={{ fontSize: 30 }} />
-              <div style={{ marginTop: 20 }}>sosissarenone@gmail.com</div>
+              <div style={{ marginTop: 20 }}>sarenonesosis@gmail.com</div>
             </center>
           </MDBCol>
           <MDBCol md="4">
@@ -25,14 +25,14 @@ const Footer = () => {
           <MDBCol md="4">
             <center>
               <MDBIcon icon="phone" style={{ fontSize: 30 }} />
-              <div style={{ marginTop: 20 }}>022 - 88886011</div><div style={{ marginBottom: 50 }}> 0881 - 7758956</div>
+              <div style={{ marginTop: 20 }}>022 - 54119654</div><div style={{ marginBottom: 50 }}> 0851 - 56371589</div>
             </center>
           </MDBCol>
         </MDBRow>
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; Cv. Heaven Sentosa {new Date().getFullYear()}
+          &copy; CV. Heaven Sentosa {new Date().getFullYear()}
         </MDBContainer>
       </div>
     </MDBFooter>

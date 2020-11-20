@@ -1,5 +1,9 @@
 .produkKami-Categories{
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Mukta', sans-serif;
     margin:10px;
     font-size: 30px;
+}
+
+#font-BestProduct{
+    font-family: 'Mukta', sans-serif;
 }

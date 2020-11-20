@@ -9,12 +9,12 @@
     color:white;
     font-size: 15px;
     padding: 15px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Mukta', sans-serif;
 }
 
 .text-Product{
     text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Mukta', sans-serif;
     font-size: 30px;
     margin-bottom: 5%;
 }
@@ -26,6 +26,6 @@
         color:white;
         font-size: 7px;
         padding: 10px;
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: 'Mukta', sans-serif;
     }
 }

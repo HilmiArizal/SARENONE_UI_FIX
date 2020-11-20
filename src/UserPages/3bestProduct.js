@@ -16,9 +16,11 @@ class BestProduct extends Component {
     renderBestProduct = () => {
         return this.props.dataProduct.map((item, index) => {
             return (
-                <MDBCol size="4" style={{ maxWidth: "25rem" }} key={index}>
-                    <MDBCard id="card-Product">
+                <MDBCol size="4" style={{ maxWidth: "18rem" }} key={index}>
+                    <MDBCard id="font-BestProduct">
+                        <center>
                         <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
+                        </center>
                         <MDBCardBody>
                             <MDBCardTitle style={{ fontSize: 20 }}>{item.productname}</MDBCardTitle>
                             <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`}>Beli Sekarang</MDBBtn>
@@ -35,9 +37,12 @@ class BestProduct extends Component {
                 <div className="d-flex justify-content-center produkKami-Categories">3 PRODUK TERLARIS</div>
                 <MDBContainer>
                     <center>
+
+                    <div className="d-flex justify-content-center">
                         <MDBRow>
                             {this.renderBestProduct()}
                         </MDBRow>
+                    </div>
                     </center>
                 </MDBContainer>
             </div>

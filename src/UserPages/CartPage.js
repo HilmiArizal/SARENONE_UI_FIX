@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCart, deleteCart, editCart } from '../Redux/Actions';
-import NavbarWithout from '../Components/NavbarWithout';
+// import NavbarWithout from '../Components/NavbarWithout';
 import { MDBIcon, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import '../CSS/CartPage.css';
 import CartEmpty from '../Images/CartEmpty.png';
 import { Link } from 'react-router-dom';
+import NavbarOther from '../Components/Navbar/NavbarOther';
 
 
 class CartPage extends Component {
@@ -103,7 +104,7 @@ class CartPage extends Component {
     render() {
         return (
             <div>
-                <NavbarWithout />
+                <NavbarOther />
                 <div class="w3-container">
                     <div className="container">
                         {
