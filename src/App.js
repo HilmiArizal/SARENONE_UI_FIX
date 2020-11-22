@@ -14,8 +14,7 @@ import LoginPage from './UserPages/LoginPage';
 import RegisterPage from './UserPages/RegisterPage';
 import UnverifiedPage from './UserPages/UnverifiedPage';
 import VerifiedPage from './UserPages/VerifiedPage';
-import HomePage from './UserPages/HomePage';
-import ProductPage from './UserPages/ProductPage';
+import ProductPage from './UserPages/ProductPage/ProductPage';
 import DetailProdukPage from './UserPages/DetailProductPage';
 import CartPage from './UserPages/CartPage';
 import TransactionPage from './UserPages/TransactionPage';
@@ -23,8 +22,8 @@ import ManageTransaction from './AdminPages/ManageTransaction';
 import SuccessTransaction from './AdminPages/SuccessTransaction';
 import FailTransaction from './AdminPages/FailTransaction';
 import HistoryTransaction from './UserPages/HistoryTransaction';
-import './CSS/CategoriesProduct.css';
 import './App.css';
+import Home from './UserPages/Home/Home';
 
 class App extends Component {
 
@@ -56,7 +55,7 @@ class App extends Component {
     } else if (this.props.role === 'user') {
       return (
         <div className="App">
-          <Route path="/" component={HomePage} exact />
+          <Route path="/" component={Home} exact />
           <Route path="/unverified" component={UnverifiedPage} />
           <Route path="/adminlogin" component={LoginAdmin} />
           <Route path="/login" component={LoginPage} />
@@ -72,7 +71,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Route path="/" component={HomePage} exact />
+        <Route path="/" component={Home} exact />
         <Route path="/unverified" component={UnverifiedPage} />
         <Route path="/adminlogin" component={LoginAdmin} />
         <Route path="/login" component={LoginPage} />

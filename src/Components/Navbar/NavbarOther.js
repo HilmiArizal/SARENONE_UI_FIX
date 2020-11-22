@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser, getCart } from '../../Redux/Actions';
 import LogoSarenOne from '../../Images/LogoSarenOne.png';
-import CartNavbar from "../CartNavbar";
+import CartNavbar from "./CartNavbar";
 import { API_URL_1 } from "../../Helpers/API_URL";
 import CartEmpty from '../../Images/CartEmpty.png';
 import WhatsApp from '../../Images/whatsapp.png';

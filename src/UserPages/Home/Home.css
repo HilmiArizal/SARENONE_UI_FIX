@@ -1,0 +1,47 @@
+.body-product-home {
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+}
+
+.carousel-Img {
+    width: 100vw;
+    height: 90vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#btn-shop-now {
+    background-color: #e21515;
+    border-radius: 50px;
+    width: 15%;
+    box-shadow: 2px 2px 5px #ffcbcb;
+    color: #ffffff;
+    transition: 0.5s;
+}
+
+#btn-shop-now:hover {
+    width: 20%;
+    transition: 0.5s;
+}
+
+.line-section{
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+    .carousel-Img {
+        width: 94vw;
+        height: 30vh;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+    .carousel-Img {
+        width: 94vw;
+        height: 40vh;
+    }
+}

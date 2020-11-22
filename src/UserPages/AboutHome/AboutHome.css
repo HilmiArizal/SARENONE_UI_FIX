@@ -1,0 +1,79 @@
+.card-about-home{
+  background-color: #ffffff;
+}
+
+.sub-section-about{
+  padding:1em;
+}
+
+.section-about{
+  display: flex;
+  /* flex-direction: row; */
+  background-color: #ffcbcb;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #e21515;
+}
+
+.section-left-about{
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-right-about{
+  width: 60%;
+  /* display: flex; */
+  padding: 1em;
+  /* background-color: green; */
+  
+}
+
+.image-Character{
+  width: 400px;
+  height: 250px;
+}
+
+@media (min-width:300px) and (max-width:700px){
+  .section-about{
+    display: inline;
+  }
+  .section-left-about{
+    width: 100%;
+  }
+  .section-right-about{
+    width: 100%;
+  }
+  .image-Character{
+    width: 250px;
+    height: 200px;
+  }
+  #card-best-product-margin{
+    padding: 1em;
+  }
+}
+
+@media (min-width:701px) and (max-width:1000px){
+  .section-about{
+    display: inline;
+  }
+  .section-left-about{
+    width: 100%;
+  }
+  .section-right-about{
+    width: 100%;
+  }
+  .image-Character{
+    width: 250px;
+    height: 200px;
+  }
+}
+
+.title-about-home{
+  font-size: 150%;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}

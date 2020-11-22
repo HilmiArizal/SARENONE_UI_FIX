@@ -8,7 +8,7 @@ import '../CSS/InputNumber.css'
 import { addCart } from '../Redux/Actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import '../CSS/CategoriesProduct.css';
+import '../UserPages/ProductHome/ProductHome.css';
 import NavbarOther from '../Components/Navbar/NavbarOther';
 
 

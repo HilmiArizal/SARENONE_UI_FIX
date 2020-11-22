@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser, getCart } from '../../Redux/Actions';
 import { API_URL_1 } from "../../Helpers/API_URL";
-import CartNavbar from "../CartNavbar";
+import CartNavbar from "./CartNavbar";
 import LogoSarenOne from '../../Images/LogoSarenOne.png';
 import CartEmpty from '../../Images/CartEmpty.png';
 import WhatsApp from '../../Images/whatsapp.png';
@@ -87,11 +87,12 @@ class NavbarHome extends Component {
                         <MDBNavbarNav left id="navbar-left">
                             <MDBNavItem >
                                 <LinkScroll
+                                    activeClass="active"
                                     to="section1"
                                     spy={true}
                                     smooth={true}
                                     offset={-70}
-                                    duration={1000}
+                                    duration={500}
                                     id="item-navbar"
                                 >
                                     Beranda
@@ -99,11 +100,12 @@ class NavbarHome extends Component {
                             </MDBNavItem>
                             <MDBNavItem>
                                 <LinkScroll
+                                    activeClass="active"
                                     to="section2"
                                     spy={true}
                                     smooth={true}
-                                    offset={-10}
-                                    duration={1000}
+                                    offset={-60}
+                                    duration={500}
                                     id="item-navbar"
                                 >
                                     Produk
@@ -111,11 +113,12 @@ class NavbarHome extends Component {
                             </MDBNavItem>
                             <MDBNavItem>
                                 <LinkScroll
+                                    activeClass="active"
                                     to="section3"
                                     spy={true}
                                     smooth={true}
-                                    offset={-10}
-                                    duration={1000}
+                                    offset={-70}
+                                    duration={500}
                                     id="item-navbar"
                                 >
                                     Tentang
@@ -146,7 +149,7 @@ class NavbarHome extends Component {
                                                     </center>
                                                     :
                                                     <div>
-                                                        <div className="text-center" style={{fontWeight:"bold"}}>KERANJANG BELANJA ANDA</div>
+                                                        <div className="text-center" style={{ fontWeight: "bold" }}>KERANJANG BELANJA ANDA</div>
                                                         {this.renderCart()}
                                                         <center>
                                                             <MDBRow>

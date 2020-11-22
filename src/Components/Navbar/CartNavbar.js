@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import { API_URL_1 } from '../Helpers/API_URL';
+import { API_URL_1 } from '../../Helpers/API_URL';
 import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
-import './Navbar/NavbarHome.css';
+import './NavbarHome.css';
 
 
 class CartNavbar extends Component {

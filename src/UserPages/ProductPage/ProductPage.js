@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getGroupByProduct, getCategory } from '../Redux/Actions';
-// import NavbarWithout from '../Components/NavbarWithout';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
-import { API_URL_1 } from '../Helpers/API_URL';
-import '../CSS/ProductPage.css';
-import Footer from '../Components/Footer';
+import { getGroupByProduct, getCategory } from '../../Redux/Actions';
+import NavbarOther from '../../Components/Navbar/NavbarOther';
+import Footer from '../../Components/Footer';
 import Axios from 'axios';
-import NavbarOther from '../Components/Navbar/NavbarOther';
+import { API_URL_1 } from '../../Helpers/API_URL';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
+import './ProductPage.css';
+
 
 class ProductPage extends Component {
 
     state = {
         dataProductSecondGrade: [],
-
         newIdCategory: '',
-
         offset: 0
     }
 
@@ -109,7 +107,7 @@ class ProductPage extends Component {
             } else if (this.state.newIdCategory === "") {
                 if (item.productgrade === 'Premium Grade') {
                     return (
-                        <MDBCol size="3" style={{ maxWidth: "18rem" }} key={index}>
+                        <MDBCol size="3" style={{ maxWidth: "18" }} key={index}>
                             <MDBCard id="card-Product">
                                 <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
                                 <MDBCardBody>
@@ -131,7 +129,7 @@ class ProductPage extends Component {
     renderCategories = () => {
         return this.props.dataCategory.map((item, index) => {
             return (
-                <option  >
+                <option>
                     {item.categoryname}
                 </option>
             )
@@ -140,7 +138,7 @@ class ProductPage extends Component {
 
     render() {
         return (
-            <div >
+            <div className="body-product-page">
                 <NavbarOther />
                 <MDBContainer>
                     <div className="text-Product" style={{ marginTop: 30 }}>PILIH BERDASARKAN KATEGORI
@@ -159,7 +157,7 @@ class ProductPage extends Component {
                             </div>
                         </center>
                     </div>
-                    <div className="jumbotron" style={{ minHeight: '75vh' }}>
+                    <div className="card-product-page">
                         <center>
                             <MDBRow>
                                 {this.renderProducts()}
