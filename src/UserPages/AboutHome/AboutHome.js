@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { MDBContainer } from "mdbreact";
 import './AboutHome.css';
 import FoodCharacter from '../../Images/CharacterFood.png';
 import CompanyProfile from '../../Images/CompanyProfileHilmi.pdf';

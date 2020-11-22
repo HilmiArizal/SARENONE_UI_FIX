@@ -70,7 +70,7 @@ class NavbarOther extends Component {
 
     render() {
         return (
-            <MDBNavbar dark expand="md" id="navbar-custom-other" >
+            <MDBNavbar dark expand="md" id="navbar-custom-other" fixed="top">
                 <MDBContainer>
                     <MDBNavbarBrand>
                         <Link to="/">

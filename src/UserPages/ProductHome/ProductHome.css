@@ -37,17 +37,18 @@
     color: #212529;
     font-size: 80%;
     text-align: center;
+    font-weight: bold;
 }
 
 #btn-best-product {
-    font-size: 80%;
+    font-size: 60%;
     background-color: #212529;
     display: flex;
     justify-content: center;
     color: #ffffff;
     text-decoration: none;
-    padding: 2%;
-    border-radius: 5px;
+    padding: 5%;
+    border-radius: 3px;
     text-transform: uppercase;
 }
 
@@ -73,7 +74,7 @@
         padding: 1em;
     }
     #btn-best-product {
-        font-size: 60%;
+        font-size: 50%;
     }
     #card-best-product {
         margin: auto;

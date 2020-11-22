@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getGroupByProduct, getCategory } from '../../Redux/Actions';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
 import Footer from '../../Components/Footer';
-import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 import './ProductPage.css';
@@ -12,7 +11,6 @@ import './ProductPage.css';
 class ProductPage extends Component {
 
     state = {
-        dataProductSecondGrade: [],
         newIdCategory: '',
         offset: 0
     }
@@ -20,58 +18,6 @@ class ProductPage extends Component {
     componentDidMount() {
         this.props.getGroupByProduct();
         this.props.getCategory();
-        this.getProductSecondGrade();
-    }
-
-    getProductSecondGrade = async () => {
-        const res = await Axios.get(API_URL_1 + `products/getProductSecondGrade`)
-        this.setState({ dataProductSecondGrade: res.data })
-    }
-
-    renderProductSecondGrade = () => {
-        return this.state.dataProductSecondGrade.map((item, index) => {
-            if (this.state.newIdCategory === item.categoryname) {
-                return (
-                    <MDBCol size="3" style={{ maxWidth: "18rem" }} key={index}>
-                        <MDBCard id="card-Product">
-                            <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
-                            <MDBCardBody>
-                                <MDBCardTitle style={{ fontSize: 15 }}>{item.productname}</MDBCardTitle>
-                                <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`}>Beli Sekarang</MDBBtn>
-                            </MDBCardBody>
-                        </MDBCard>
-                    </MDBCol>
-                )
-            } else if (this.state.newIdCategory === "Semua Produk") {
-                return (
-                    <MDBCol size="3" style={{ maxWidth: "18rem" }} key={index}>
-                        <MDBCard id="card-Product">
-                            <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
-                            <MDBCardBody>
-                                <MDBCardTitle style={{ fontSize: 15 }}>{item.productname}</MDBCardTitle>
-                                <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
-                            </MDBCardBody>
-                        </MDBCard>
-                    </MDBCol>
-                )
-            } else if (this.state.newIdCategory === "") {
-                return (
-                    <MDBCol size="3" style={{ maxWidth: "18rem" }} key={index}>
-                        <MDBCard id="card-Product">
-                            <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
-                            <MDBCardBody>
-                                <MDBCardTitle style={{ fontSize: 15 }}>{item.productname}</MDBCardTitle>
-                                <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
-                            </MDBCardBody>
-                        </MDBCard>
-                    </MDBCol>
-                )
-            } else {
-                return (
-                    <div></div>
-                )
-            }
-        })
     }
 
     renderProducts = () => {
@@ -79,12 +25,12 @@ class ProductPage extends Component {
             if (this.state.newIdCategory === item.categoryname) {
                 if (item.productgrade === 'Premium Grade') {
                     return (
-                        <MDBCol size="3" style={{ maxWidth: "18rem" }} key={index}>
+                        <MDBCol size="3" style={{ maxWidth: "15rem" }} key={index}>
                             <MDBCard id="card-Product">
                                 <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
                                 <MDBCardBody>
-                                    <MDBCardTitle style={{ fontSize: 15 }}>{item.productname}</MDBCardTitle>
-                                    <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`}>Beli Sekarang</MDBBtn>
+                                    <MDBCardTitle id="title-card-product">{item.productname}</MDBCardTitle>
+                                    <MDBBtn id="btn-card-product" size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
                                 </MDBCardBody>
                             </MDBCard>
                         </MDBCol>
@@ -93,12 +39,12 @@ class ProductPage extends Component {
             } else if (this.state.newIdCategory === "Semua Produk") {
                 if (item.productgrade === 'Premium Grade') {
                     return (
-                        <MDBCol size="3" style={{ maxWidth: "18rem" }} key={index}>
+                        <MDBCol size="3" style={{ maxWidth: "15rem" }} key={index}>
                             <MDBCard id="card-Product">
                                 <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
                                 <MDBCardBody>
-                                    <MDBCardTitle style={{ fontSize: 15 }}>{item.productname}</MDBCardTitle>
-                                    <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
+                                    <MDBCardTitle id="title-card-product">{item.productname}</MDBCardTitle>
+                                    <MDBBtn id="btn-card-product" size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
                                 </MDBCardBody>
                             </MDBCard>
                         </MDBCol>
@@ -107,12 +53,12 @@ class ProductPage extends Component {
             } else if (this.state.newIdCategory === "") {
                 if (item.productgrade === 'Premium Grade') {
                     return (
-                        <MDBCol size="3" style={{ maxWidth: "18" }} key={index}>
+                        <MDBCol size="3" style={{ maxWidth: "15rem" }} key={index}>
                             <MDBCard id="card-Product">
                                 <MDBCardImage className="img-fluid" src={API_URL_1 + item.productimage} waves />
                                 <MDBCardBody>
-                                    <MDBCardTitle style={{ fontSize: 15 }}>{item.productname}</MDBCardTitle>
-                                    <MDBBtn size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
+                                    <MDBCardTitle id="title-card-product">{item.productname}</MDBCardTitle>
+                                    <MDBBtn id="btn-card-product" size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
                                 </MDBCardBody>
                             </MDBCard>
                         </MDBCol>
@@ -139,30 +85,23 @@ class ProductPage extends Component {
     render() {
         return (
             <div className="body-product-page">
-                <NavbarOther />
+                <div style={{ marginBottom: 70 }}>
+                    <NavbarOther />
+                </div>
                 <MDBContainer>
-                    <div className="text-Product" style={{ marginTop: 30 }}>PILIH BERDASARKAN KATEGORI
-                        <center>
-                            <div>
-                                <MDBRow>
-                                    <MDBCol size="4"></MDBCol>
-                                    <MDBCol size="4">
-                                        <select className="form-control" onChange={(e) => this.setState({ newIdCategory: e.target.value })}>
-                                            <option onChange={() => this.setState({ newIdCategory: 0 })}>Semua Produk</option>
-                                            {this.renderCategories()}
-                                        </select>
-                                    </MDBCol>
-                                    <MDBCol size="4"></MDBCol>
-                                </MDBRow>
-                            </div>
-                        </center>
+                    <div className="title-product">PILIH BERDASARKAN KATEGORI</div>
+                    <div className="section-product-1">
+                        <div className="sub-section-product-1">
+                            <select className="form-control" onChange={(e) => this.setState({ newIdCategory: e.target.value })}>
+                                <option onChange={() => this.setState({ newIdCategory: 0 })}>Semua Produk</option>
+                                {this.renderCategories()}
+                            </select>
+                        </div>
                     </div>
                     <div className="card-product-page">
-                        <center>
-                            <MDBRow>
-                                {this.renderProducts()}
-                            </MDBRow>
-                        </center>
+                        <MDBRow id="card-item">
+                            {this.renderProducts()}
+                        </MDBRow>
                     </div>
                 </MDBContainer>
                 <div><Footer /></div>
