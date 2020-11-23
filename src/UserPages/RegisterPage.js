@@ -6,7 +6,7 @@ import form1 from '../Images/FORM-1.png';
 import form2 from '../Images/FORM-2.png';
 import { getAllUsers, registerUser } from '../Redux/Actions';
 import { connect } from 'react-redux';
-import '../CSS/Login.css';
+// import '../CSS/LoginPage';
 
 
 class RegisterPage extends Component {

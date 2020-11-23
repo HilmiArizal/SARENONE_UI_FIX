@@ -10,20 +10,20 @@ import Products from './AdminPages/Products';
 import ManageProduct from './AdminPages/ManageProducts';
 import DetailProducts from './AdminPages/DetailProducts';
 import ListWeightPrice from './AdminPages/List';
-import LoginPage from './UserPages/LoginPage';
+import LoginPage from './UserPages/LoginPage/LoginPage';
 import RegisterPage from './UserPages/RegisterPage';
 import UnverifiedPage from './UserPages/UnverifiedPage';
 import VerifiedPage from './UserPages/VerifiedPage';
 import ProductPage from './UserPages/ProductPage/ProductPage';
-import DetailProdukPage from './UserPages/DetailProductPage';
-import CartPage from './UserPages/CartPage';
-import TransactionPage from './UserPages/TransactionPage';
+import CartPage from './UserPages/CartPage/CartPage';
+import TransactionPage from './UserPages/TransactionPage/TransactionPage';
 import ManageTransaction from './AdminPages/ManageTransaction';
 import SuccessTransaction from './AdminPages/SuccessTransaction';
 import FailTransaction from './AdminPages/FailTransaction';
 import HistoryTransaction from './UserPages/HistoryTransaction';
 import './App.css';
 import Home from './UserPages/Home/Home';
+import DetailProductPage from './UserPages/DetailProductPage/DetailProductPage';
 
 class App extends Component {
 
@@ -62,7 +62,7 @@ class App extends Component {
           <Route path="/register" component={RegisterPage} />
           <Route path="/verified" component={VerifiedPage} />
           <Route path="/product" component={ProductPage} />
-          <Route path="/detailproduct" component={DetailProdukPage} />
+          <Route path="/detailproduct" component={DetailProductPage} />
           <Route path="/cart" component={CartPage} />
           <Route path="/transaction" component={TransactionPage} />
           <Route path="/historytransaction" component={HistoryTransaction} />
@@ -78,7 +78,7 @@ class App extends Component {
         <Route path="/register" component={RegisterPage} />
         <Route path="/verified" component={VerifiedPage} />
         <Route path="/product" component={ProductPage} />
-        <Route path="/detailproduct" component={DetailProdukPage} />
+        <Route path="/detailproduct" component={DetailProductPage} />
         <Route path="/cart" component={CartPage} />
       </div>
     )

@@ -1,0 +1,6 @@
+.body-transaction{
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+    padding: 2em;
+}

@@ -1,0 +1,93 @@
+.body-login{
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+    /* margin-top: 7%; */
+}
+
+.section-login{
+    padding: 6em 0;
+}
+
+#img-Login{
+    height: 600px;
+}
+
+.section-login-1{
+    display: flex;
+}
+
+.section-login-left{
+    width: 40%;
+}
+
+.section-login-right{
+    width: 60%;
+}
+
+.card-alternative-login{
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (min-width:300px) and (max-width:700px){
+    #img-Login{
+        height: 400px;
+        width: 100%;
+    }
+    .section-login-1{
+        flex-direction: column;
+    }
+    
+    .section-login-left{
+        width: 100%;
+    }
+    
+    .section-login-right{
+        width: 100%;
+    }
+}
+
+@media (min-width: 701px) and (max-width:1000px){
+    #img-Login{
+        height: 400px;
+    }
+    .section-login-1{
+        flex-direction: column;
+    }
+    
+    .section-login-left{
+        width: 100%;
+    }
+    
+    .section-login-right{
+        width: 100%;
+    }
+}
+
+.password-icon{
+    position: absolute;
+    top:232px;
+    right: 55px;
+    cursor: pointer;
+    color: #696969;
+    font-size: 20px;
+}
+
+.register{
+    position: absolute;
+    top:307px;
+    right: 55px;
+    cursor: pointer;
+    color: #696969;
+    font-size: 20px;
+}
+
+.confirmRegis{
+    position: absolute;
+    top:380px;
+    right: 55px;
+    cursor: pointer;
+    color: #696969;
+    font-size: 20px;
+}

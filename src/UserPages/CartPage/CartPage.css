@@ -1,0 +1,159 @@
+.body-cart {
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+}
+
+.title-cart {
+    padding: 1em;
+    font-size: 200%;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.section-cart {
+    padding: 1em;
+}
+
+.section-cart-card {
+    padding: 2em;
+    background-color: #ffffff;
+    min-height: 70vh;
+}
+
+.section-cart-1 {
+    background-color: #ffcbcb;
+    padding: 1em;
+    margin-bottom: 2%;
+    box-shadow: 0px 2px 5px #495057;
+}
+
+.sub-section-cart-1 {
+    display: flex;
+}
+
+.section-cart-center {
+    width: 50%;
+    padding: 0px 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-productname {
+    font-size: 150%;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.sub-section-cart-product {
+    display: flex;
+}
+
+.section-cart-center label {
+    width: 40%;
+}
+
+.section-cart-center span {
+    width: 50%;
+}
+
+.section-img-cart {
+    width: 20%;
+}
+
+.img-cart {
+    width: 150px;
+}
+
+.section-cart-right {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+}
+
+.close-icon-cart {
+    cursor: pointer;
+}
+
+.close-icon-cart:hover {
+    opacity: 0.5;
+}
+
+.img-shop {
+    width: 20%;
+    margin-top: 2%;
+}
+
+#pay-cart {
+    text-align: center;
+}
+
+.img-cart-empty{
+    width: 300px;
+    margin: 130px 0px;
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+    .title-cart {
+        font-size: 150%;
+    }
+    .sub-section-cart-1 {
+        flex-direction: column;
+    }
+    .img-cart {
+        margin: auto;
+        justify-content: center;
+        text-align: center;
+        width: 50%;
+        display: flex;
+    }
+    .section-cart-center {
+        width: 100%;
+    }
+    .cart-productname {
+        margin: auto;
+    }
+    .section-cart-center label {
+        width: 50%;
+    }
+    .section-cart-center {
+        font-size: 80%;
+    }
+    .close-icon-cart {
+        position: absolute;
+        right: 75px;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+    .title-cart {
+        font-size: 150%;
+    }
+    .sub-section-cart-1 {
+        flex-direction: column;
+    }
+    .img-cart {
+        margin: auto;
+        justify-content: center;
+        text-align: center;
+        width: 50%;
+        display: flex;
+    }
+    .section-cart-center {
+        width: 100%;
+    }
+    .cart-productname {
+        margin: auto;
+    }
+    .section-cart-center label {
+        width: 50%;
+    }
+    .section-cart-center {
+        font-size: 80%;
+    }
+    .close-icon-cart {
+        position: absolute;
+        right: 100px;
+    }
+}

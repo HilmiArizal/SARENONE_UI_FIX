@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory, editProfileData } from '../Redux/Actions';
+import { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory, editProfileData } from '../../Redux/Actions';
 import { connect } from 'react-redux';
 import { MDBRow, MDBCol, MDBContainer, MDBBtn } from 'mdbreact';
 // import NavbarWithout from '../Components/NavbarWithout';
 import Axios from 'axios';
-import { API_URL_1 } from '../Helpers/API_URL';
-import NoImage from '../Images/NoImage.png'
+import { API_URL_1 } from '../../Helpers/API_URL';
+import NoImage from '../../Images/NoImage.png'
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Success from '../Images/Confirmation.png';
-import NavbarOther from '../Components/Navbar/NavbarOther';
+import Success from '../../Images/Confirmation.png';
+import NavbarOther from '../../Components/Navbar/NavbarOther';
+import './TransactionPage.css';
 
 
 class TransactionPage extends Component {
@@ -483,8 +484,10 @@ class TransactionPage extends Component {
             )
         }
         return (
-            <div>
-                <NavbarOther />
+            <div className="body-transaction">
+                <div style={{ marginTop: 80 }}>
+                    <NavbarOther />
+                </div>
                 <MDBContainer>
                     {this.renderDataTransaction()}
                 </MDBContainer>
