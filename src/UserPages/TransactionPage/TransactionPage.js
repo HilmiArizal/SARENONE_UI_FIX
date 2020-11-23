@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory, editProfileData } from '../../Redux/Actions';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { MDBRow, MDBCol, MDBContainer, MDBBtn } from 'mdbreact';
-// import NavbarWithout from '../Components/NavbarWithout';
+import { getCart, addProfileData, getTransaction, addTransaction, getTransactionMethod, deleteCartUser, addTransactionHistory, editProfileData } from '../../Redux/Actions';
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import NoImage from '../../Images/NoImage.png'
-import { Redirect } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Success from '../../Images/Confirmation.png';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
+import Footer from '../../Components/Footer';
+import NoImage from '../../Images/NoImage.png'
+import Success from '../../Images/Confirmation.png';
+import { MDBRow, MDBCol, MDBContainer, MDBBtn } from 'mdbreact';
+import Swal from 'sweetalert2';
 import './TransactionPage.css';
 
 
@@ -47,7 +47,7 @@ class TransactionPage extends Component {
     }
 
     getDataByName = async () => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token');
         const res = await Axios.get(API_URL_1 + `buyer/getProfileDataByName`, {
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -139,7 +139,8 @@ class TransactionPage extends Component {
         }
         if (name && phonenumber && address) {
             this.setState({ addNewData: profiledata })
-            this.props.addProfileData(profiledata)
+            this.state.addNewData.push(profiledata)
+            // this.props.addProfileData(profiledata)
         } else {
             alert('Harus di isi!')
         }
@@ -218,7 +219,7 @@ class TransactionPage extends Component {
                 <MDBCol key={index}>
                     <center>
                         <img src={API_URL_1 + item.bankimage} alt="bankImage" width='30%' />
-                        <div><input type="radio" name="method" onClick={() => this.setState({ methodeId: item.idmetodetransaction })} /> </div>
+                        <div><input type="checkbox" name="method" onClick={() => this.setState({ methodeId: item.idmetodetransaction })} /> </div>
                         {
                             this.state.methodeId === 0 ? ''
                                 :
@@ -265,7 +266,6 @@ class TransactionPage extends Component {
                                     <div>{item.name}</div>
                                 </div>
                             </div>
-
                         </MDBCol>
                     </MDBRow>
                     <MDBRow style={{ marginTop: 10 }}>
@@ -306,8 +306,24 @@ class TransactionPage extends Component {
 
     renderNewDataId = () => {
         return (
-            <div>
-                <MDBRow style={{ marginTop: 10 }}>
+            <form className="results-form">
+                <div>
+                    <label>Nama Lengkap Pembeli</label>
+                    <span>: {this.state.addNewData.name}</span>
+                </div>
+                <div>
+                    <label>No. Handphone / WA</label>
+                    <span>: {this.state.addNewData.phonenumber}</span>
+                </div>
+                <div>
+                    <label>Alamat Lengkap Pembeli</label>
+                    <span>: {this.state.addNewData.address}</span>
+                </div>
+                <div>
+                    <label>Keterangan Pembeli</label>
+                    <span>: {this.state.addNewData.description}</span>
+                </div>
+                {/* <MDBRow style={{ marginTop: 10 }}>
                     <MDBCol size="3">Nama lengkap pembeli</MDBCol>:<MDBCol size="8">
                         <div className="row">
                             <div className="col-6">
@@ -336,8 +352,8 @@ class TransactionPage extends Component {
                         <div>{this.state.addNewData.description}</div>
                     </MDBCol>
                     <MDBCol size="4"></MDBCol>
-                </MDBRow>
-            </div>
+                </MDBRow> */}
+            </form>
         )
     }
 
@@ -348,8 +364,32 @@ class TransactionPage extends Component {
                     {
                         this.state.addNewData.length === 0
                             ?
-                            <div>
-                                <MDBRow style={{ marginTop: 10 }}>
+                            <form className="form-transaction">
+                                <div>
+                                    <label>Nama Lengkap Pembeli :</label>
+                                    <span>
+                                        <input type="text" className="form-control" ref="name" />
+                                    </span>
+                                </div>
+                                <div>
+                                    <label>No. Handphone / WA :</label>
+                                    <span>
+                                        <input type="number" className="form-control" ref="phonenumber" />
+                                    </span>
+                                </div>
+                                <div>
+                                    <label>Alamat Lengkap Pembeli :</label>
+                                    <span>
+                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" ref="address"></textarea>
+                                    </span>
+                                </div>
+                                <div>
+                                    <label>Keterangan dari pembeli untuk penjual :</label>
+                                    <span>
+                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" ref="description"></textarea>
+                                    </span>
+                                </div>
+                                {/* <MDBRow style={{ marginTop: 10 }}>
                                     <MDBCol size="3">Nama lengkap pembeli</MDBCol>:<MDBCol size="8">
                                         <div className="row">
                                             <div className="col-6">
@@ -391,14 +431,13 @@ class TransactionPage extends Component {
                                         </div>
                                     </MDBCol>
                                     <MDBCol size="4"></MDBCol>
-                                </MDBRow>
+                                </MDBRow> */}
                                 <center>
-                                    <div style={{ marginTop: 30 }}>
+                                    <div>
                                         <MDBBtn size="md" color="elegant" onClick={this.addNewProfileData}> CEK PROFIL PEMBELI </MDBBtn>
-                                        {/* <MDBBtn size="md" color="indigo" onClick={() => this.setState({ inputData: true })}> Pakai profil lama </MDBBtn> */}
                                     </div>
                                 </center>
-                            </div>
+                            </form>
                             :
                             this.renderNewDataId()
                     }
@@ -431,18 +470,12 @@ class TransactionPage extends Component {
 
     renderDataTransaction = () => {
         return (
-            <div className="jumbotron jumbotron-fluid">
-                <div className="container">
-                    <MDBRow>
-                        <MDBCol size="4"></MDBCol><MDBCol size="2">Nama Produk</MDBCol>:<MDBCol size="4">{this.renderProduct()}</MDBCol><MDBCol size="2"></MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                        <MDBCol size="4"></MDBCol><MDBCol size="2">Status Transaksi</MDBCol>:<MDBCol size="4">Belum Bayar</MDBCol><MDBCol size="2"></MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                        <MDBCol size="4"></MDBCol><MDBCol size="2">Total Transaksi</MDBCol>:<MDBCol size="4">{this.renderDataTotalCart()}</MDBCol><MDBCol size="2"></MDBCol>
-                    </MDBRow>
-                    <div style={{ border: '1px solid black', margin: 30 }}></div>
+            <div className="section-card-transaction">
+                <div className="transaction-title">
+                    Silahkan untuk mengisi data secara lengkap untuk melakukan proses pengiriman
+                </div>
+                <hr />
+                <div>
                     {
                         this.state.addOldData.length === 0 && this.state.addNewData.length === 0
                             ?
@@ -485,12 +518,15 @@ class TransactionPage extends Component {
         }
         return (
             <div className="body-transaction">
-                <div style={{ marginTop: 80 }}>
-                    <NavbarOther />
+                <div className="section-transaction-page">
+                    <div style={{ marginTop: 30 }}>
+                        <NavbarOther />
+                    </div>
+                    <MDBContainer>
+                        {this.renderDataTransaction()}
+                    </MDBContainer>
                 </div>
-                <MDBContainer>
-                    {this.renderDataTransaction()}
-                </MDBContainer>
+                <Footer />
             </div>
         );
     }
