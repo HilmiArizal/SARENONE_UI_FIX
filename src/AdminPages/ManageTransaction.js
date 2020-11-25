@@ -6,7 +6,7 @@ import { MDBIcon, MDBCol, MDBBtn, MDBRow, MDBModal, MDBModalHeader, MDBModalBody
 import { API_URL_1 } from '../Helpers/API_URL';
 import '../CSS/PreviewImage.css'
 import Axios from 'axios';
-
+import './ProcessTransaction/ProcessTransaction.css';
 
 class ManageTransaction extends Component {
 
@@ -14,7 +14,8 @@ class ManageTransaction extends Component {
         dataProcessTransaction: [],
 
         newStatusTransaction: '',
-        timeTransaction: '',
+        usernameCheck: '',
+        datatimeCheck: '',
         address: '',
 
         modal1: false,
@@ -94,17 +95,44 @@ class ManageTransaction extends Component {
     }
 
     renderDetailTransaction = () => {
-        return this.state.dataProcessTransaction.map((item, index) => {
-            if (this.state.timeTransaction === item.datetime)
+        return this.props.dataTransactionComplete.map((item, index) => {
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
                 return (
-                    <tr className="text-center">
-                        <td>{item.username}</td>
-                        <td>{item.productname}</td>
-                        <td>{item.pricelist.toLocaleString()}</td>
-                        <td>{item.weightlist} gr</td>
-                        <td>{item.qty} pack</td>
-                        <td>{item.totalprice.toLocaleString()}</td>
-                    </tr>
+                    <div className="section-check-transaction">
+                        <div>
+                            <label>Nama Pembeli</label>
+                            <span>: {item.name}</span>
+                        </div>
+                        <div>
+                            <label>Alamat Pembeli</label>
+                            <span>: {item.address}</span>
+                        </div>
+                        <div>
+                            <label>Phone Number/WA</label>
+                            <span>: {item.phonenumber}</span>
+                        </div>
+                        <div>
+                            <label>Ekspedisi</label>
+                            <span>: {item.expedition}</span>
+                        </div>
+                        <div>
+                            <label>Keterangan</label>
+                            <span>: {item.description}</span>
+                        </div>
+                        <div>
+                            <label>Bank</label>
+                            <span>: {item.bankname + ' -> ' + item.rekeningname}</span>
+                        </div>
+                        <div>
+                            <label>Total Transaksi</label>
+                            <span>: Rp. {item.totaltransaction.toLocaleString()},-</span>
+                        </div>
+                        {/* <div>{item.productname}</div>
+                        <div>{item.pricelist.toLocaleString()}</div>
+                        <div>{item.weightlist} gr</div>
+                        <div>{item.qty} pack</div>
+                        <div>{item.totalprice.toLocaleString()}</div> */}
+                    </div>
                 )
         })
     }
@@ -112,15 +140,16 @@ class ManageTransaction extends Component {
     renderGetTransaction = () => {
         return this.props.dataTransactionComplete.map((item, index) => {
             return (
-                <tr className="text-center" key={index}>
+                <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
-                        <div style={{ backgroundColor: 'black', cursor: 'pointer', color: 'white', fontSize: 12, padding: 1 }} onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>
-                            <center>BELANJA</center>
+                        <div style={{ backgroundColor: 'black', cursor: 'pointer', color: 'white', fontSize: 12, padding: 1 }} onClick={() => { this.toggle(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>
+                            <center>CLICK</center>
                             <MDBModal isOpen={this.state.modal1} toggle={this.toggle} size="lg">
                                 <MDBModalHeader toggle={this.toggle}></MDBModalHeader>
                                 <MDBModalBody>
-                                    <table class="table table-sm">
+                                    {this.renderDetailTransaction()}
+                                    {/* <table class="table table-sm">
                                         <thead>
                                             <tr className="text-center">
                                                 <th scope="col"> Akun</th>
@@ -134,13 +163,41 @@ class ManageTransaction extends Component {
                                         <tbody>
                                             {this.renderDetailTransaction()}
                                         </tbody>
-                                    </table>
+                                    </table> */}
                                 </MDBModalBody>
                             </MDBModal>
                         </div>
                     </td>
-                    <td>{item.name}</td>
                     <td>
+                        <div style={{ backgroundColor: 'black', cursor: 'pointer', color: 'white', fontSize: 12, padding: 1 }} onClick={() => { this.toggle(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>
+                            <center>CLICK</center>
+                            <MDBModal isOpen={this.state.modal1} toggle={this.toggle} size="lg">
+                                <MDBModalHeader toggle={this.toggle}></MDBModalHeader>
+                                <MDBModalBody>
+                                    {this.renderDetailTransaction()}
+                                    {/* <table class="table table-sm">
+                                        <thead>
+                                            <tr className="text-center">
+                                                <th scope="col"> Akun</th>
+                                                <th scope="col">Nama Produk</th>
+                                                <th scope="col">Harga </th>
+                                                <th scope="col">Berat</th>
+                                                <th scope="col">Kuantitas</th>
+                                                <th scope="col">Total Harga</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderDetailTransaction()}
+                                        </tbody>
+                                    </table> */}
+                                </MDBModalBody>
+                            </MDBModal>
+                        </div>
+                    </td>
+                    <td>{item.username.toUpperCase()}</td>
+                    <td>{item.datetime}</td>
+                    <td>Rp. {item.totaltransaction.toLocaleString()},- </td>
+                    {/* <td>
                         <div style={{ backgroundColor: 'black', cursor: 'pointer', color: 'white', fontSize: 12, padding: 1 }} onClick={() => { this.toggle2(); this.setState({ address: item.address }) }}>
                             <center>ALAMAT</center>
                             <MDBModal isOpen={this.state.modal2} toggle={this.toggle2} size="lg">
@@ -152,10 +209,20 @@ class ManageTransaction extends Component {
                         </div>
                     </td>
                     <td>0{item.phonenumber}</td>
-                    <td>Rp. {item.totaltransaction.toLocaleString()},- </td>
                     <td>{item.bankname}</td>
                     <td><img id="myImg" className="img-y" src={API_URL_1 + item.imagetransaction} alt="imageTransaction" style={{ height: 30, width: 30 }}
                         onClick={this.functionModalImg} />
+                        <div id="myModal" class="modal">
+                            <span className="close" style={{ color: "white" }}>&times;</span>
+                            <img className="modal-content" alt="category-Img" id="img01" style={{ height: 500 }} />
+                            <div id="caption"></div>
+                        </div>
+                    </td> */}
+                    <td>
+                        <div>
+                            <img id="myImg" className="img-y" src={API_URL_1 + item.imagetransaction} alt="imageTransaction" style={{ height: 20, width: 30 }}
+                                onClick={this.functionModalImg} />
+                        </div>
                         <div id="myModal" class="modal">
                             <span className="close" style={{ color: "white" }}>&times;</span>
                             <img className="modal-content" alt="category-Img" id="img01" style={{ height: 500 }} />
@@ -212,12 +279,15 @@ class ManageTransaction extends Component {
                                     <tr>
                                         <th scope="col"><div className="d-flex justify-content-center">NO. </div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">DETAIL BELANJA</div></th>
-                                        <th scope="col"><div className="d-flex justify-content-center">NAMA PEMBELI</div></th>
-                                        <th scope="col"><div className="d-flex justify-content-center">ALAMAT</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">DETAIL TRANSAKSI</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">USERNAME</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">TGL &amp; JAM TRANSAKSI</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">TOTAL TRANSAKSI</div></th>
+                                        {/* <th scope="col"><div className="d-flex justify-content-center">ALAMAT</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">NO.HP</div></th>
-                                        <th scope="col"><div className="d-flex justify-content-center">TOTAL</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">BANK</div></th>
-                                        <th scope="col"><div className="d-flex justify-content-center">BUKTI</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">BUKTI</div></th> */}
+                                        <th scope="col"><div className="d-flex justify-content-center">BUKTI TRANSAKSI</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">STATUS</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">AKSI</div></th>
                                     </tr>

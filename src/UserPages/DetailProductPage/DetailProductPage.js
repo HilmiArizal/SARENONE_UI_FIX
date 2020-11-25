@@ -36,6 +36,7 @@ class DetailProductPage extends Component {
 
     componentDidMount() {
         this.getByIdProduct();
+        window.scrollTo(0,0);
     }
 
     getByIdProduct = async () => {
@@ -91,17 +92,17 @@ class DetailProductPage extends Component {
         if (weightId && qty) {
             this.props.addCart(datacart)
             Swal.fire({
-                title: 'Now loading',
+                title: 'Mohon tunggu...',
                 allowEscapeKey: false,
                 allowOutsideClick: false,
-                timer: 2000,
+                timer: 1000,
                 onOpen: () => {
                     Swal.showLoading();
                 }
             })
             setTimeout(() =>
                 this.setState({ redirectCart: true })
-                , 2000)
+                , 1000)
         } else {
             alert('Isi dengan benar!')
         }

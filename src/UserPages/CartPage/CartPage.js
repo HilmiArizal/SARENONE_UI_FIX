@@ -18,11 +18,16 @@ class CartPage extends Component {
     state = {
         dataCart: [],
 
-        selectIdInput: null
+        newQty: 0
     }
 
     componentDidMount() {
         this.props.getCart();
+        window.scrollTo(0,0);
+    }
+
+    onChangeQty = (e) => {
+        this.setState({ newQty: parseInt(e.target.value) })
     }
 
     deleteCart = (idcart) => {
@@ -30,11 +35,11 @@ class CartPage extends Component {
     }
 
     editQtyCart = (idcart) => {
-        let newQty = this.refs.newQty.value;
+        let newQty = this.state.newQty;
         if (parseInt(newQty) <= 0) {
             alert('Masukan dengan benar!')
         } else {
-            let dataCart = { qty: newQty }
+            let dataCart = { qty: parseInt(newQty) }
             this.props.editCart(idcart, dataCart)
             this.setState({ selectIdInput: null })
         }
@@ -63,7 +68,7 @@ class CartPage extends Component {
                                 <label>Kuantias Produk</label>
                                 <span>: {item.qty} pack
                                 <span className="btn-change-qty">
-                                        <input type="number" min="1" ref="newQty" style={{ width: 50, fontSize: 13 }} defaultValue={item.qty} />
+                                        <input type="number" min="1" style={{ width: 50, fontSize: 13 }} defaultValue={item.qty} onChange={this.onChangeQty} />
                                         <MDBIcon icon="check" size="sm" style={{ cursor: "pointer", marginLeft: 5 }} onClick={() => this.editQtyCart(item.idcart)} />
                                     </span>
                                 </span>
@@ -103,7 +108,7 @@ class CartPage extends Component {
                             this.props.dataCart.length === 0
                                 ?
                                 <center>
-                                    <img src={CartEmpty} alt="cartEmpty" className="img-cart-empty"/>
+                                    <img src={CartEmpty} alt="cartEmpty" className="img-cart-empty" />
                                     <div style={{ margin: 20 }}> Ooops, keranjang belanja anda kosong </div>
                                     <MDBBtn color="elegant" href="product">BELANJA SEKARANG</MDBBtn>
                                 </center>

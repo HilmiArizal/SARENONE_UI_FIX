@@ -2,11 +2,12 @@ import Axios from "axios"
 import { API_URL_1 } from "../../Helpers/API_URL"
 
 
-export const addProfileData = (profiledata) => {
+export const addProfileData = (dataProfile) => {
     return async () => {
+        console.log(dataProfile)
         try {
-            await Axios.post(API_URL_1 + `buyer/addProfileData`, profiledata)
-            console.log(profiledata)
+            await Axios.post(API_URL_1 + `buyer/addProfileData`, dataProfile)
+            console.log(dataProfile)
         } catch (err) {
             console.log(err)
         }
