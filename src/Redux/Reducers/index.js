@@ -10,7 +10,7 @@ import cartReducer from './cartReducer';
 import buyerReducer from './buyerReducer';
 import transactionReducer from './transactionReducer';
 import transactionmethodReducer from './transmethReducer';
-import transactioncompleteReducer from './transcompReducer';
+import transactionstatusReducer from './transstatusReducer';
 import transactionHistoryReducer from './transactionHistoryReducer';
 
 export default combineReducers({
@@ -25,6 +25,6 @@ export default combineReducers({
     buyer: buyerReducer,
     transaction: transactionReducer,
     transactionmethod: transactionmethodReducer,
-    transactioncomplete: transactioncompleteReducer,
+    transactionstatus: transactionstatusReducer,
     transactionhistory: transactionHistoryReducer
 })

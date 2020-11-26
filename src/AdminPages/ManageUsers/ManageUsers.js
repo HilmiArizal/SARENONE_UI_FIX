@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllUsers_Admin } from '../Redux/Actions';
-import SidebarAdmin from '../Components/SidebarAdmin';
+import { getAllUsers_Admin } from '../../Redux/Actions';
+import SidebarAdmin from '../../Components/SidebarAdmin';
 import { MDBBtn } from 'mdbreact';
-import { deleteAccount } from '../Redux/Actions';
+import { deleteAccount } from '../../Redux/Actions';
 
 
-class ManageUser extends Component {
+class ManageUsers extends Component {
 
     componentDidMount() {
         this.props.getAllUsers_Admin();
@@ -74,4 +74,4 @@ const mapStatetoProps = ({ admin }) => {
     }
 }
 
-export default connect(mapStatetoProps, { getAllUsers_Admin, deleteAccount })(ManageUser);
+export default connect(mapStatetoProps, { getAllUsers_Admin, deleteAccount })(ManageUsers);

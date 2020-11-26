@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTransactionHistory } from '../Redux/Actions';
-// import NavbarWithout from '../Components/NavbarWithout';
-import { MDBContainer, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
+import { getTransactionHistory } from '../../Redux/Actions';
 import Axios from 'axios';
-import { API_URL_1 } from '../Helpers/API_URL';
-import NavbarOther from '../Components/Navbar/NavbarOther';
+import { API_URL_1 } from '../../Helpers/API_URL';
+import NavbarOther from '../../Components/Navbar/NavbarOther';
+import { MDBContainer, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
+import '../HistoryTransactionPage/HistoryTransaction.css';
+import Footer from '../../Components/Footer';
 
 
 class HistoryTransaction extends Component {
@@ -38,7 +39,6 @@ class HistoryTransaction extends Component {
     renderDetailTransactionHistory = () => {
         return this.state.dataHistoryTransaction.map((item, index) => {
             if (this.state.timeTransaction === item.datetime) {
-
                 return (
                     <tr className="text-center">
                         <td>{item.productname}</td>
@@ -62,9 +62,10 @@ class HistoryTransaction extends Component {
                 <tr className="text-center">
                     <td>{index + 1}</td>
                     <td>{item.datetime}</td>
-                    <td>Rp. {item.totaltransaction.toLocaleString()}</td>
+                    <td>Rp. {item.totaltransaction.toLocaleString()},-</td>
                     <td>{item.statustransaction}</td>
-                    <td><div style={{ backgroundColor: 'black', color: 'white', cursor: 'pointer', borderRadius: 50 }} onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>LIHAT DETAIL</div>
+                    <td>
+                        <div className="btn-cart-history-transaction" onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>LIHAT DETAIL</div>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
                             <MDBModalHeader toggle={this.toggle}>DETAIL BELANJA</MDBModalHeader>
                             <MDBModalBody>
@@ -92,33 +93,38 @@ class HistoryTransaction extends Component {
 
     render() {
         return (
-            <div>
-                <NavbarOther />
+            <div className="body-history-transaction">
+                <div style={{ marginTop: 70 }}>
+                    <NavbarOther />
+                </div>
                 <MDBContainer>
-                    <div className="text-center" style={{ fontSize: 50 }}>RIWAYAT TRANSAKSI</div>
-                    {
-                        this.props.dataTransactionHistory.length > 0
-                            ?
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr className="text-center">
-                                        <th scope="col">No.</th>
-                                        <th scope="col">Jam &amp; Tanggal Transaksi</th>
-                                        <th scope="col">Total Transaksi </th>
-                                        <th scope="col">Status Transaksi </th>
-                                        <th scope="col">Detail Belanja</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.renderHistoryTransaction()}
-                                </tbody>
-                            </table>
-                            :
-                            <center>
-                                Belum ada transaksi
+                    <div className="title-history-transaction"> RIWAYAT TRANSAKSI</div>
+                    <div className="card-history-transaction">
+                        {
+                            this.props.dataTransactionHistory.length > 0
+                                ?
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr className="table-head-history-transaction" >
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Jam &amp; Tanggal Transaksi</th>
+                                            <th scope="col">Total Transaksi </th>
+                                            <th scope="col">Status Transaksi </th>
+                                            <th scope="col">Detail Belanja</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.renderHistoryTransaction()}
+                                    </tbody>
+                                </table>
+                                :
+                                <center>
+                                    Belum ada transaksi
                             </center>
-                    }
+                        }
+                    </div>
                 </MDBContainer>
+                <Footer />
             </div>
         );
     }

@@ -1,0 +1,39 @@
+.body-history-transaction {
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+}
+
+.card-history-transaction{
+    background-color: #ffffff;
+    padding: 2em;
+    min-height: 100vh;
+}
+
+.title-history-transaction{
+    text-align: center;
+    padding: 1em;
+    font-size: 200%;
+    font-weight: bold;
+}
+
+.table-head-history-transaction{
+    text-align: center;
+}
+
+.table-head-history-transaction th{
+    font-weight: bold;
+    background-color: #dd4b4b;
+    text-transform: uppercase;
+}
+
+.btn-cart-history-transaction{
+    background-color: #ffcbcb;
+    width: 70%;
+    margin: auto;
+    font-size: 70%;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}

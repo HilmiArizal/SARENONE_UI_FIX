@@ -1,0 +1,144 @@
+.title-status-transaction{
+    text-align: center;
+    font-size: 250%;
+    text-shadow: 0px 2px 5px rgb(56, 56, 56);
+    padding: 10px;
+}
+
+.section-status-transaction {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.fail-status {
+    width: 25%;
+    background-color: #cfcfcf;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgb(163, 158, 158);
+    cursor: pointer;
+    color: rgb(56, 56, 56);
+}
+
+.process-status {
+    width: 25%;
+    background-color: #cfcfcf;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgb(163, 158, 158);
+    cursor: pointer;
+    color: rgb(56, 56, 56);
+}
+
+.success-status {
+    width: 25%;
+    background-color: #cfcfcf;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgb(163, 158, 158);
+    cursor: pointer;
+    color: rgb(56, 56, 56);
+}
+
+.fail-status-checked {
+    width: 25%;
+    background-color: rgb(85, 163, 144);
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgb(163, 158, 158);
+    cursor: pointer;
+    color: rgb(56, 56, 56);
+}
+
+.process-status-checked {
+    width: 25%;
+    background-color: rgb(85, 163, 144);
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgb(163, 158, 158);
+    cursor: pointer;
+    color: rgb(56, 56, 56);
+}
+
+.success-status-checked {
+    width: 25%;
+    background-color: rgb(85, 163, 144);
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgb(163, 158, 158);
+    cursor: pointer;
+    color: rgb(56, 56, 56);
+}
+
+.section-check-transaction {
+    background-color: rgb(85, 163, 144);
+    font-size: 120%;
+    margin-bottom: 3%;
+    padding: 1em;
+    color: black;
+    border-radius: 3px;
+    text-align: start;
+}
+
+.section-check-transaction label {
+    width: 30%;
+    font-weight: bold;
+}
+
+.thead-process-transaction th {
+    background-color: rgb(85, 163, 144);
+    font-weight: bold;
+}
+
+.tbody-process-transaction td {
+    text-align: center;
+}
+
+.tbody-process-transaction select {
+    font-size: 80%;
+}
+
+.btn-modal-detail-cart {
+    background-color: rgb(199, 199, 199);
+    font-size: 80%;
+    padding: 3px;
+    width: 70%;
+    margin: auto;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-modal-detail-transaction {
+    background-color: rgb(199, 199, 199);
+    font-size: 80%;
+    padding: 3px;
+    width: 70%;
+    margin: auto;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-action-process-transaction {
+    background-color: rgb(85, 163, 144);
+    font-size: 80%;
+    padding: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.section-select-status{
+    display: flex;
+    justify-content: center;
+}
+
+.icon-select-status{
+    margin: 2px 0px 0px 5px;
+    cursor: pointer;
+}

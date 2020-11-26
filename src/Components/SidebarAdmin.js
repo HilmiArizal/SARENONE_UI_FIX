@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { logoutUser } from '../Redux/Actions';
 import { connect } from 'react-redux';
 import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 
 class SidebarAdmin extends Component {
@@ -26,15 +27,18 @@ class SidebarAdmin extends Component {
                     <MDBRow>
                         <MDBCol size="2"><MDBIcon icon="home" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="homeadmin" className="w3-bar-item w3-button">Beranda</a>
+                            <Link className="w3-bar-item w3-button" to="adminhome">Beranda</Link>
+                            {/* <a href="homeadmin" className="w3-bar-item w3-button">Beranda</a> */}
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="user-alt" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="profileadmin" className="w3-bar-item w3-button">Profil</a>
+                        <Link className="w3-bar-item w3-button" to="adminprofile">Profile</Link>
+
+                            {/* <a href="profileadmin" className="w3-bar-item w3-button">Profil</a> */}
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="user-cog" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="manageuser" className="w3-bar-item w3-button">Kelola User</a>
+                            <a href="manageusers" className="w3-bar-item w3-button">Kelola User</a>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="hotdog" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
@@ -42,7 +46,7 @@ class SidebarAdmin extends Component {
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="money-check-alt" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="managetransaction" className="w3-bar-item w3-button">Kelola Transaksi</a>
+                            <a href="transactionprocess" className="w3-bar-item w3-button">Kelola Transaksi</a>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="sign-out-alt" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">

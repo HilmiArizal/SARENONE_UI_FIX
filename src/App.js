@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Categories from './AdminPages/Categories';
 import HomeAdmin from './AdminPages/HomeAdmin';
 import LoginAdmin from './AdminPages/LoginAdmin';
-import ManageUsers from './AdminPages/ManageUsers';
 import Products from './AdminPages/Products';
 import ManageProduct from './AdminPages/ManageProducts';
 import DetailProducts from './AdminPages/DetailProducts';
@@ -17,13 +16,15 @@ import VerifiedPage from './UserPages/VerifiedPage';
 import ProductPage from './UserPages/ProductPage/ProductPage';
 import CartPage from './UserPages/CartPage/CartPage';
 import TransactionPage from './UserPages/TransactionPage/TransactionPage';
-import ManageTransaction from './AdminPages/ManageTransaction';
-import SuccessTransaction from './AdminPages/SuccessTransaction';
-import FailTransaction from './AdminPages/FailTransaction';
-import HistoryTransaction from './UserPages/HistoryTransaction';
+import HistoryTransaction from './UserPages/HistoryTransactionPage/HistoryTransaction';
 import './App.css';
 import Home from './UserPages/Home/Home';
 import DetailProductPage from './UserPages/DetailProductPage/DetailProductPage';
+// ADMIN
+import ManageUsers from './AdminPages/ManageUsers/ManageUsers';
+import FailTransaction from './AdminPages/ManageTransaction/FailTransaction';
+import ProcessTransaction from './AdminPages/ManageTransaction/ProcessTransaction';
+import SuccessTransaction from './AdminPages/ManageTransaction/SuccessTransaction';
 
 class App extends Component {
 
@@ -34,22 +35,21 @@ class App extends Component {
     }
   }
 
-
   render() {
     if (this.props.role === 'admin') {
       return (
         <div id="font-BestProduct" className="App">
           <Route path="/adminlogin" component={LoginAdmin} />
-          <Route path="/homeadmin" component={HomeAdmin} />
-          <Route path="/manageuser" component={ManageUsers} />
+          <Route path="/adminhome" component={HomeAdmin} />
+          <Route path="/manageusers" component={ManageUsers} />
           <Route path="/manageallproduct" component={ManageProduct} />
           <Route path="/managecategories" component={Categories} />
           <Route path="/manageproducts" component={Products} />
           <Route path="/detailproducts" component={DetailProducts} />
           <Route path="/manageweightlist" component={ListWeightPrice} />
-          <Route path="/managetransaction" component={ManageTransaction} />
-          <Route path="/transactionsuccess" component={SuccessTransaction} />
+          <Route path="/transactionprocess" component={ProcessTransaction} />
           <Route path="/transactionfail" component={FailTransaction} />
+          <Route path="/transactionsuccess" component={SuccessTransaction} />
         </div>
       )
     } else if (this.props.role === 'user') {

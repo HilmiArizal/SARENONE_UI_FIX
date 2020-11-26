@@ -41,10 +41,20 @@ export const editStatusTransaction = (datetime, datatransaction) => {
     return async (dispatch) => {
         try {
             await Axios.patch(API_URL_1 + `transaction/editStatusTransaction?datetime=${datetime}`, datatransaction)
-            const res = await Axios.get(API_URL_1 + `transaction/getTransactionComplete`)
+            const res = await Axios.get(API_URL_1 + `transaction/getTransactionProcess`)
             dispatch({
-                type: 'TRANSACTION_COMPLETE_SUCCESS',
+                type: 'TRANSACTION_PROCESS_SUCCESS',
                 payload: res.data
+            })
+            const res2 = await Axios.get(API_URL_1 + `transaction/getTransactionSuccess`)
+            dispatch({
+                type: 'TRANSACTION_SUCCESS',
+                payload: res2.data
+            })
+            const res3 = await Axios.get(API_URL_1 + `transaction/getTransactionFail`)
+            dispatch({
+                type: 'TRANSACTION_FAIL_SUCCESS',
+                payload: res3.data
             })
         } catch (err) {
             // console.log(err)
@@ -57,10 +67,20 @@ export const deleteTransaction = (datetime) => {
         try {
             if (window.confirm('Anda yakin menghapus transaksi ini?'))
                 await Axios.delete(API_URL_1 + `transaction/deleteTransaction?datetime=${datetime}`)
-            const res = await Axios.get(API_URL_1 + `transaction/getTransactionComplete`)
+            const res = await Axios.get(API_URL_1 + `transaction/getTransactionProcess`)
             dispatch({
-                type: 'TRANSACTION_COMPLETE_SUCCESS',
+                type: 'TRANSACTION_PROCESS_SUCCESS',
                 payload: res.data
+            })
+            const res2 = await Axios.get(API_URL_1 + `transaction/getTransactionSuccess`)
+            dispatch({
+                type: 'TRANSACTION_SUCCESS',
+                payload: res2.data
+            })
+            const res3 = await Axios.get(API_URL_1 + `transaction/getTransactionFail`)
+            dispatch({
+                type: 'TRANSACTION_FAIL_SUCCESS',
+                payload: res3.data
             })
         } catch (err) {
             // console.log(err)

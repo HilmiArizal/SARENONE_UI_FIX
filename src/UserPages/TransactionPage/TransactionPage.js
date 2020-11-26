@@ -82,7 +82,6 @@ class TransactionPage extends Component {
         let copy = document.getElementById("copy-value");
         copy.select();
         document.execCommand("copy");
-        alert("copy")
     }
 
     onChangeAddDescription = (e) => {
@@ -111,7 +110,7 @@ class TransactionPage extends Component {
             })
             document.getElementById("myCheck").checked = true
             alert('Berhasil')
-        }else{
+        } else {
             alert('Kode transaksi salah!')
         }
     }
@@ -147,11 +146,18 @@ class TransactionPage extends Component {
             imagetransaction,
             transactionId: parseInt(transactionId)
         }
-        console.log(profiledata)
         if (name && phonenumber && address && expedition && metodetransactionName && imagetransaction) {
-            this.setState({ addNewData: profiledata })
-            // this.state.addNewData.push(profiledata)
-            // this.props.addProfileData(profiledata)
+            Swal.fire({
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                timer: 1000,
+                onOpen: () => {
+                    Swal.showLoading();
+                }
+            })
+            setTimeout(() =>
+                this.setState({ addNewData: profiledata })
+                , 1000)
         } else {
             alert('Harus di isi!')
         }
@@ -191,16 +197,23 @@ class TransactionPage extends Component {
             }
             if (image) {
                 if (userId && totaltransaction && statustransaction && metodetransactionId) {
-                    this.props.addProfileData(dataProfile)
-                    this.props.addTransaction(dataTransaction, image)
-                    this.props.addTransactionHistory(datahistorytransaction)
-                    // this.props.deleteCartUser(userId)
-                    // this.setState({ redirectHome: true })
                     Swal.fire({
                         imageUrl: `${Success}`,
                         showConfirmButton: false,
-                        timer: 1500
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        timer: 1000,
+                        onOpen: () => {
+                            Swal.showLoading();
+                        }
                     })
+                    setTimeout(() =>
+                        this.setState({ redirectHome: true })
+                        , 1000)
+                    this.props.addProfileData(dataProfile)
+                    this.props.addTransaction(dataTransaction, image)
+                    this.props.addTransactionHistory(datahistorytransaction)
+                    this.props.deleteCartUser(userId)
                 } else {
                     alert('Mohon diisi dengan lengkap')
                 }
