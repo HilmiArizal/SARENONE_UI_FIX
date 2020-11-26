@@ -125,12 +125,20 @@
     font-weight: bold;
 }
 
+.btn-action-transaction{
+    display: flex;
+    justify-content: space-between;
+}
+
 .btn-action-process-transaction {
     background-color: rgb(85, 163, 144);
     font-size: 80%;
-    padding: 2px;
+    padding: 3px;
     border-radius: 2px;
     cursor: pointer;
+    width: 100%;
+    margin: 0px 5px 0px 5px;
+    
 }
 
 .section-select-status{

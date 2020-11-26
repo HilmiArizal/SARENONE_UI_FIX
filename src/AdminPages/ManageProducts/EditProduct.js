@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import SidebarAdmin from '../Components/SidebarAdmin';
-import { getProductById, getCategory, getWeight, getPrice, getStock, editProducts, deleteStock } from '../Redux/Actions';
 import { connect } from 'react-redux';
-import { MDBIcon, MDBRow, MDBCol, MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from 'mdbreact';
-import Axios from 'axios';
-import { API_URL_1 } from '../Helpers/API_URL';
 import { Redirect } from 'react-router-dom';
+import { getProductById, getCategory, getWeight, getPrice, getStock, editProducts, deleteStock } from '../../Redux/Actions';
+import SidebarAdmin from '../../Components/SidebarAdmin';
+import Axios from 'axios';
+import { API_URL_1 } from '../../Helpers/API_URL';
+import { MDBIcon, MDBRow, MDBCol, MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from 'mdbreact';
+import './ManageProducts.css';
 
 
-class DetailProduct extends Component {
+class EditProduct extends Component {
 
     state = {
         dataProduct: [],
@@ -30,7 +31,6 @@ class DetailProduct extends Component {
 
         selectIdInput: null,
         redirectProduct: false,
-        modal4: true
     }
 
     componentDidMount() {
@@ -52,14 +52,7 @@ class DetailProduct extends Component {
         }
     }
 
-    toggle = nr => () => {
-        let modalNumber = 'modal' + nr
-        this.setState({
-            [modalNumber]: !this.state[modalNumber]
-        });
-    }
-
-    onChangeSelectCategory = (e) => {
+    onChangeSelectCategory = (e, index) => {
         this.setState({ changeCategoryId: parseInt(e.target.value) })
         this.setState({ changeCategoryName: e.target[e.target.selectedIndex].text })
     }
@@ -129,9 +122,9 @@ class DetailProduct extends Component {
     editProduct = () => {
         let productId = this.props.location.search.split('=')[1]
         let productname = this.refs.productname.value;
-        let productcategoryId = this.state.changeCategoryId;
+        let productcategoryId = this.state.changeCategoryId === '' ? this.state.dataProduct.idcategory : this.state.changeCategoryId;
         let productdescription = this.refs.productdescription.value;
-        let productgrade = this.state.selectGrade;
+        let productgrade = this.state.selectGrade === '' ? this.state.dataProduct.productgrade : this.state.selectGrade;
         let { image } = this.state;
         let changeimage = this.state.changeimage;
         let datastock = this.props.dataStock;
@@ -145,7 +138,8 @@ class DetailProduct extends Component {
             dataproducts,
             datastock,
         }
-        if (productcategoryId && productgrade === '') {
+        console.log(data)
+        if (productcategoryId === '' || productgrade === '') {
             alert('Pilih lagi kategori!')
         } else {
             if (productname && productdescription) {
@@ -223,7 +217,9 @@ class DetailProduct extends Component {
     }
 
     renderGetProduct = () => {
+
         const { previewImage, dataProduct } = this.state;
+        console.log(dataProduct.idcategory)
         return (
             <div className="text-center">
                 <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="center">
@@ -375,7 +371,7 @@ class DetailProduct extends Component {
     render() {
         if (this.state.redirectProduct) {
             return (
-                <Redirect to="manageallproduct">
+                <Redirect to="manageproducts">
 
                 </Redirect>
             )
@@ -384,10 +380,8 @@ class DetailProduct extends Component {
             <div>
                 <SidebarAdmin />
                 <div style={{ marginLeft: '15%' }}>
-                    <div class="w3-container w3-teal">
-                        <center>
-                            <h1>KELOLA PRODUK</h1>
-                        </center>
+                    <div className="w3-container w3-teal">
+                        <div className="title-products-manage">KELOLA PRODUK</div>
                     </div>
 
                     <div class="w3-container">
@@ -411,4 +405,4 @@ const mapStatetoProps = ({ products, categories, weight, price, stock }) => {
     }
 }
 
-export default connect(mapStatetoProps, { getProductById, getCategory, getWeight, getPrice, getStock, editProducts, deleteStock })(DetailProduct);
+export default connect(mapStatetoProps, { getProductById, getCategory, getWeight, getPrice, getStock, editProducts, deleteStock })(EditProduct);

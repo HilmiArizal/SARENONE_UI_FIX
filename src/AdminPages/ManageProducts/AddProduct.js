@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getGroupByProduct, getCategory, getWeight, getPrice, deleteProduct, addProducts } from '../Redux/Actions';
-import SidebarAdmin from '../Components/SidebarAdmin';
+import { Link, Redirect } from 'react-router-dom';
+import { getGroupByProduct, getCategory, getWeight, getPrice, deleteProduct, addProducts } from '../../Redux/Actions';
+import SidebarAdmin from '../../Components/SidebarAdmin';
+import NoImage from '../../Images/NoImage.png';
+import { API_URL_1 } from '../../Helpers/API_URL';
 import { MDBRow, MDBCol, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput, MDBIcon } from 'mdbreact';
-import NoImage from '../Images/NoImage.png';
-import { API_URL_1 } from '../Helpers/API_URL';
-import { Redirect } from 'react-router-dom';
 
 
-class Products extends Component {
+class AddProduct extends Component {
 
     state = {
         dataStock: [],
@@ -26,7 +26,7 @@ class Products extends Component {
         previewImage: undefined,
         addImage: false,
 
-        modal4: false,
+        modal4: true,
 
         redirectAllProduct: false
     }
@@ -108,7 +108,7 @@ class Products extends Component {
             if (productname && productcategoryId && productdescription && image) {
                 this.setState({ modal4: false })
                 this.props.addProducts(data, image)
-                this.setState({redirectAllProduct: true})
+                this.setState({ redirectAllProduct: true })
             } else {
                 alert('Tolong isi dengan benar')
             }
@@ -162,7 +162,7 @@ class Products extends Component {
                 <center>
                     <div className="row">
                         <div className="col-6">
-                            <select className="form-control" onChange={(e) => this.setState({selectGrade: e.target.value})} style={{ fontSize: 12, width: '80%', margin: 20 }}>
+                            <select className="form-control" onChange={(e) => this.setState({ selectGrade: e.target.value })} style={{ fontSize: 12, width: '80%', margin: 20 }}>
                                 <option disabled hidden selected>Pilih Grade/Kelas</option>
                                 <option>Premium Grade</option>
                                 <option>Second Grade</option>
@@ -296,61 +296,24 @@ class Products extends Component {
     }
 
     render() {
-        if(this.state.redirectAllProduct){
+        if(this.state.modal4 === false) {
             return(
-                <Redirect to="manageallproduct">
-
-                </Redirect>
+                <Redirect to="manageproducts"></Redirect>
             )
         }
+
         return (
             <div>
-                <SidebarAdmin />
-                <div style={{ marginLeft: '15%' }}>
-                    <div class="w3-container w3-teal">
-                        <center>
-                            <h1>KELOLA PRODUK</h1>
-                        </center>
-                    </div>
-                    <center>
-                        <MDBRow style={{ margin: 30 }}>
-                            <MDBCol size="3"><MDBBtn href="manageallproduct" color="white">Semua Produk</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="manageproducts" >Kelola Produk</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="managecategories" color="white">Kelola Kategori</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="manageweightlist" color="white">Kelola List</MDBBtn></MDBCol>
-                        </MDBRow>
-                    </center>
-                    <center>
-                        <MDBBtn size="sm" color="elegant" onClick={this.toggle(4)} style={{ marginBottom: 20 }}>Tambah Produk</MDBBtn>
-                    </center>
-                    <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} fullHeight position="top">
-                        <MDBModalHeader toggle={this.toggle(4)}>Produk baru nih, silahkan isi ya:)</MDBModalHeader>
-                        <MDBModalBody>
-                            {this.renderInputAddProduct()}
-                        </MDBModalBody>
-                        <MDBModalFooter>
-                            <MDBBtn color="secondary" onClick={this.toggle(4)}>Close</MDBBtn>
-                            <MDBBtn color="primary" onClick={this.addProduct}>Save changes</MDBBtn>
-                        </MDBModalFooter>
-                    </MDBModal>
-                    <div class="w3-container">
-                        <div className="container">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr className="text-center">
-                                        <th scope="col">NO.</th>
-                                        <th scope="col">NAMA PRODUK</th>
-                                        <th scope="col">GAMBAR PRODUK</th>
-                                        <th scope="col">AKSI <div style={{ fontSize: 8 }}>*(Hapus: Termasuk List, Stok)</div></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.renderGetProduct()}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="lg" position="top">
+                    <MDBModalHeader toggle={this.toggle(4)}>Produk baru nih, silahkan isi ya:)</MDBModalHeader>
+                    <MDBModalBody>
+                        {this.renderInputAddProduct()}
+                    </MDBModalBody>
+                    <MDBModalFooter>
+                        <MDBBtn color="secondary" onClick={this.toggle(4)}>Close</MDBBtn>
+                        <MDBBtn color="primary" onClick={this.addProduct}>Save changes</MDBBtn>
+                    </MDBModalFooter>
+                </MDBModal>
             </div>
         );
     }
@@ -365,4 +328,4 @@ const mapStatetoProps = ({ products, categories, weight, price }) => {
     }
 }
 
-export default connect(mapStatetoProps, { getGroupByProduct, getCategory, getPrice, getWeight, deleteProduct, addProducts })(Products);
+export default connect(mapStatetoProps, { getGroupByProduct, getCategory, getPrice, getWeight, deleteProduct, addProducts })(AddProduct);

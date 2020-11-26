@@ -4,6 +4,7 @@ import { getAllUsers_Admin } from '../../Redux/Actions';
 import SidebarAdmin from '../../Components/SidebarAdmin';
 import { MDBBtn } from 'mdbreact';
 import { deleteAccount } from '../../Redux/Actions';
+import './ManageUsers.css';
 
 
 class ManageUsers extends Component {
@@ -23,10 +24,12 @@ class ManageUsers extends Component {
                     <td>{index + 1}</td>
                     <td>{item.username}</td>
                     <td>{item.email}</td>
-                    <td>{item.status === 'unverified' ? <div style={{backgroundColor:'grey'}}>{item.status}</div>: item.status}</td>
-                    <td>{item.registerdate} ;  {item.registertime}</td>
+                    <td>{item.status === 'unverified' ? <div className="status-unverified">{item.status}</div> : item.status}</td>
+                    <td>{item.role}</td>
+                    <td>{item.registerdate} / {item.registertime}</td>
                     <td>
-                        <MDBBtn size="sm" onClick={() => this.deleteAccount(item.iduser)}>Hapus Akun</MDBBtn>
+                        <div className="btn-action-remove-users" onClick={() => this.deleteAccount(item.iduser)}>HAPUS AKUN</div>
+                        {/* <MDBBtn size="sm" onClick={() => this.deleteAccount(item.iduser)}>Hapus Akun</MDBBtn> */}
                     </td>
                 </tr>
             )
@@ -40,19 +43,20 @@ class ManageUsers extends Component {
                 <div style={{ marginLeft: '15%' }}>
                     <div class="w3-container w3-teal">
                         <center>
-                            <h1>KELOLA USER</h1>
+                            <div className="title-users-manage">KELOLA USER</div>
                         </center>
                     </div>
                     <div class="w3-container">
-                        <div className="container">
+                        <div className="container" style={{ marginTop: 50 }}>
                             <table class="table table-sm">
                                 <thead>
-                                    <tr>
+                                    <tr className="thead-users-manage">
                                         <th scope="col"><div className="d-flex justify-content-center">NO. </div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">USERNAME</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">EMAIL</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">STATUS</div></th>
-                                        <th scope="col"><div className="d-flex justify-content-center">TANGGAL &amp; JAM DAFTAR</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">ROLE</div></th>
+                                        <th scope="col"><div className="d-flex justify-content-center">TANGGAL &amp; JAM REGISTRASI</div></th>
                                         <th scope="col"><div className="d-flex justify-content-center">AKSI</div></th>
                                     </tr>
                                 </thead>

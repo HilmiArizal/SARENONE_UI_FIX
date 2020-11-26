@@ -21,6 +21,10 @@
     text-align: center;
 }
 
+.tbody-transaction-history td{
+    text-align: center;
+}
+
 .table-head-history-transaction th{
     font-weight: bold;
     background-color: #dd4b4b;
@@ -36,4 +40,13 @@
     padding: 3px;
     border-radius: 3px;
     cursor: pointer;
+}
+
+@media (min-width:300px) and (max-width: 700px){
+    .table-head-history-transaction th{
+        font-size: 50%;
+    }
+    .tbody-transaction-history td{
+        font-size: 50%;
+    }
 }

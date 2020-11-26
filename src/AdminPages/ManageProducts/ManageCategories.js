@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import NoImage from '../Images/NoImage.png';
-import { MDBBtn, MDBIcon, MDBRow, MDBCol } from 'mdbreact';
 import { connect } from 'react-redux';
-import { getCategory, addCategory, editCategory, deleteCategory } from '../Redux/Actions';
-import { API_URL_1 } from '../Helpers/API_URL';
-import SidebarAdmin from '../Components/SidebarAdmin';
+import { getCategory, addCategory, editCategory, deleteCategory } from '../../Redux/Actions';
+import { API_URL_1 } from '../../Helpers/API_URL';
+import NoImage from '../../Images/NoImage.png';
+import SidebarAdmin from '../../Components/SidebarAdmin';
+import { MDBBtn, MDBIcon, MDBRow, MDBCol } from 'mdbreact';
 
 
-class CategoriesManage extends Component {
+class ManageCategories extends Component {
 
     state = {
         image: undefined,
@@ -208,4 +208,4 @@ const mapStatetoProps = ({ categories }) => {
 }
 
 
-export default connect(mapStatetoProps, { getCategory, addCategory, editCategory, deleteCategory })(CategoriesManage);
+export default connect(mapStatetoProps, { getCategory, addCategory, editCategory, deleteCategory })(ManageCategories);

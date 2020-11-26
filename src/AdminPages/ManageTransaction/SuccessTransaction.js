@@ -180,14 +180,12 @@ class SuccessTransaction extends Component {
                     <td>{item.datetime}</td>
                     <td>Rp. {item.totaltransaction.toLocaleString()},- </td>
                     <td>
-                        <div>
-                            <div className="btn-modal-detail-transaction" onClick={() => { this.toggle3(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
-                            <MDBModal isOpen={this.state.modal3} toggle={this.toggle3} size="lg">
-                                <MDBModalBody>
-                                    {this.renderDetailImageTransaction()}
-                                </MDBModalBody>
-                            </MDBModal>
-                        </div>
+                        <div className="btn-modal-detail-transaction" onClick={() => { this.toggle3(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
+                        <MDBModal isOpen={this.state.modal3} toggle={this.toggle3} size="lg">
+                            <MDBModalBody>
+                                {this.renderDetailImageTransaction()}
+                            </MDBModalBody>
+                        </MDBModal>
                     </td>
                     <td>
                         <div>
@@ -195,7 +193,7 @@ class SuccessTransaction extends Component {
                         </div>
                     </td>
                     <td>
-                    <div className="section-select-status">
+                        <div className="section-select-status">
                             {
                                 this.state.datatimeCheck === item.datetime
                                     ?
@@ -219,16 +217,12 @@ class SuccessTransaction extends Component {
                         </div>
                     </td>
                     <td>
-                        <div className="row">
-                            <div className="col-6">
-                                <div className="btn-action-process-transaction" onClick={() => this.editStatusTransaction(item.datetime)}>
-                                    <MDBIcon icon="check" style={{ color: 'white' }} />
-                                </div>
+                        <div className="btn-action-transaction">
+                            <div className="btn-action-process-transaction" onClick={() => this.editStatusTransaction(item.datetime)}>
+                                <MDBIcon icon="check" />
                             </div>
-                            <div className="col-6">
-                                <div className="btn-action-process-transaction" onClick={() => this.deleteTransaction(item.datetime)}>
-                                    <MDBIcon icon="trash" size="sm" style={{ color: 'white' }} />
-                                </div>
+                            <div className="btn-action-process-transaction" onClick={() => this.deleteTransaction(item.datetime)}>
+                                <MDBIcon icon="trash" size="sm" />
                             </div>
                         </div>
                     </td>

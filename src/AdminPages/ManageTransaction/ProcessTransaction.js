@@ -222,16 +222,12 @@ class ProcessTransaction extends Component {
                         </div>
                     </td>
                     <td>
-                        <div className="row">
-                            <div className="col-6">
-                                <div className="btn-action-process-transaction" onClick={() => this.editStatusTransaction(item.datetime)}>
-                                    <MDBIcon icon="check" style={{ color: 'white' }} />
-                                </div>
+                        <div className="btn-action-transaction">
+                            <div className="btn-action-process-transaction" onClick={() => this.editStatusTransaction(item.datetime)}>
+                                <MDBIcon icon="check" />
                             </div>
-                            <div className="col-6">
-                                <div className="btn-action-process-transaction" onClick={() => this.deleteTransaction(item.datetime)}>
-                                    <MDBIcon icon="trash" size="sm" style={{ color: 'white' }} />
-                                </div>
+                            <div className="btn-action-process-transaction" onClick={() => this.deleteTransaction(item.datetime)}>
+                                <MDBIcon icon="trash" size="sm" />
                             </div>
                         </div>
                     </td>

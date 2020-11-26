@@ -58,20 +58,20 @@ export const getBestProduct = () => {
     }
 }
 
-export const deleteProduct = (idproduct) => {
+export const deleteProduct = (idproduct, newoffset, choosenOffset) => {
     return async (dispatch) => {
         try {
             if (window.confirm('Anda yakin menghapus produk ini?')) {
                 await Axios.delete(API_URL_1 + `products/deleteProduct?idproduct=${idproduct}`)
                 await Axios.delete(API_URL_1 + `stock/deleteStockProduct?idproduct=${idproduct}`)
-                const res = await Axios.get(API_URL_1 + `products/getGroupByProduct`)
+                const res = await Axios.get(API_URL_1 + `products/getAllProductComplete?limit=5&offset=${choosenOffset === undefined ? newoffset : choosenOffset}`)
                 dispatch({
                     type: 'PRODUCT_SUCCESS',
                     payload: res.data
                 })
             }
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 }
@@ -87,7 +87,7 @@ export const addProducts = (data, image) => {
             alert('Produk berhasil ditambahkan')
             const res = await Axios.get(API_URL_1 + `products/getGroupByProduct`)
             dispatch({
-                type: 'PRODUCT_SUCCESS',
+                type: 'PRODUCT_ALL_SUCCESS',
                 payload: res.data
             })
         } catch (err) {
@@ -102,13 +102,11 @@ export const editProducts = (data, image, productId) => {
             let formData = new FormData();
             formData.append('data', JSON.stringify(data))
             formData.append('imageproduct', (image))
-            console.log(image)
-            console.log(data)
 
             const res = await Axios.patch(API_URL_1 + `products/editProduct?idproduct=${productId}`, formData)
-            console.log(res.data)
+            // console.log(res.data)
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 }

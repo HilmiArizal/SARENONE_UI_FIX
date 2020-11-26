@@ -1,0 +1,76 @@
+.title-products-manage {
+    text-align: center;
+    font-size: 250%;
+    text-shadow: 0px 2px 5px rgb(56, 56, 56);
+    padding: 10px;
+}
+
+.thead-products-manage th {
+    background-color: rgb(85, 163, 144);
+    font-weight: bold;
+}
+
+.tbody-products-manage .td-products-manage {
+    height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.section-pagination {
+    width: 100%;
+    position: absolute;
+    left: 100px;
+    top: 700px;
+}
+
+.modal-product-description {
+    width: 80%;
+    /* text-align: center; */
+    align-items: center;
+    height: 70px;
+    display: flex;
+    margin: auto;
+}
+
+.point-modal-product-description {
+    background-color: grey;
+    width: 20%;
+    margin: auto;
+    padding: 3px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.section-modal-product-description {
+    display: flex;
+    width: 60%;
+    margin: auto;
+}
+
+.btn-action-products-manage {
+    background-color: rgb(85, 163, 144);
+    padding: 2px;
+    font-size: 90%;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.icon-add-products {
+    background-color: rgb(85, 163, 144);
+    width: 5%;
+    border-radius: 100%;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    font-size: 150%;
+    cursor: pointer;
+}
+
+.active-color{
+    background-color: green;
+}

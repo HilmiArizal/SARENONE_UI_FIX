@@ -59,11 +59,12 @@ class HistoryTransaction extends Component {
     renderHistoryTransaction = () => {
         return this.props.dataTransactionHistory.map((item, index) => {
             return (
-                <tr className="text-center">
+                <tr className="tbody-transaction-history">
                     <td>{index + 1}</td>
                     <td>{item.datetime}</td>
                     <td>Rp. {item.totaltransaction.toLocaleString()},-</td>
                     <td>{item.statustransaction}</td>
+                    <td>{item.transactionId}</td>
                     <td>
                         <div className="btn-cart-history-transaction" onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>LIHAT DETAIL</div>
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
@@ -110,6 +111,7 @@ class HistoryTransaction extends Component {
                                             <th scope="col">Jam &amp; Tanggal Transaksi</th>
                                             <th scope="col">Total Transaksi </th>
                                             <th scope="col">Status Transaksi </th>
+                                            <th scope="col">Kode Transaksi </th>
                                             <th scope="col">Detail Belanja</th>
                                         </tr>
                                     </thead>

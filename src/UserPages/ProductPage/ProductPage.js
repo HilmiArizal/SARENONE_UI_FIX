@@ -21,7 +21,7 @@ class ProductPage extends Component {
     }
 
     renderProducts = () => {
-        return this.props.dataProduct.map((item, index) => {
+        return this.props.dataAllProduct.map((item, index) => {
             if (this.state.newIdCategory === item.categoryname) {
                 if (item.productgrade === 'Premium Grade') {
                     return (
@@ -112,7 +112,7 @@ class ProductPage extends Component {
 
 const mapStatetoProps = ({ products, categories }) => {
     return {
-        dataProduct: products.dataProduct,
+        dataAllProduct: products.dataAllProduct,
         dataCategory: categories.dataCategory
     }
 }

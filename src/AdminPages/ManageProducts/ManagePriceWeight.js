@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import SidebarAdmin from '../Components/SidebarAdmin';
+import SidebarAdmin from '../../Components/SidebarAdmin';
 import { MDBRow, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
 import { connect } from 'react-redux';
-import { getWeight, getPrice, addWeight, editWeight, deleteWeight, addPrice, editPrice, deletePrice } from '../Redux/Actions';
+import { getWeight, getPrice, addWeight, editWeight, deleteWeight, addPrice, editPrice, deletePrice } from '../../Redux/Actions';
 
 
-class ListWeightPrice extends Component {
+class ManagePriceWeight extends Component {
 
     state = {
         selectIdInputWeight: null,
@@ -234,4 +234,4 @@ const mapStatetoProps = ({ weight, price }) => {
     }
 }
 
-export default connect(mapStatetoProps, { getWeight, getPrice, addWeight, editWeight, deleteWeight, addPrice, editPrice, deletePrice })(ListWeightPrice);
+export default connect(mapStatetoProps, { getWeight, getPrice, addWeight, editWeight, deleteWeight, addPrice, editPrice, deletePrice })(ManagePriceWeight);

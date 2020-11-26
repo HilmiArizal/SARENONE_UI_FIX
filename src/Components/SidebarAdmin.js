@@ -27,30 +27,27 @@ class SidebarAdmin extends Component {
                     <MDBRow>
                         <MDBCol size="2"><MDBIcon icon="home" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <Link className="w3-bar-item w3-button" to="adminhome">Beranda</Link>
-                            {/* <a href="homeadmin" className="w3-bar-item w3-button">Beranda</a> */}
+                            <Link className="w3-bar-item w3-button" to="homeadmin">Beranda</Link>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="user-alt" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                        <Link className="w3-bar-item w3-button" to="adminprofile">Profile</Link>
-
-                            {/* <a href="profileadmin" className="w3-bar-item w3-button">Profil</a> */}
+                            <Link className="w3-bar-item w3-button" to="profileadmin">Profile</Link>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="user-cog" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="manageusers" className="w3-bar-item w3-button">Kelola User</a>
+                            <Link className="w3-bar-item w3-button" to="manageusers">Kelola User</Link>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="hotdog" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="manageallproduct" className="w3-bar-item w3-button">Kelola Produk</a>
+                            <Link className="w3-bar-item w3-button" to="manageproducts">Kelola Produk</Link>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="money-check-alt" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="transactionprocess" className="w3-bar-item w3-button">Kelola Transaksi</a>
+                            <Link className="w3-bar-item w3-button" to="transactionprocess">Kelola Transaksi</Link>
                         </MDBCol>
                         <MDBCol size="2"><MDBIcon icon="sign-out-alt" size="lg" style={{ margin: 10 }} /></MDBCol>
                         <MDBCol size="10">
-                            <a href="/" onClick={this.onBtnLogout} className="w3-bar-item w3-button">Keluar</a>
+                            <Link className="w3-bar-item w3-button" to="/loginadmin" onClick={this.onBtnLogout}>Keluar</Link>
                         </MDBCol>
                     </MDBRow>
                 </div>
