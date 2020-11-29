@@ -1,19 +1,60 @@
 import React, { Component } from 'react';
-import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { resendVerification } from '../../Redux/Actions';
 import Navbar from '../../Components/Navbar/NavbarHome';
 import ProductHome from '../../UserPages/ProductHome/ProductHome';
 import AboutHome from '../../UserPages/AboutHome/AboutHome';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer/Footer';
 import ImgBanner from '../../Images/Carousel4.png';
-import { MDBBtn, MDBView, MDBMask } from 'mdbreact';
+import { MDBBtn, MDBView, MDBMask, MDBModal, MDBModalBody, MDBModalHeader } from 'mdbreact';
 import './Home.css';
 
 
 class Home extends Component {
 
+    state = {
+        modal14: true
+    }
+
+    toggle = nr => () => {
+        let modalNumber = 'modal' + nr
+        this.setState({
+            [modalNumber]: !this.state[modalNumber]
+        });
+    }
+
+    onBtnSendEmail = () => {
+        let iduser = this.props.iduser
+        this.props.resendVerification(iduser)
+        this.setState({ modal14: false })
+        alert('Silahkan cek email anda!')
+    }
+
+
     render() {
         return (
             <div id="section1" className="body-product-home">
+                {/* <MDBBtn color="primary" onClick={this.toggle(14)}>MDBModal</MDBBtn> */}
+                {
+                    this.props.iduser === ''
+                        ?
+                        ''
+                        :
+                        this.props.status === 'unverified'
+                            ?
+                            <MDBModal isOpen={this.state.modal14} toggle={this.toggle(14)} centered>
+                                <MDBModalHeader toggle={this.toggle(14)}>Verifikasi Email</MDBModalHeader>
+                                <MDBModalBody>
+                                    <center>
+                                        Akun anda belum terverifikasi!
+                                        <br />
+                                        <MDBBtn size="sm" color="primary" onClick={this.onBtnSendEmail}>Kirim email untuk verifikasi</MDBBtn>
+                                    </center>
+                                </MDBModalBody>
+                            </MDBModal>
+                            : ''
+                }
                 {/* Navbar */}
                 <div style={{ marginBottom: 70 }}>
                     <Navbar />
@@ -53,4 +94,11 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStatetoProps = ({ user }) => {
+    return {
+        iduser: user.iduser,
+        status: user.status
+    }
+}
+
+export default connect(mapStatetoProps, { resendVerification })(Home);

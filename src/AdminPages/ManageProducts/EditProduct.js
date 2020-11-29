@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { getProductById, getCategory, getWeight, getPrice, getStock, editProducts, deleteStock } from '../../Redux/Actions';
 import SidebarAdmin from '../../Components/SidebarAdmin';
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import { MDBIcon, MDBRow, MDBCol, MDBBtn, MDBModal, MDBModalBody, MDBModalFooter } from 'mdbreact';
+import { MDBIcon } from 'mdbreact';
 import './ManageProducts.css';
 
 
@@ -156,56 +156,46 @@ class EditProduct extends Component {
         return this.props.dataStock.map((item, index) => {
             if (this.state.selectIdInput === index) {
                 return (
-                    <tr className="text-center" key={index}>
-                        <th scope="col" style={{ width: '25%' }}>
-                            <center>
-                                <select className="form-control" onChange={(e) => this.onChangeSelectWeight(e, index)} style={{ width: '60%' }} >
-                                    <option disabled hidden selected>{item.weightlist}</option>
-                                    {this.renderSelectOptionWeight()}
-                                </select>
-                            </center>
+                    <tr className="section-stock" key={index}>
+                        <th scope="col">
+                            <select className="form-control" onChange={(e) => this.onChangeSelectWeight(e, index)} >
+                                <option disabled hidden selected>{item.weightlist}</option>
+                                {this.renderSelectOptionWeight()}
+                            </select>
                         </th>
-                        <th scope="col" style={{ width: '25%' }}>
-                            <center>
-                                <select className="form-control" onChange={(e) => this.onChangeSelectPrice(e, index)} style={{ width: '70%' }} >
-                                    <option disabled hidden selected>{item.pricelist}</option>
-                                    {this.renderSelectOptionPrice()}
-                                </select>
-                            </center>
+                        <th scope="col">
+                            <select className="form-control" onChange={(e) => this.onChangeSelectPrice(e, index)} >
+                                <option disabled hidden selected>{item.pricelist}</option>
+                                {this.renderSelectOptionPrice()}
+                            </select>
                         </th>
-                        <th scope="col" style={{ width: '25%' }}>
-                            <center>
-                                <center>
-                                    <input defaultValue={item.totalstock} type="number" className="form-control" onChange={(e) => this.onChangeSelectTotalStock(e, index)} style={{ width: '30%' }} />
-                                </center>
-                            </center>
+                        <th scope="col">
+                            <input defaultValue={item.totalstock} type="number" className="form-control" onChange={(e) => this.onChangeSelectTotalStock(e, index)} />
                         </th>
-                        <th scope="col" style={{ width: '25%' }}>
-                            <center>
-                                <MDBIcon icon="check" size="lg" style={{ marginTop: 8 }} onClick={() => this.setState({ selectIdInput: null })} />
-                            </center>
+                        <th scope="col" style={{ width: '15%' }}>
+                            <MDBIcon icon="check" size="lg" className="icon-checklist" onClick={() => this.setState({ selectIdInput: null })} />
                         </th>
                     </tr>
                 )
             }
             return (
                 <tr className="text-center" key={index}>
-                    <th scope="col" style={{ width: '25%' }}>
+                    <th scope="col">
                         <center>
                             {item.weightlist}
                         </center>
                     </th>
-                    <th scope="col" style={{ width: '25%' }}>
+                    <th scope="col" >
                         <center>
                             {item.pricelist}
                         </center>
                     </th>
-                    <th scope="col" style={{ width: '25%' }}>
+                    <th scope="col">
                         <center>
                             {item.totalstock}
                         </center>
                     </th>
-                    <th scope="col" style={{ width: '25%' }}>
+                    <th scope="col" style={{ width: '15%' }} >
                         <center>
                             <MDBIcon icon="cog" size="lg" style={{ marginTop: 5, paddingRight: 20, cursor: 'pointer' }} onClick={() => this.setState({ selectIdInput: index })} />
                             <MDBIcon icon="trash" size="lg" style={{ marginTop: 5, paddingLeft: 20, cursor: 'pointer' }} onClick={() => this.deleteStock(item.idstock)} />
@@ -217,123 +207,117 @@ class EditProduct extends Component {
     }
 
     renderGetProduct = () => {
-
         const { previewImage, dataProduct } = this.state;
-        console.log(dataProduct.idcategory)
         return (
-            <div className="text-center">
-                <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="center">
-                    <MDBModalBody>
-                        <div style={{ fontSize: 17 }}>
-                            Anda akan mengubah produk {dataProduct.productname} ya:)
-                            </div>
-                    </MDBModalBody>
-                    <MDBModalFooter>
-                        <MDBBtn color="primary" onClick={this.toggle(4)}>OK</MDBBtn>
-                    </MDBModalFooter>
-                </MDBModal>
-                <center>
-                    <div style={{ marginTop: 20 }}>NAMA PRODUK
-                            <input className="form-control" type="text" ref="productname" defaultValue={dataProduct.productname} style={{ width: '25%', marginTop: 10 }} />
+            <div className="section-edit-product">
+                <div className="productname-title-edit">{dataProduct.productname}</div>
+                <hr />
+                <form className="form-edit-product">
+                    <div className="section-productname">
+                        <label>NAMA PRODUK</label>
+                        <div> <input className="form-control" type="text" ref="productname" defaultValue={dataProduct.productname} /></div>
                     </div>
-                    <div className="row">
-                        <div className="col-6">
-                            <div style={{ marginTop: 30 }}>KELAS PRODUK</div>
-                            <select className="form-control" onChange={(e) => this.setState({ selectGrade: e.target.value })} style={{ width: '50%', marginTop: 10 }} >
-                                <option disabled hidden selected>{dataProduct.productgrade}</option>
-                                <option>Premium Grade</option>
-                                <option>Second Grade</option>
-                            </select>
+                    <div className="section-class-category">
+                        <div className="row">
+                            <div className="col-6">
+                                <label style={{ marginTop: 20 }}>KELAS PRODUK</label>
+                                <select className="form-control" onChange={(e) => this.setState({ selectGrade: e.target.value })} >
+                                    <option disabled hidden selected>{dataProduct.productgrade}</option>
+                                    <option>Premium Grade</option>
+                                    <option>Second Grade</option>
+                                </select>
+                            </div>
+                            <div className="col-6">
+                                <label style={{ marginTop: 20 }}>NAMA KATEGORI</label>
+                                <select className="form-control" onChange={this.onChangeSelectCategory}>
+                                    <option disabled hidden selected>{dataProduct.categoryname}</option>
+                                    {this.renderSelectOptionCategory()}
+                                </select>
+                            </div>
                         </div>
-                        <div className="col-6">
-                            <div style={{ marginTop: 30 }}>NAMA KATEGORI</div>
-                            <select className="form-control" onChange={this.onChangeSelectCategory} style={{ width: '50%', marginTop: 10 }} >
-                                <option disabled hidden selected>{dataProduct.categoryname}</option>
-                                {this.renderSelectOptionCategory()}
-                            </select>
-                        </div>
-
                     </div>
-                </center>
-                <table class="table table-sm" style={{ marginTop: 30 }}>
-                    <thead>
-                        <tr className="text-center">
-                            <th scope="col">BERAT PRODUK</th>
-                            <th scope="col">HARGA PRODUK</th>
-                            <th scope="col">STOK PRODUK</th>
-                            <th scope="col">AKSI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderStockProduct()}
-                    </tbody>
-                    <tfoot>
-                        <tr className="text-center">
-                            <th scope="col" >
-                                <center>
-                                    <select className="form-control"
-                                        onChange={(e) => this.setState({ addNewWeightId: e.target.value, addNewWeightName: e.target[e.target.selectedIndex].text })} style={{ width: '70%' }} >
-                                        <option disabled hidden selected>TAMBAH BERAT</option>
-                                        {this.renderSelectOptionWeight()}
-                                    </select>
-                                </center>
-                            </th>
-                            <th scope="col" >
-                                <center>
-                                    <select className="form-control"
-                                        onChange={(e) => this.setState({ addNewPriceId: e.target.value, addNewPriceName: e.target[e.target.selectedIndex].text })} style={{ width: '70%' }} >
-                                        <option disabled hidden selected>TAMBAH HARGA</option>
-                                        {this.renderSelectOptionPrice()}
-                                    </select>
-                                </center>
-                            </th>
-                            <th scope="col" >
-                                <center>
-                                    <input placeholder="STOK" type="number" className="form-control" onChange={(e) => this.setState({ addNewTotalStock: e.target.value })} style={{ width: '30%' }} />
-                                </center>
-                            </th>
-                            <th scope="col">
-                                <center>
-                                    <MDBIcon far icon="plus-square" size="lg" style={{ marginTop: 10, cursor: 'pointer' }} onClick={this.newDataStock} />
-                                </center>
-                            </th>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div style={{ margin: 30 }}>
-                    <div style={{ marginBottom: 10 }}>GAMBAR PRODUK</div>
-                    {
-                        previewImage
-                            ?
-                            <div>
-                                <img src={previewImage} alt="productimage" style={{ height: 100, width: 100 }} />
-                            </div>
-                            :
-                            <div>
-                                <img src={API_URL_1 + dataProduct.productimage} alt="productimage" style={{ height: 100, width: 100 }} />
-                            </div>
-                    }
-                    <input type="file" onChange={this.editProductImage} style={{ fontSize: 10 }} />
-                </div>
-                <MDBRow>
-                    <MDBCol size="3"></MDBCol>
-                    <MDBCol size="6">
-                        <div style={{ marginBottom: 10 }}>UBAH DESKRIPSI</div>
+                    <table class="table table-sm" style={{ marginTop: 20 }}>
+                        <thead>
+                            <tr className="thead-edit-product">
+                                <th scope="col"><label>BERAT PRODUK</label></th>
+                                <th scope="col"><label>HARGA PRODUK</label></th>
+                                <th scope="col"><label>STOK PRODUK</label></th>
+                                <th scope="col"><label>AKSI</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderStockProduct()}
+                        </tbody>
+                        <tfoot>
+                            <tr className="section-stock">
+                                <th scope="col" >
+                                    <center>
+                                        <select className="form-control"
+                                            onChange={(e) => this.setState({ addNewWeightId: e.target.value, addNewWeightName: e.target[e.target.selectedIndex].text })} >
+                                            <option disabled hidden selected>TAMBAH BERAT</option>
+                                            {this.renderSelectOptionWeight()}
+                                        </select>
+                                    </center>
+                                </th>
+                                <th scope="col" >
+                                    <center>
+                                        <select className="form-control"
+                                            onChange={(e) => this.setState({ addNewPriceId: e.target.value, addNewPriceName: e.target[e.target.selectedIndex].text })} >
+                                            <option disabled hidden selected>TAMBAH HARGA</option>
+                                            {this.renderSelectOptionPrice()}
+                                        </select>
+                                    </center>
+                                </th>
+                                <th scope="col" >
+                                    <center>
+                                        <input placeholder="STOK" type="number" className="form-control" onChange={(e) => this.setState({ addNewTotalStock: e.target.value })} />
+                                    </center>
+                                </th>
+                                <th scope="col">
+                                    <center>
+                                        <MDBIcon far icon="plus-square" size="lg" style={{ marginTop: 10, cursor: 'pointer' }} onClick={this.newDataStock} />
+                                    </center>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div className="section-image" style={{ margin: 20 }}>
+                        <label>GAMBAR PRODUK</label>
+                        {
+                            previewImage
+                                ?
+                                <div>
+                                    <img src={previewImage} alt="productimage" style={{ height: 100, width: 100 }} />
+                                </div>
+                                :
+                                <div>
+                                    <img src={API_URL_1 + dataProduct.productimage} alt="productimage" style={{ height: 100, width: 100 }} />
+                                </div>
+                        }
+                        <input type="file" onChange={this.editProductImage} style={{ fontSize: 10, marginTop: 10 }} />
+                    </div>
+                    <div className="section-description">
+                        <label >UBAH DESKRIPSI</label>
                         <div className="input-group" >
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon">
                                     <i className="fas fa-pencil-alt prefix"></i>
                                 </span>
                             </div>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="6" ref="productdescription" defaultValue={dataProduct.productdescription}></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" ref="productdescription" defaultValue={dataProduct.productdescription}></textarea>
                         </div>
-                    </MDBCol>
-                    <MDBCol size="3"></MDBCol>
-                </MDBRow>
+                    </div>
+
+                </form>
+                <hr />
                 <div style={{ marginTop: 20 }}>
-                    <MDBBtn color="white" href="manageproducts">Kembali</MDBBtn>
-                    <MDBBtn color="elegant" onClick={this.editProduct}>Simpan</MDBBtn>
+                    <div className="btn-action-edit-product" onClick={this.editProduct}>SIMPAN</div>
                 </div>
+                <Link to="manageproducts">
+                    <div className="back-icon">
+                        <MDBIcon icon="arrow-left" />
+                    </div>
+                </Link>
             </div>
         )
     }

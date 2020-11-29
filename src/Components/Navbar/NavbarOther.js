@@ -9,7 +9,7 @@ import CartEmpty from '../../Images/CartEmpty.png';
 import WhatsApp from '../../Images/whatsapp.png';
 import {
     MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-    MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn
+    MDBDropdownToggle, MDBDropdownMenu, MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn
 } from "mdbreact";
 import './NavbarOther.css';
 import Axios from "axios";
@@ -23,9 +23,6 @@ class NavbarOther extends Component {
 
     componentDidMount() {
         this.props.getCart();
-    }
-
-    componentDidMount() {
         this.getQtyCart();
     }
 

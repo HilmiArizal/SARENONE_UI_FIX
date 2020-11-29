@@ -1,5 +1,4 @@
 import Axios from "axios"
-import Swal from "sweetalert2"
 import { API_URL_1 } from "../../Helpers/API_URL"
 
 

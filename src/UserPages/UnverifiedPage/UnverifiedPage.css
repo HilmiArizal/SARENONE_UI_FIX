@@ -1,0 +1,34 @@
+.title-unverified {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+.img-unverified {
+    width: 40%;
+}
+
+.btn-action-to-gmail {
+    background-color: rgb(142, 142, 255);
+    font-size: 120%;
+    font-weight: bold;
+    padding: 5px;
+    width: 50%;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin: auto;
+}
+
+@media (min-width: 300px) and (max-width: 700px) {
+    .img-unverified {
+        width: 80%;
+    }
+    .title-unverified {
+        font-size: 120%;
+    }
+    .paragraph-unverified {
+        font-size: 70%;
+    }
+}

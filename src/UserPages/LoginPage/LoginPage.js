@@ -7,7 +7,7 @@ import twitterButton from '../../Images/TwitterButton.png';
 import gmailButton from '../../Images/GmailButton.png';
 import fbButton from '../../Images/FacebookButton.png';
 import newLogoSarenOne from '../../Images/NewLogo.png';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBMask, MDBView, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBMask, MDBView, MDBIcon } from 'mdbreact';
 import './LoginPage.css';
 
 
@@ -47,7 +47,6 @@ class LoginPage extends Component {
         return (
             <div className="body-login">
                 <div className="section-login">
-
                     <Helmet>
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
                         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -63,7 +62,7 @@ class LoginPage extends Component {
                                             <div><MDBIcon far icon="times-circle" size="lg" style={{ color: 'black' }} /></div>
                                         </Link>
                                         <form>
-                                            <p className="h4 text-center py-4">HI, SARENONE CUSTOMER</p>
+                                            <p className="h4 text-center py-4">SILAHKAN LOGIN!</p>
                                             <MDBContainer>
                                                 <div className="grey-text">
                                                     <MDBInput

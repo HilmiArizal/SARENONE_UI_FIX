@@ -64,25 +64,27 @@ class FailTransaction extends Component {
 
     deleteTransaction = (datetime) => {
         this.props.deleteTransaction(datetime);
-        this.getTransactionFail();
     }
 
     renderDetailImageTransaction = () => {
         return this.props.dataTransactionFail.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
-                    <div>
+                    <div key={index}>
                         <img src={API_URL_1 + item.imagetransaction} alt="img-transaction" width="400px" />
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 
     renderDetailCart = () => {
         return this.state.dataCartTransaction.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
-                    <div className="section-check-transaction">
+                    <div className="section-check-transaction" key={index}>
                         <div>
                             <label>Nama Produk</label>
                             <span>: {item.productname}</span>
@@ -109,12 +111,15 @@ class FailTransaction extends Component {
                         </div>
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 
     renderDetailTransaction = () => {
         return this.props.dataTransactionFail.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
                     <div className="section-check-transaction">
                         <div>
@@ -147,6 +152,9 @@ class FailTransaction extends Component {
                         </div>
                     </div>
                 )
+            } else {
+                return <></>
+            }
         })
     }
 

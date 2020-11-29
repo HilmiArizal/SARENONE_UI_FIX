@@ -87,7 +87,7 @@ class ManageProducts extends Component {
                         </div>
                         </div>
 
-                        <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
+                        <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg" centered>
                             <MDBModalBody>
                                 {this.state.simpleProductDescription}
                             </MDBModalBody>

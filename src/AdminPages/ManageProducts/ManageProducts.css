@@ -71,6 +71,100 @@
     cursor: pointer;
 }
 
-.active-color{
+.active-color {
     background-color: green;
+}
+
+.productname-title-edit {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+    margin: 2%;
+}
+
+.form-edit-product label {
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.section-edit-product hr {
+    border-top: 1px solid black;
+}
+
+.section-productname input {
+    width: 50%;
+    margin: auto;
+    font-size: 90%;
+}
+
+.form-edit-product select {
+    margin: auto;
+    width: 50%;
+}
+
+.section-class-category select {
+    text-align: center;
+    width: 100%;
+    font-size: 90%;
+}
+
+.section-class-category label {
+    text-align: center;
+}
+
+.thead-edit-product th {
+    background-color: rgb(85, 163, 144);
+}
+
+.section-stock select {
+    width: 50%;
+    font-size: 90%;
+}
+
+.section-stock input {
+    width: 30%;
+    font-size: 90%;
+    margin: auto;
+}
+
+.section-stock .icon-checklist {
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.section-image {
+    text-align: center;
+}
+
+.section-description .input-group {
+    width: 50%;
+    margin: auto;
+}
+
+.section-description textarea {
+    font-size: 90%;
+}
+
+.btn-action-edit-product {
+    background-color: rgb(85, 163, 144);
+    width: 15%;
+    text-align: center;
+    padding: 1%;
+    border-radius: 2px;
+    font-weight: bold;
+    margin: 2% auto;
+    cursor: pointer;
+}
+
+.back-icon{
+    font-size: 200%;
+    position: absolute;
+    top: 95px;
+    cursor: pointer;
 }

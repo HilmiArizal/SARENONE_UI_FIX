@@ -68,18 +68,21 @@ class SuccessTransaction extends Component {
 
     renderDetailImageTransaction = () => {
         return this.props.dataTransactionSuccess.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
                     <div>
                         <img src={API_URL_1 + item.imagetransaction} alt="img-transaction" width="400px" />
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 
     renderDetailCart = () => {
         return this.state.dataCartTransaction.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
                     <div className="section-check-transaction">
                         <div>
@@ -108,12 +111,15 @@ class SuccessTransaction extends Component {
                         </div>
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 
     renderDetailTransaction = () => {
         return this.props.dataTransactionSuccess.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username){
                 return (
                     <div className="section-check-transaction">
                         <div>
@@ -146,6 +152,9 @@ class SuccessTransaction extends Component {
                         </div>
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 

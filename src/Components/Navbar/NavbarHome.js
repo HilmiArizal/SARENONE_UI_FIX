@@ -9,7 +9,7 @@ import CartEmpty from '../../Images/CartEmpty.png';
 import WhatsApp from '../../Images/whatsapp.png';
 import {
     MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-    MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn
+    MDBDropdownToggle, MDBDropdownMenu, MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn
 } from "mdbreact";
 import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
 import './NavbarHome.css';
@@ -40,6 +40,10 @@ class NavbarHome extends Component {
     renderProfile = () => {
         return (
             <ul id="dropdown-profile">
+                <li>
+                    <label><MDBIcon icon="unlock" size="sm" /></label>
+                    <span> <Link to="changepassword">Ubah Password</Link></span>
+                </li>
                 <li>
                     <label><MDBIcon icon="fas fa-history" size="sm" /></label>
                     <span> <Link to="historytransaction">Riwayat Transaksi</Link></span>

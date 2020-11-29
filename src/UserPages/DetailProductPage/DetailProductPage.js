@@ -4,14 +4,14 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import { MDBRow, MDBCol, MDBBtn, MDBContainer, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
+import { MDBBtn, MDBContainer, MDBModal, MDBModalBody } from 'mdbreact';
 import DoneIcon from '@material-ui/icons/Done';
-import CloseIcon from '@material-ui/icons/Close';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
+import Gmail from '../../Images/Gmail.png';
 import './DetailProductPage.css';
 import './DetailProductPage.css'
 import '../ProductPage/ProductPage.css';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer/Footer';
 import Swal from 'sweetalert2';
 
 
@@ -36,7 +36,7 @@ class DetailProductPage extends Component {
 
     componentDidMount() {
         this.getByIdProduct();
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 
     getByIdProduct = async () => {
@@ -109,6 +109,21 @@ class DetailProductPage extends Component {
         this.setState({ showTotalPrice: totalprice })
     }
 
+    renderUnverificationAccount = () => {
+        return (
+            <div id="section-detail-product-1">
+                <div>
+                    <img src={Gmail} alt="Shop-Verified" id="img-unverified" style={{ width: '35%' }} />
+                    <div id="title-unverified">Maaf {this.props.username}, akun anda belum terverifikasi.</div>
+                    <p id="paragraph-unverified">Silahkan cek email anda untuk melakukan verifikasi terlebih dahulu...</p>
+                    <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer">
+                        <div id="btn-action-to-gmail">GO TO GMAIL</div>
+                    </a>
+                </div>
+            </div>
+        )
+    }
+
     renderProduct = () => {
         const { dataProduct } = this.state;
         return (
@@ -143,7 +158,11 @@ class DetailProductPage extends Component {
                         <label>Harga Produk</label>
                         <span>: Rp. {item.pricelist.toLocaleString()},-</span>
                     </div>
-                    <MDBModal isOpen={this.state.modal3} size="sm">
+                    <div id="sub-section-price">
+                        <label>Stok Tersedia</label>
+                        <span style={{ color: item.totalstock === 0 ? 'red' : 'green' }}>: {item.totalstock === 0 ? 'Sold Out' : item.totalstock + ' pack'}  </span>
+                    </div>
+                    <MDBModal isOpen={this.state.modal3} size="sm" centered>
                         <MDBModalBody>
                             <div className="section-checkbox-detail-product">
                                 <div className="title-checkbox">Pilihan produk yang anda cari sudah sesuai ?</div>
@@ -214,7 +233,9 @@ class DetailProductPage extends Component {
                     <div className="title-detail-product"></div>
                     <MDBContainer>
                         <div class="jumbotron">
-                            {this.renderProduct()}
+                            {
+                                this.props.status === 'unverified' ? this.renderUnverificationAccount() : this.renderProduct()
+                            }
                         </div>
                     </MDBContainer>
                 </div>
@@ -226,7 +247,9 @@ class DetailProductPage extends Component {
 
 const mapStatetoProps = ({ user }) => {
     return {
-        iduser: user.iduser
+        iduser: user.iduser,
+        username: user.username,
+        status: user.status
     }
 }
 

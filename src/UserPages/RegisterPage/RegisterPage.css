@@ -1,0 +1,11 @@
+.body-register{
+    background: #e21515;
+    background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
+    background: linear-gradient(to right, #ffcbcb, #e21515);
+}
+
+.section-register{
+    padding: 9% 0;
+    width: 40%;
+    margin: auto;
+}

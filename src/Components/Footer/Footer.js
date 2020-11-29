@@ -1,12 +1,12 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter, MDBIcon } from "mdbreact";
-import '../CSS/Footer.css';
+import './Footer.css';
 
 
 const Footer = () => {
 
   return (
-    <MDBFooter color="#c62828 red darken-3" className="font-small pt-4 mt-4" id="font-Footer">
+    <MDBFooter color="#c62828 red darken-3" className="font-small pt-4 mt-4" id="body-footer">
       <MDBContainer >
         <MDBRow>
           <MDBCol md="4">

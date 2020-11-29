@@ -6,7 +6,7 @@ import { API_URL_1 } from '../../Helpers/API_URL';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
 import { MDBContainer, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
 import '../HistoryTransactionPage/HistoryTransaction.css';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer/Footer';
 
 
 class HistoryTransaction extends Component {

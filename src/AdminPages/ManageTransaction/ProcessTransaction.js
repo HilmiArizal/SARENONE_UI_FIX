@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import SidebarAdmin from '../../Components/SidebarAdmin';
 import { getTransactionProcess, editStatusTransaction, deleteTransaction } from '../../Redux/Actions';
 import { MDBIcon, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
-import EditIcon from '@material-ui/icons/Edit';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import Axios from 'axios';
 import './StatusTransaction.css';
@@ -71,20 +70,24 @@ class ProcessTransaction extends Component {
 
     renderDetailImageTransaction = () => {
         return this.props.dataTransactionProcess.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
+
                 return (
-                    <div>
+                    <div key={index}>
                         <img src={API_URL_1 + item.imagetransaction} alt="img-transaction" width="400px" />
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 
     renderDetailCart = () => {
         return this.state.dataCartTransaction.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
-                    <div className="section-check-transaction">
+                    <div className="section-check-transaction" key={index}>
                         <div>
                             <label>Nama Produk</label>
                             <span>: {item.productname}</span>
@@ -111,12 +114,15 @@ class ProcessTransaction extends Component {
                         </div>
                     </div>
                 )
+            } return (
+                <></>
+            )
         })
     }
 
     renderDetailTransaction = () => {
         return this.props.dataTransactionProcess.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username)
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username){
                 return (
                     <div className="section-check-transaction">
                         <div>
@@ -149,6 +155,9 @@ class ProcessTransaction extends Component {
                         </div>
                     </div>
                 )
+            }else{
+                return <></>
+            }
         })
     }
 

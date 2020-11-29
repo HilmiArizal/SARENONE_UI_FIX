@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBMask, MDBView, MDBIcon, MDBAnimation } from 'mdbreact';
-import form1 from '../Images/FORM-1.png';
-import form2 from '../Images/FORM-2.png';
-import { getAllUsers, registerUser } from '../Redux/Actions';
 import { connect } from 'react-redux';
-// import '../CSS/LoginPage';
+import { Link, Redirect } from 'react-router-dom';
+import { MDBContainer, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBIcon } from 'mdbreact';
+import { getAllUsers, registerUser } from '../../Redux/Actions';
+import './RegisterPage.css';
+
 
 
 class RegisterPage extends Component {
@@ -79,7 +77,7 @@ class RegisterPage extends Component {
                 }
             }
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 
@@ -93,25 +91,19 @@ class RegisterPage extends Component {
             )
         }
         return (
-            <div style={{ marginTop: 80 }}>
-                <Helmet>
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                </Helmet>
-                <MDBContainer>
-                    <MDBCard>
-                        <MDBRow>
-                            <MDBCol md="4">
+            <div className="body-register">
+                <div className="section-register">
+                    <MDBContainer>
+                        <MDBCard>
+                            <div className="section-register-1">
                                 <MDBCardBody>
                                     <Link to="/">
                                         <div><MDBIcon far icon="times-circle" size="lg" style={{ color: 'black' }} /></div>
                                     </Link>
                                     <form>
-                                        <p className="h4 text-center py-4">HI, SARENONE CUSTOMER</p>
+                                        <p className="h4 text-center py-4">SILAHKAN DAFTAR!</p>
                                         <MDBContainer>
-                                            <div className="grey-text">
+                                            <div className="">
                                                 <MDBInput
                                                     label="Username"
                                                     icon="user"
@@ -168,14 +160,14 @@ class RegisterPage extends Component {
                                             </div>
                                             <div>
                                                 {
-                                                    show
+                                                    show              
                                                         ?
                                                         <div>
                                                             {
                                                                 char
                                                                     ?
                                                                     <center>
-                                                                        <div style={{ color: 'green', fontSize:12 }}>Password 8 karakter oke</div>
+                                                                        <div style={{ color: 'green', fontSize: 12 }}>Terlihat bagus</div>
                                                                     </center>
                                                                     :
                                                                     <center>
@@ -187,7 +179,7 @@ class RegisterPage extends Component {
                                                                 num
                                                                     ?
                                                                     <center>
-                                                                        <div style={{ color: 'green', fontSize:12 }}>Password berikut angka oke juga</div>
+                                                                        <div style={{ color: 'green', fontSize: 12 }}>Terlihat bagus juga</div>
                                                                     </center>
                                                                     :
                                                                     <center>
@@ -217,49 +209,11 @@ class RegisterPage extends Component {
                                         </center>
                                     </form>
                                 </MDBCardBody>
-                            </MDBCol>
-                            <MDBCol md="8">
-                                <MDBCard>
-                                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                        </ol>
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <MDBView>
-                                                    <img src={form2} class="d-block w-100" alt="carousel-Produk" />
-                                                    <div class="carousel-caption d-none d-md-block"></div>
-                                                    <MDBMask pattern={5}>
+                            </div>
 
-                                                    </MDBMask>
-                                                </MDBView>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <MDBView>
-                                                    <img src={form1} class="d-block w-100" alt="carousel-Produk" />
-                                                    <div class="carousel-caption d-none d-md-block"></div>
-                                                    <MDBMask pattern={5}>
-
-                                                    </MDBMask>
-                                                </MDBView>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true" style={{ backgroundColor: "black", height: 50, width: 50 }}></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true" style={{ backgroundColor: "black", height: 50, width: 50 }}></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
-
-                                </MDBCard>
-                            </MDBCol>
-                        </MDBRow>
-                    </MDBCard>
-                </MDBContainer>
+                        </MDBCard>
+                    </MDBContainer>
+                </div>
             </div>
         );
     }

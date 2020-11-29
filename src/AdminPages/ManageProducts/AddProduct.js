@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { getGroupByProduct, getCategory, getWeight, getPrice, deleteProduct, addProducts } from '../../Redux/Actions';
-import SidebarAdmin from '../../Components/SidebarAdmin';
 import NoImage from '../../Images/NoImage.png';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import { MDBRow, MDBCol, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput, MDBIcon } from 'mdbreact';
@@ -87,6 +86,17 @@ class AddProduct extends Component {
         }
     }
 
+    deleteStock = (index) => {
+        let dataStockNameDelete = this.state.dataStockName[index]
+        dataStockNameDelete.length = 0
+        let dataStockDelete = this.state.dataStock[index]
+        dataStockDelete.length = 0
+        this.setState({
+            dataStockName: dataStockNameDelete,
+            dataStock: dataStockDelete
+        })
+    }
+
     addProduct = () => {
         let { image } = this.state;
         let productname = this.productname.value;
@@ -142,7 +152,7 @@ class AddProduct extends Component {
                     </th>
                     <th scope="col" style={{ width: '15%' }}>
                         <center>
-                            <MDBIcon icon="check" size="lg" style={{ marginTop: 8 }} />
+                            <MDBIcon icon="trash" size="md" style={{ marginTop: 3, cursor: 'pointer' }} onClick={() => this.deleteStock(index)} />
                         </center>
                     </th>
                 </tr>
@@ -296,8 +306,8 @@ class AddProduct extends Component {
     }
 
     render() {
-        if(this.state.modal4 === false) {
-            return(
+        if (this.state.modal4 === false) {
+            return (
                 <Redirect to="manageproducts"></Redirect>
             )
         }
@@ -305,7 +315,7 @@ class AddProduct extends Component {
         return (
             <div>
                 <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="lg" position="top">
-                    <MDBModalHeader toggle={this.toggle(4)}>Produk baru nih, silahkan isi ya:)</MDBModalHeader>
+                    <MDBModalHeader toggle={this.toggle(4)}>Produk baru anda!</MDBModalHeader>
                     <MDBModalBody>
                         {this.renderInputAddProduct()}
                     </MDBModalBody>

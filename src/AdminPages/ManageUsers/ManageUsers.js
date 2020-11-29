@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllUsers_Admin } from '../../Redux/Actions';
 import SidebarAdmin from '../../Components/SidebarAdmin';
-import { MDBBtn } from 'mdbreact';
 import { deleteAccount } from '../../Redux/Actions';
 import './ManageUsers.css';
 

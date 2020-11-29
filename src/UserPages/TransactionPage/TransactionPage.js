@@ -5,7 +5,7 @@ import { getCart, addProfileData, getTransaction, addTransaction, getTransaction
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer/Footer';
 import NoImage from '../../Images/NoImage.png'
 import Success from '../../Images/Confirmation.png';
 import { MDBRow, MDBCol, MDBContainer, MDBBtn, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
@@ -220,6 +220,7 @@ class TransactionPage extends Component {
             } else {
                 alert("Upload bukti transaksi!")
             }
+            return(<></>)
         })
     }
 

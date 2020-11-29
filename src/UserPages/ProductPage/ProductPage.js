@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getGroupByProduct, getCategory } from '../../Redux/Actions';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer/Footer';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 import './ProductPage.css';
@@ -35,6 +35,8 @@ class ProductPage extends Component {
                             </MDBCard>
                         </MDBCol>
                     )
+                } else {
+                    return <></>
                 }
             } else if (this.state.newIdCategory === "Semua Produk") {
                 if (item.productgrade === 'Premium Grade') {
@@ -49,6 +51,8 @@ class ProductPage extends Component {
                             </MDBCard>
                         </MDBCol>
                     )
+                } else {
+                    return <></>
                 }
             } else if (this.state.newIdCategory === "") {
                 if (item.productgrade === 'Premium Grade') {
@@ -63,10 +67,12 @@ class ProductPage extends Component {
                             </MDBCard>
                         </MDBCol>
                     )
+                } else {
+                    return <></>
                 }
             } else {
                 return (
-                    <div></div>
+                    <></>
                 )
             }
         })
@@ -75,7 +81,7 @@ class ProductPage extends Component {
     renderCategories = () => {
         return this.props.dataCategory.map((item, index) => {
             return (
-                <option>
+                <option key={index}>
                     {item.categoryname}
                 </option>
             )

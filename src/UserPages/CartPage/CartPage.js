@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import { getCart, deleteCart, editCart } from '../../Redux/Actions';
 import NavbarOther from '../../Components/Navbar/NavbarOther';
-import Footer from '../../Components/Footer';
+import Footer from '../../Components/Footer/Footer';
 import CartEmpty from '../../Images/CartEmpty.png';
 import PayShop from '../../Images/PayShop.png';
 import AddShop from '../../Images/AddShop.png';

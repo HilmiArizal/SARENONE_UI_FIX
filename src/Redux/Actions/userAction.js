@@ -160,3 +160,13 @@ export const logoutUser = () => {
         }
     }
 }
+
+export const resendVerification = (iduser) => {
+    return async (dispatch) => {
+        try {
+            await Axios.post(API_URL_1 + `users/resendVerification?iduser=${iduser}`)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}

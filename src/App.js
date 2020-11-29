@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { keepLogin } from './Redux/Actions';
 import { connect } from 'react-redux';
-import HomeAdmin from './AdminPages/HomeAdmin';
-import LoginAdmin from './AdminPages/LoginAdmin';
-
-
 import LoginPage from './UserPages/LoginPage/LoginPage';
-import RegisterPage from './UserPages/RegisterPage';
-import UnverifiedPage from './UserPages/UnverifiedPage';
+import RegisterPage from './UserPages/RegisterPage/RegisterPage';
+import UnverifiedPage from './UserPages/UnverifiedPage/UnverifiedPage';
 import VerifiedPage from './UserPages/VerifiedPage';
 import ProductPage from './UserPages/ProductPage/ProductPage';
 import CartPage from './UserPages/CartPage/CartPage';
@@ -18,6 +14,8 @@ import './App.css';
 import Home from './UserPages/Home/Home';
 import DetailProductPage from './UserPages/DetailProductPage/DetailProductPage';
 // ADMIN
+import HomeAdmin from './AdminPages/HomeAdmin';
+import LoginAdmin from './AdminPages/LoginAdmin';
 import ManageUsers from './AdminPages/ManageUsers/ManageUsers';
 import FailTransaction from './AdminPages/ManageTransaction/FailTransaction';
 import ProcessTransaction from './AdminPages/ManageTransaction/ProcessTransaction';
@@ -27,6 +25,7 @@ import ManageCategories from './AdminPages/ManageProducts/ManageCategories';
 import ManagePriceWeight from './AdminPages/ManageProducts/ManagePriceWeight';
 import AddProduct from './AdminPages/ManageProducts/AddProduct';
 import EditProduct from './AdminPages/ManageProducts/EditProduct';
+import ChangePassword from './UserPages/ChangePassword/ChangePassword';
 
 class App extends Component {
 
@@ -68,6 +67,7 @@ class App extends Component {
           <Route path="/cart" component={CartPage} />
           <Route path="/transaction" component={TransactionPage} />
           <Route path="/historytransaction" component={HistoryTransaction} />
+          <Route path="/changepassword" component={ChangePassword} />
         </div>
       );
     }

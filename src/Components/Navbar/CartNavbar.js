@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
+import { MDBIcon } from 'mdbreact';
 import './NavbarHome.css';
 
 

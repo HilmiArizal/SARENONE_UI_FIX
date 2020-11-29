@@ -35,7 +35,7 @@ export const getGroupByProduct = () => {
         try {
             const res = await Axios.get(API_URL_1 + `products/getGroupByProduct`)
             dispatch({
-                type: 'PRODUCT_SUCCESS',
+                type: 'PRODUCT_ALL_SUCCESS',
                 payload: res.data
             })
         } catch (err) {
@@ -91,7 +91,7 @@ export const addProducts = (data, image) => {
                 payload: res.data
             })
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
 }
@@ -103,7 +103,7 @@ export const editProducts = (data, image, productId) => {
             formData.append('data', JSON.stringify(data))
             formData.append('imageproduct', (image))
 
-            const res = await Axios.patch(API_URL_1 + `products/editProduct?idproduct=${productId}`, formData)
+            await Axios.patch(API_URL_1 + `products/editProduct?idproduct=${productId}`, formData)
             // console.log(res.data)
         } catch (err) {
             // console.log(err)

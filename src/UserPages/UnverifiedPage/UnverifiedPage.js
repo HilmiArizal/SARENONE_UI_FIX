@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { MDBNavbar, MDBNavbarBrand, MDBContainer } from 'mdbreact';
-import LogoSarenOne from '../Images/LogoSarenOne.png';
-import Gmail from '../Images/Gmail.png';
+import LogoSarenOne from '../../Images/LogoSarenOne.png';
+import Gmail from '../../Images/Gmail.png';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './UnverifiedPage.css';
 
 
 class UnverifiedPage extends Component {
@@ -28,12 +29,12 @@ class UnverifiedPage extends Component {
                     </MDBContainer>
                 </MDBNavbar>
                 <center>
-                    <img src={Gmail} alt="Shop-Verified" style={{ width: '40%' }} />
-                    <div> <h1>Maaf {this.props.username}, akun anda belum terverifikasi.</h1> </div>
-                    <div> <h4>Silahkan cek email untuk melakukan verifikasi</h4></div>
-                    <div>
-                        <a href="https://mail.google.com" className="btn btn-primary btn-round" target="_blank" rel="noopener noreferrer">Pergi ke Gmail</a>
-                    </div>
+                    <img src={Gmail} alt="Shop-Verified" className="img-unverified" />
+                    <div className="title-unverified">Maaf {this.props.username}, akun anda belum terverifikasi. </div>
+                    <p className="paragraph-unverified">Silahkan cek email anda untuk melakukan verifikasi terlebih dahulu...</p>
+                    <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer">
+                        <div className="btn-action-to-gmail">GO TO GMAIL</div>
+                    </a>
                 </center>
             </div>
         );

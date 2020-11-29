@@ -1,12 +1,12 @@
-.card-about-home{
+.card-about-home {
   background-color: #ffffff;
 }
 
-.sub-section-about{
-  padding:1em;
+.sub-section-about {
+  padding: 1em;
 }
 
-.section-about{
+.section-about {
   display: flex;
   /* flex-direction: row; */
   background-color: #ffcbcb;
@@ -14,62 +14,80 @@
   box-shadow: 2px 2px 5px #e21515;
 }
 
-.section-left-about{
+.section-left-about {
   width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.section-right-about{
+.section-right-about {
   width: 60%;
   /* display: flex; */
   padding: 1em;
   /* background-color: green; */
-  
 }
 
-.image-Character{
+.image-Character {
   width: 400px;
   height: 250px;
 }
 
-@media (min-width:300px) and (max-width:700px){
-  .section-about{
+#a-about {
+  text-decoration: none;
+}
+
+.about-download {
+  background-color: #c74545;
+  width: 30%;
+  padding: 5px;
+  color: black;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+@media (min-width:300px) and (max-width:700px) {
+  .section-about {
     display: inline;
   }
-  .section-left-about{
+  .section-left-about {
     width: 100%;
   }
-  .section-right-about{
+  .section-right-about {
     width: 100%;
   }
-  .image-Character{
+  .image-Character {
     width: 250px;
     height: 200px;
   }
-  #card-best-product-margin{
+  #card-best-product-margin {
     padding: 1em;
   }
+  .about-download {
+    width: 100%;
+  }
 }
 
-@media (min-width:701px) and (max-width:1000px){
-  .section-about{
+@media (min-width:701px) and (max-width:1000px) {
+  .section-about {
     display: inline;
   }
-  .section-left-about{
+  .section-left-about {
     width: 100%;
   }
-  .section-right-about{
+  .section-right-about {
     width: 100%;
   }
-  .image-Character{
+  .image-Character {
     width: 250px;
     height: 200px;
   }
+  .about-download {
+    width: 70%;
+  }
 }
 
-.title-about-home{
+.title-about-home {
   font-size: 150%;
   font-weight: bold;
   text-transform: uppercase;
