@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getTransactionSuccess, editStatusTransaction, deleteTransaction } from '../../Redux/Actions';
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import SidebarAdmin from '../../Components/SidebarAdmin';
+import SidebarAdmin from '../../Components/Navbar/SidebarAdmin';
 import { MDBIcon, MDBModal, MDBModalHeader, MDBModalBody } from 'mdbreact';
 import './StatusTransaction.css';
 
@@ -17,6 +17,8 @@ class SuccessTransaction extends Component {
         newStatusTransaction: '',
         usernameCheck: '',
         datatimeCheck: '',
+
+        search: '',
 
         modal1: false,
         modal2: false,
@@ -119,7 +121,7 @@ class SuccessTransaction extends Component {
 
     renderDetailTransaction = () => {
         return this.props.dataTransactionSuccess.map((item, index) => {
-            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username){
+            if (this.state.datetimeCheck === item.datetime && this.state.usernameCheck === item.username) {
                 return (
                     <div className="section-check-transaction">
                         <div>
@@ -159,85 +161,92 @@ class SuccessTransaction extends Component {
     }
 
     renderTransactionSuccess = () => {
-        return this.props.dataTransactionSuccess.map((item, index) => {
-            return (
-                <tr key={index} className="tbody-process-transaction">
-                    <td>{index + 1}</td>
-                    <td>
-                        <div>
-                            <div className="btn-modal-detail-cart" onClick={() => { this.toggle1(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
-                            <MDBModal isOpen={this.state.modal1} toggle={this.toggle1} size="lg">
-                                <MDBModalHeader toggle={this.toggle1}></MDBModalHeader>
-                                <MDBModalBody>
-                                    {this.renderDetailCart()}
-                                </MDBModalBody>
-                            </MDBModal>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <div className="btn-modal-detail-transaction" onClick={() => { this.toggle2(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
-                            <MDBModal isOpen={this.state.modal2} toggle={this.toggle2} size="lg">
-                                <MDBModalHeader toggle={this.toggle2}></MDBModalHeader>
-                                <MDBModalBody>
-                                    {this.renderDetailTransaction()}
-                                </MDBModalBody>
-                            </MDBModal>
-                        </div>
-                    </td>
-                    <td>{item.username.toUpperCase()}</td>
-                    <td>{item.datetime}</td>
-                    <td>Rp. {item.totaltransaction.toLocaleString()},- </td>
-                    <td>
-                        <div className="btn-modal-detail-transaction" onClick={() => { this.toggle3(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
-                        <MDBModal isOpen={this.state.modal3} toggle={this.toggle3} size="lg">
-                            <MDBModalBody>
-                                {this.renderDetailImageTransaction()}
-                            </MDBModalBody>
-                        </MDBModal>
-                    </td>
-                    <td>
-                        <div>
-                            {item.transactionId}
-                        </div>
-                    </td>
-                    <td>
-                        <div className="section-select-status">
-                            {
-                                this.state.datatimeCheck === item.datetime
-                                    ?
-                                    <div>
-                                        <select onChange={(e) => this.setState({ newStatusTransaction: e.target.value })} >
-                                            <option selected hidden disabled>{item.statustransaction}</option>
-                                            <option>Belum Bayar</option>
-                                            <option>Dalam Proses</option>
-                                            <option>Sudah Bayar</option>
-                                        </select>
-                                        < MDBIcon icon="undo-alt" className="icon-select-status" onClick={() => this.setState({ datatimeCheck: '' })} />
-                                    </div>
-                                    :
-                                    <div>
-                                        {item.statustransaction}
-                                        <MDBIcon icon="edit" className="icon-select-status" onClick={() => this.setState({ datatimeCheck: item.datetime })} />
-                                    </div>
-                            }
+        let filteredDate = this.props.dataTransactionSuccess.filter(
+            (item) => {
+                return item.datetime.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+            }
+        )
+        return (
+            filteredDate.map((item, index) => {
+                return (
+                    <tr key={index} className="tbody-process-transaction">
+                        <td>{index + 1}</td>
+                        <td>
                             <div>
+                                <div className="btn-modal-detail-cart" onClick={() => { this.toggle1(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
+                                <MDBModal isOpen={this.state.modal1} toggle={this.toggle1} size="lg">
+                                    <MDBModalHeader toggle={this.toggle1}></MDBModalHeader>
+                                    <MDBModalBody>
+                                        {this.renderDetailCart()}
+                                    </MDBModalBody>
+                                </MDBModal>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div className="btn-action-transaction">
-                            <div className="btn-action-process-transaction" onClick={() => this.editStatusTransaction(item.datetime)}>
-                                <MDBIcon icon="check" />
+                        </td>
+                        <td>
+                            <div>
+                                <div className="btn-modal-detail-transaction" onClick={() => { this.toggle2(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
+                                <MDBModal isOpen={this.state.modal2} toggle={this.toggle2} size="lg">
+                                    <MDBModalHeader toggle={this.toggle2}></MDBModalHeader>
+                                    <MDBModalBody>
+                                        {this.renderDetailTransaction()}
+                                    </MDBModalBody>
+                                </MDBModal>
                             </div>
-                            <div className="btn-action-process-transaction" onClick={() => this.deleteTransaction(item.datetime)}>
-                                <MDBIcon icon="trash" size="sm" />
+                        </td>
+                        <td>{item.username.toUpperCase()}</td>
+                        <td>{item.datetime}</td>
+                        <td>Rp. {item.totaltransaction.toLocaleString()},- </td>
+                        <td>
+                            <div className="btn-modal-detail-transaction" onClick={() => { this.toggle3(); this.setState({ usernameCheck: item.username, datetimeCheck: item.datetime }) }}>CLICK</div>
+                            <MDBModal isOpen={this.state.modal3} toggle={this.toggle3} size="lg">
+                                <MDBModalBody>
+                                    {this.renderDetailImageTransaction()}
+                                </MDBModalBody>
+                            </MDBModal>
+                        </td>
+                        <td>
+                            <div>
+                                {item.transactionId}
                             </div>
-                        </div>
-                    </td>
-                </tr>
-            )
-        })
+                        </td>
+                        <td>
+                            <div className="section-select-status">
+                                {
+                                    this.state.datatimeCheck === item.datetime
+                                        ?
+                                        <div>
+                                            <select onChange={(e) => this.setState({ newStatusTransaction: e.target.value })} >
+                                                <option selected hidden disabled>{item.statustransaction}</option>
+                                                <option>Belum Bayar</option>
+                                                <option>Dalam Proses</option>
+                                                <option>Sudah Bayar</option>
+                                            </select>
+                                            < MDBIcon icon="undo-alt" className="icon-select-status" onClick={() => this.setState({ datatimeCheck: '' })} />
+                                        </div>
+                                        :
+                                        <div>
+                                            {item.statustransaction}
+                                            <MDBIcon icon="edit" className="icon-select-status" onClick={() => this.setState({ datatimeCheck: item.datetime })} />
+                                        </div>
+                                }
+                                <div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div className="btn-action-transaction">
+                                <div className="btn-action-process-transaction" onClick={() => this.editStatusTransaction(item.datetime)}>
+                                    <MDBIcon icon="check" />
+                                </div>
+                                <div className="btn-action-process-transaction" onClick={() => this.deleteTransaction(item.datetime)}>
+                                    <MDBIcon icon="trash" size="sm" />
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                )
+            })
+        )
     }
 
     render() {
@@ -263,6 +272,11 @@ class SuccessTransaction extends Component {
                     </div>
                     <div className="w3-container">
                         <div className="container">
+                            <form className="form-search-admin">
+                                <input type="text" className="form-control" placeholder="Cari sesuai tanggal &amp; jam" onChange={(e) => this.setState({
+                                    search: e.target.value
+                                })} />
+                            </form>
                             <table className="table table-sm">
                                 <thead>
                                     <tr className="thead-process-transaction">

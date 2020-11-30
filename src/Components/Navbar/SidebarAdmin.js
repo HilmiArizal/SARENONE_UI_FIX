@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import LogoSarenOne from '../Images/LogoSarenOne.png';
-import { Helmet } from 'react-helmet';
-import { logoutUser } from '../Redux/Actions';
 import { connect } from 'react-redux';
-import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { logoutUser } from '../../Redux/Actions';
+import LogoSarenOne from '../../Images/LogoSarenOne.png';
+import { MDBIcon, MDBRow, MDBCol } from 'mdbreact';
 
 
 class SidebarAdmin extends Component {

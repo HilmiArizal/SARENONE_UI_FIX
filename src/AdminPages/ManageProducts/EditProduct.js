@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { getProductById, getCategory, getWeight, getPrice, getStock, editProducts, deleteStock } from '../../Redux/Actions';
-import SidebarAdmin from '../../Components/SidebarAdmin';
+import SidebarAdmin from '../../Components/Navbar/SidebarAdmin';
 import Axios from 'axios';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import { MDBIcon } from 'mdbreact';

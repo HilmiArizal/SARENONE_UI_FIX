@@ -32,3 +32,17 @@ export const deleteAccount = (iduser) => {
         }
     }
 }
+
+export const getAllAdminOnly = () => {
+    return async (dispatch) => {
+        try {
+            const res = await Axios.get(API_URL_1 + `users/getAdminOnly?role=admin`)
+            dispatch({
+                type: 'ADMIN_ONLY_SUCCESS',
+                payload: res.data
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+}

@@ -8,6 +8,7 @@
 .thead-products-manage th {
     background-color: rgb(85, 163, 144);
     font-weight: bold;
+    text-align: center;
 }
 
 .tbody-products-manage .td-products-manage {
@@ -62,13 +63,14 @@
 
 .icon-add-products {
     background-color: rgb(85, 163, 144);
-    width: 5%;
-    border-radius: 100%;
+    width:80%;
+    border-radius: 3px;
     text-align: center;
-    margin: auto;
-    padding: 10px;
-    font-size: 150%;
+    margin: 5% auto 10% auto;
+    padding: 5px;
+    font-size: 120%;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .active-color {
@@ -162,9 +164,18 @@
     cursor: pointer;
 }
 
-.back-icon{
+.back-icon {
     font-size: 200%;
     position: absolute;
     top: 95px;
     cursor: pointer;
+}
+
+.title-weight {
+    padding: 1%;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 200%;
+    text-align: center;
+    margin: 2px auto;
 }

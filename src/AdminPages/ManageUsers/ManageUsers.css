@@ -26,3 +26,9 @@
     color: #ffffff;
     border-radius: 2px;
 }
+
+.form-search-admin input{
+    width: 30%;
+    margin: 3% auto;
+    border-color:  rgb(85, 163, 144);
+}

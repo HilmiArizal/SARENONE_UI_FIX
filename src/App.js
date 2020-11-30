@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { keepLogin } from './Redux/Actions';
 import { connect } from 'react-redux';
+import './App.css';
+// USER
 import LoginPage from './UserPages/LoginPage/LoginPage';
 import RegisterPage from './UserPages/RegisterPage/RegisterPage';
 import UnverifiedPage from './UserPages/UnverifiedPage/UnverifiedPage';
 import VerifiedPage from './UserPages/VerifiedPage';
+import Home from './UserPages/Home/Home';
 import ProductPage from './UserPages/ProductPage/ProductPage';
+import DetailProductPage from './UserPages/DetailProductPage/DetailProductPage';
 import CartPage from './UserPages/CartPage/CartPage';
 import TransactionPage from './UserPages/TransactionPage/TransactionPage';
 import HistoryTransaction from './UserPages/HistoryTransactionPage/HistoryTransaction';
-import './App.css';
-import Home from './UserPages/Home/Home';
-import DetailProductPage from './UserPages/DetailProductPage/DetailProductPage';
+import ChangePassword from './UserPages/ChangePassword/ChangePassword';
 // ADMIN
-import HomeAdmin from './AdminPages/HomeAdmin';
-import LoginAdmin from './AdminPages/LoginAdmin';
+import HomeAdmin from './AdminPages/HomeAdmin/HomeAdmin';
+import LoginAdmin from './AdminPages/LoginAdmin/LoginAdmin';
+import ProfileAdmin from './AdminPages/ProfileAdmin/ProfileAdmin';
 import ManageUsers from './AdminPages/ManageUsers/ManageUsers';
 import FailTransaction from './AdminPages/ManageTransaction/FailTransaction';
 import ProcessTransaction from './AdminPages/ManageTransaction/ProcessTransaction';
@@ -25,7 +28,6 @@ import ManageCategories from './AdminPages/ManageProducts/ManageCategories';
 import ManagePriceWeight from './AdminPages/ManageProducts/ManagePriceWeight';
 import AddProduct from './AdminPages/ManageProducts/AddProduct';
 import EditProduct from './AdminPages/ManageProducts/EditProduct';
-import ChangePassword from './UserPages/ChangePassword/ChangePassword';
 
 class App extends Component {
 
@@ -42,11 +44,12 @@ class App extends Component {
         <div id="font-BestProduct" className="App">
           <Route path="/loginadmin" component={LoginAdmin} />
           <Route path="/homeadmin" component={HomeAdmin} />
+          <Route path="/profileadmin" component={ProfileAdmin} />
           <Route path="/manageusers" component={ManageUsers} />
           <Route path="/manageproducts" component={ManageProducts} />
           <Route path="/managecategories" component={ManageCategories} />
           <Route path="/addproducts" component={AddProduct} />
-          <Route path="/detailproducts" component={EditProduct} />
+          <Route path="/editproducts" component={EditProduct} />
           <Route path="/managepriceweight" component={ManagePriceWeight} />
           <Route path="/transactionprocess" component={ProcessTransaction} />
           <Route path="/transactionfail" component={FailTransaction} />

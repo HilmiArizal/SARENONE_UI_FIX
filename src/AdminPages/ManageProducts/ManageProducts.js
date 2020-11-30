@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SidebarAdmin from '../../Components/SidebarAdmin';
+import SidebarAdmin from '../../Components/Navbar/SidebarAdmin';
 import { getAllProductComplete, deleteProduct } from '../../Redux/Actions';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import { MDBIcon, MDBModal, MDBModalBody } from 'mdbreact';
+import { MDBCol, MDBIcon, MDBModal, MDBModalBody, MDBRow } from 'mdbreact';
 import './PaginationNumber.css';
 import './ManageProducts.css';
 import { Link } from 'react-router-dom';
@@ -89,7 +89,7 @@ class ManageProducts extends Component {
 
                         <MDBModal isOpen={this.state.modal} toggle={this.toggle} size="lg" centered>
                             <MDBModalBody>
-                                {this.state.simpleProductDescription}
+                               <div style={{ fontSize:'150%'}}> {this.state.simpleProductDescription}</div>
                             </MDBModalBody>
                         </MDBModal>
                     </td>
@@ -98,7 +98,7 @@ class ManageProducts extends Component {
                     <td><div className="td-products-manage">{item.totalstock}</div></td>
                     <td>
                         <div>
-                            <Link to={`detailproducts?idproduct=${item.idproduct}`}>
+                            <Link to={`editproducts?idproduct=${item.idproduct}`}>
 
                                 <div className="btn-action-products-manage">UBAH</div>
                             </Link>
@@ -123,11 +123,29 @@ class ManageProducts extends Component {
                     </div>
                     <div class="w3-container">
                         <div className="container" style={{ marginTop: 25 }}>
-                            <div className="icon-add-products">
-                                <Link to="addproducts">
-                                    <MDBIcon icon="plus" />
-                                </Link>
-                            </div>
+                            <MDBRow>
+                                <MDBCol size="4">
+                                    <div className="icon-add-products">
+                                        <Link to="managecategories">
+                                            KELOLA KATEGORI
+                                        </Link>
+                                    </div>
+                                </MDBCol>
+                                <MDBCol size="4">
+                                    <div className="icon-add-products">
+                                        <Link to="addproducts">
+                                            TAMBAH PRODUK
+                                        </Link>
+                                    </div>
+                                </MDBCol>
+                                <MDBCol size="4">
+                                    <div className="icon-add-products">
+                                        <Link to="managepriceweight">
+                                            KELOLA HARGA &amp; BERAT
+                                        </Link>
+                                    </div>
+                                </MDBCol>
+                            </MDBRow>
                             <table class="table table-sm">
                                 <thead>
                                     <tr className="thead-products-manage">

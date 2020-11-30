@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { getCategory, addCategory, editCategory, deleteCategory } from '../../Redux/Actions';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import NoImage from '../../Images/NoImage.png';
-import SidebarAdmin from '../../Components/SidebarAdmin';
-import { MDBBtn, MDBIcon, MDBRow, MDBCol } from 'mdbreact';
+import SidebarAdmin from '../../Components/Navbar/SidebarAdmin';
+import { MDBBtn, MDBIcon } from 'mdbreact';
 
 
 class ManageCategories extends Component {
@@ -68,7 +68,7 @@ class ManageCategories extends Component {
             alert('Harus Di Isi!')
         } else {
             this.props.editCategory(idcategory, image, datacategory)
-            this.setState({selectIdInput: null})
+            this.setState({ selectIdInput: null })
         }
     }
 
@@ -118,7 +118,7 @@ class ManageCategories extends Component {
                     </td>
                     <td>
                         <MDBBtn size="sm" color="primary" onClick={() => this.setState({ selectIdInput: index })}>Ubah</MDBBtn>
-                        <MDBBtn size="sm" color="purple" onClick={() => this.deleteCategories(item.idcategory, item.categoryimage)}>Hapus</MDBBtn>
+                        <MDBBtn size="sm" color="danger" onClick={() => this.deleteCategories(item.idcategory, item.categoryimage)}>Hapus</MDBBtn>
                     </td>
                 </tr>
             )
@@ -162,23 +162,16 @@ class ManageCategories extends Component {
                 <SidebarAdmin />
                 <div style={{ marginLeft: '15%' }}>
                     <div class="w3-container w3-teal">
-                        <center>
-                            <h1>KELOLA PRODUK</h1>
-                        </center>
+                        <div className="w3-container w3-teal">
+                            <div className="title-products-manage">KELOLA KATEGORI</div>
+                        </div>
                     </div>
-                    <center>
-                        <MDBRow style={{ margin: 30 }}>
-                            <MDBCol size="3"><MDBBtn href="manageallproduct" color="white">Semua Produk</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="manageproducts" color="white">Kelola Produk</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="managecategories">Kelola Kategori</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="manageweightlist" color="white">Kelola List</MDBBtn></MDBCol>
-                        </MDBRow>
-                    </center>
-                    <div class="w3-container">
+                    <div class="w3-container" style={{ marginTop: 50 }}>
                         <div className="container">
+                            <div className="title-weight">LIST KATEGORI</div>
                             <table class="table table-sm">
                                 <thead>
-                                    <tr className="text-center">
+                                    <tr className="thead-products-manage">
                                         <th scope="col">NO. </th>
                                         <th scope="col">NAMA KATEGORI</th>
                                         <th scope="col">GAMBAR KATEGORI</th>

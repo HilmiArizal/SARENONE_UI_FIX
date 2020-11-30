@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SidebarAdmin from '../../Components/SidebarAdmin';
+import SidebarAdmin from '../../Components/Navbar/SidebarAdmin';
 import { MDBRow, MDBCol, MDBBtn, MDBIcon } from 'mdbreact';
 import { connect } from 'react-redux';
 import { getWeight, getPrice, addWeight, editWeight, deleteWeight, addPrice, editPrice, deletePrice } from '../../Redux/Actions';
@@ -97,7 +97,7 @@ class ManagePriceWeight extends Component {
                     <td>{item.weightlist}</td>
                     <td>
                         <MDBBtn size="sm" color="primary" onClick={() => this.setState({ selectIdInputWeight: index })}>Ubah</MDBBtn>
-                        <MDBBtn size="sm" color="purple" onClick={() => this.deleteWeight(item.idweight)}>Hapus</MDBBtn>
+                        <MDBBtn size="sm" color="danger" onClick={() => this.deleteWeight(item.idweight)}>Hapus</MDBBtn>
                     </td>
                 </tr>
             )
@@ -126,7 +126,7 @@ class ManagePriceWeight extends Component {
                     <td>{item.pricelist}</td>
                     <td>
                         <MDBBtn size="sm" color="primary" onClick={() => this.setState({ selectIdInputPrice: index })}>Ubah</MDBBtn>
-                        <MDBBtn size="sm" color="purple" onClick={() => this.deletePrice(item.idprice)}>Hapus</MDBBtn>
+                        <MDBBtn size="sm" color="danger" onClick={() => this.deletePrice(item.idprice)}>Hapus</MDBBtn>
                     </td>
                 </tr>
             )
@@ -163,48 +163,18 @@ class ManagePriceWeight extends Component {
                 <SidebarAdmin />
                 <div style={{ marginLeft: '15%' }}>
                     <div class="w3-container w3-teal">
-                        <center>
-                            <h1>KELOLA PRODUK</h1>
-                        </center>
+                        <div className="w3-container w3-teal">
+                            <div className="title-products-manage">KELOLA HARGA &amp; BERAT</div>
+                        </div>
                     </div>
-                    <center>
-                        <MDBRow style={{ margin: 30 }}>
-                            <MDBCol size="3"><MDBBtn href="manageallproduct" color="white">Semua Produk</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="manageproducts" color="white">Kelola Produk</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="managecategories" color="white">Kelola Kategori</MDBBtn></MDBCol>
-                            <MDBCol size="3"><MDBBtn href="manageweightlist" >Kelola List</MDBBtn></MDBCol>
-                        </MDBRow>
-                    </center>
-                    <MDBRow>
+                    <MDBRow style={{ marginTop: 50 }}>
                         <MDBCol size="6">
                             <div class="w3-container">
                                 <div className="container">
-                                    <center><h3><div style={{ backgroundColor: '#404040', width: 180, color: 'white', borderRadius: 50 }}>LIST BERAT</div></h3></center>
+                                    <div className="title-weight">LIST HARGA</div>
                                     <table class="table table-sm">
                                         <thead>
-                                            <tr className="text-center">
-                                                <th scope="col">NO. </th>
-                                                <th scope="col">NAMA BERAT</th>
-                                                <th scope="col">AKSI</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.renderInputEditDeleteWeight()}
-                                        </tbody>
-                                        <tfoot>
-                                            {this.renderInputAddWeight()}
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                        </MDBCol>
-                        <MDBCol size="6">
-                            <div class="w3-container">
-                                <div className="container">
-                                    <center><h3><div style={{ backgroundColor: '#404040', width: 180, color: 'white', borderRadius: 50 }}>LIST HARGA</div></h3></center>
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr className="text-center">
+                                            <tr className="thead-products-manage">
                                                 <th scope="col">NO. </th>
                                                 <th scope="col">NAMA HARGA</th>
                                                 <th scope="col">AKSI</th>
@@ -215,6 +185,28 @@ class ManagePriceWeight extends Component {
                                         </tbody>
                                         <tfoot>
                                             {this.renderInputAddPrice()}
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </MDBCol>
+                        <MDBCol size="6">
+                            <div class="w3-container" >
+                                <div className="container">
+                                    <div className="title-weight">LIST BERAT</div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr className="thead-products-manage">
+                                                <th scope="col">NO. </th>
+                                                <th scope="col">NAMA BERAT</th>
+                                                <th scope="col">AKSI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderInputEditDeleteWeight()}
+                                        </tbody>
+                                        <tfoot>
+                                            {this.renderInputAddWeight()}
                                         </tfoot>
                                     </table>
                                 </div>

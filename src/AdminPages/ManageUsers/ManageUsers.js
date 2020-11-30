@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllUsers_Admin } from '../../Redux/Actions';
-import SidebarAdmin from '../../Components/SidebarAdmin';
+import SidebarAdmin from '../../Components/Navbar/SidebarAdmin';
 import { deleteAccount } from '../../Redux/Actions';
 import './ManageUsers.css';
 
 
 class ManageUsers extends Component {
+
+    state = {
+        search: ''
+    }
 
     componentDidMount() {
         this.props.getAllUsers_Admin();
@@ -16,26 +20,12 @@ class ManageUsers extends Component {
         this.props.deleteAccount(iduser)
     }
 
-    renderGetAllUser = () => {
-        return this.props.dataUsers_Admin.map((item, index) => {
-            return (
-                <tr className="text-center">
-                    <td>{index + 1}</td>
-                    <td>{item.username}</td>
-                    <td>{item.email}</td>
-                    <td>{item.status === 'unverified' ? <div className="status-unverified">{item.status}</div> : item.status}</td>
-                    <td>{item.role}</td>
-                    <td>{item.registerdate} / {item.registertime}</td>
-                    <td>
-                        <div className="btn-action-remove-users" onClick={() => this.deleteAccount(item.iduser)}>HAPUS AKUN</div>
-                        {/* <MDBBtn size="sm" onClick={() => this.deleteAccount(item.iduser)}>Hapus Akun</MDBBtn> */}
-                    </td>
-                </tr>
-            )
-        })
-    }
-
     render() {
+        let filteredName = this.props.dataUsers_Admin.filter(
+            (item) => {
+                return item.username.indexOf(this.state.search) !== -1;
+            }
+        )
         return (
             <div>
                 <SidebarAdmin />
@@ -47,6 +37,11 @@ class ManageUsers extends Component {
                     </div>
                     <div class="w3-container">
                         <div className="container" style={{ marginTop: 50 }}>
+                            <form className="form-search-admin">
+                                <input type="text" className="form-control" placeholder="Cari user" onChange={(e) => this.setState({
+                                    search: e.target.value
+                                })} />
+                            </form>
                             <table class="table table-sm">
                                 <thead>
                                     <tr className="thead-users-manage">
@@ -60,7 +55,23 @@ class ManageUsers extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {this.renderGetAllUser()}
+                                    {
+                                        filteredName.map((item, index) => {
+                                            return (
+                                                <tr className="text-center">
+                                                    <td>{index + 1}</td>
+                                                    <td>{item.username}</td>
+                                                    <td>{item.email}</td>
+                                                    <td>{item.status === 'unverified' ? <div className="status-unverified">{item.status}</div> : item.status}</td>
+                                                    <td>{item.role}</td>
+                                                    <td>{item.registerdate} / {item.registertime}</td>
+                                                    <td>
+                                                        <div className="btn-action-remove-users" onClick={() => this.deleteAccount(item.iduser)}>HAPUS AKUN</div>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
                                 </tbody>
                             </table>
                         </div>
