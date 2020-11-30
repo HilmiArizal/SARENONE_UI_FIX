@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllUsers, verifiedAccount } from '../Redux/Actions';
+import { getAllUsers, verifiedAccount } from '../../Redux/Actions';
 import { MDBBtn, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBContainer} from 'mdbreact';
-import LogoSarenOne from '../Images/LogoSarenOne.png';
-import Shop from '../Images/Shop.png';
+import LogoSarenOne from '../../Images/LogoSarenOne.png';
+import Shop from '../../Images/Shop.png';
 
 
 class VerifiedPage extends Component {

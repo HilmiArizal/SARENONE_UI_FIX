@@ -7,7 +7,7 @@ import './App.css';
 import LoginPage from './UserPages/LoginPage/LoginPage';
 import RegisterPage from './UserPages/RegisterPage/RegisterPage';
 import UnverifiedPage from './UserPages/UnverifiedPage/UnverifiedPage';
-import VerifiedPage from './UserPages/VerifiedPage';
+import VerifiedPage from './UserPages/VerifiedPage/VerifiedPage';
 import Home from './UserPages/Home/Home';
 import ProductPage from './UserPages/ProductPage/ProductPage';
 import DetailProductPage from './UserPages/DetailProductPage/DetailProductPage';
@@ -15,6 +15,8 @@ import CartPage from './UserPages/CartPage/CartPage';
 import TransactionPage from './UserPages/TransactionPage/TransactionPage';
 import HistoryTransaction from './UserPages/HistoryTransactionPage/HistoryTransaction';
 import ChangePassword from './UserPages/ChangePassword/ChangePassword';
+import ForgotPassword from './UserPages/ForgotPassword/ForgotPassword';
+import ResetPassword from './UserPages/ResetPassword/ResetPassword';
 // ADMIN
 import HomeAdmin from './AdminPages/HomeAdmin/HomeAdmin';
 import LoginAdmin from './AdminPages/LoginAdmin/LoginAdmin';
@@ -85,6 +87,8 @@ class App extends Component {
         <Route path="/product" component={ProductPage} />
         <Route path="/detailproduct" component={DetailProductPage} />
         <Route path="/cart" component={CartPage} />
+        <Route path="/forgotpassword" component={ForgotPassword} />
+        <Route path="/resetpassword" component={ResetPassword} />
       </div>
     )
   }

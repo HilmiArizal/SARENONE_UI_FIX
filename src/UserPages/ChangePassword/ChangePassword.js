@@ -40,10 +40,9 @@ const ChangePassword = ({ iduser }) => {
         let num = /[0-9]/;
         setNewPassword(e.target.value);
         setNum(num.test(newPassword))
-        setChar(newPassword.length > 7)
+        setChar(newPassword.length > 6)
         setUpperCase(newPassword.charAt(0) === newPassword.charAt(0).toUpperCase())
-        setBorder(num.test(newPassword) && newPassword.length > 7 && newPassword.charAt(0) === newPassword.charAt(0).toUpperCase())
-        console.log(newPassword.charAt(0))
+        setBorder(num.test(newPassword) && newPassword.length > 6 && newPassword.charAt(0) === newPassword.charAt(0).toUpperCase())
     }
 
     const showOpen = () => {
@@ -77,7 +76,7 @@ const ChangePassword = ({ iduser }) => {
                                 show
                                     ?
                                     <div>
-                                        <div className={char && num && upperCase ? 'test-password-good' : 'test-password-bad'}>{char && num && upperCase ? 'Keamanan password baik' : 'Keamanan password lemah'}</div>
+                                        <div className={char && num && upperCase ? 'test-password-good' : 'test-password-bad'}>{char && num && upperCase ? 'Keamanan password baik' : 'Keamanan password lemah (Huruf pertama besar, disertai angka dan minimal 8 karakter)'}</div>
                                     </div>
                                     :
                                     null

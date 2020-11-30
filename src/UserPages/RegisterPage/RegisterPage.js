@@ -117,7 +117,7 @@ class RegisterPage extends Component {
                                                 />
                                                 <MDBInput
                                                     label="Email"
-                                                    value="hilmi.arizal36@gmail.com"
+                                                    // value="hilmi.arizal36@gmail.com"
                                                     icon="envelope"
                                                     group
                                                     type="email"

@@ -14,7 +14,7 @@ import './LoginPage.css';
 class LoginPage extends Component {
 
     state = {
-        showPassword: true
+        showPassword: true,
     }
 
     onBtnLogin = () => {
@@ -91,7 +91,7 @@ class LoginPage extends Component {
                                                 </div>
                                                 <center>
                                                     <div>
-                                                        Lupa password ? <Link to="">Klik disini</Link>
+                                                        Lupa password ? <Link to="forgotpassword">Klik disini</Link>
                                                     </div>
                                                 </center>
                                                 <MDBCard style={{ marginTop: 30, justifyContent: "center", padding: 20 }}>

@@ -42,11 +42,11 @@ class AboutHome extends Component {
                             </MDBContainer>
                             <center>
                                 <div style={{ marginTop: 50 }}>
-                                    <img src={CompanyProfileImg} alt="W3Schools" width="150" height="200" />
+                                    <img src={CompanyProfileImg} alt="W3Schools" width="150" height="200" className="img-CP" />
                                 </div>
                                 <div style={{ marginTop: 20 }}>
                                     <a href={CompanyProfile} download="Company Profile SarenOne" id="a-about">
-                                        <div className="about-download">Download Company Profile</div>
+                                        <div className="about-download">Download</div>
                                 </a>
                                 </div>
                             </center>
