@@ -1,0 +1,79 @@
+.section-review-detail{
+    background-color: #ffcbcb;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px #979797;
+}
+
+.card-review-detail{
+    padding: 1em;
+}
+
+.title-review-product{
+    font-weight: bold;
+    font-size: 150%;
+    text-decoration: underline;
+    cursor: pointer;
+    width: 40%;
+}
+
+.title-review-product:hover{
+    opacity: 0.8;
+}
+
+.btn-review-detail{
+    margin-top: 2%;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #313131;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgb(139, 139, 139);
+    margin: 2% auto;
+    color: #ffffff;
+}
+
+.results-review{
+    background-color: #eeeaea;
+    margin: 2% auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.results-review label{
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icon-x-review{
+    display: flex;
+}
+
+#icon-trash{
+    margin: auto;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#icon-trash:hover{
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.results-review i{
+    font-size: 80%;
+}
+
+@media (min-width:300px) and (max-width:700px){
+    .btn-review-detail{
+        width: 50%;
+        margin: 2% auto;
+    }
+    .title-review-product{
+        width: 100%;
+    }
+}

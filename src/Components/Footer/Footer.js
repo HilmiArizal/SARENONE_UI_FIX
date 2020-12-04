@@ -32,7 +32,7 @@ const Footer = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; CV. Heaven Sentosa {new Date().getFullYear()}
+          &copy; CV. HEAVEN SENTOSA {new Date().getFullYear()}
         </MDBContainer>
       </div>
     </MDBFooter>

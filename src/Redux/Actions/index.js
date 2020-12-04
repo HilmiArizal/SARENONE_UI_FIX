@@ -11,3 +11,4 @@ export * from './transactionAction';
 export * from './transmethAction';
 export * from './transcompAction';
 export * from './transactionHistoryAction';
+export * from './wishlistAction';

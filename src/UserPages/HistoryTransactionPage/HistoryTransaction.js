@@ -63,7 +63,7 @@ class HistoryTransaction extends Component {
                     <td>{index + 1}</td>
                     <td>{item.datetime}</td>
                     <td>Rp. {item.totaltransaction.toLocaleString()},-</td>
-                    <td>{item.statustransaction}</td>
+                    <td>{item.statustransaction === 'Sudah Bayar' ? 'Dalam Pengiriman' : item.statustransaction}</td>
                     <td>{item.transactionId}</td>
                     <td>
                         <div className="btn-cart-history-transaction" onClick={() => { this.toggle(); this.setState({ timeTransaction: item.datetime }) }}>LIHAT DETAIL</div>

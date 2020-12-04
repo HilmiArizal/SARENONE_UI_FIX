@@ -64,7 +64,7 @@ class ProductHome extends Component {
                                         {this.renderDataCategories()}
                                     </div>
                                     <center>
-                                        <MDBBtn id="btn-product-home" href="product" color="elegant" size="sm" style={{ color: '#ffffff', marginTop: 20 }}> LIHAT DETAIL PRODUK</MDBBtn>
+                                        <MDBBtn id="btn-product-home" href="product" color="#b71c1c red darken-4" size="sm" style={{ color: '#ffffff', marginTop: 20 }}> LIHAT DETAIL PRODUK</MDBBtn>
                                     </center>
                                 </div>
                                 <hr />

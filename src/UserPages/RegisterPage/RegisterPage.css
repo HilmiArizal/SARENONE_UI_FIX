@@ -1,11 +1,47 @@
-.body-register{
+.body-register {
     background: #e21515;
     background: -webkit-linear-gradient(to right, #ffcbcb, #e21515);
     background: linear-gradient(to right, #ffcbcb, #e21515);
 }
 
-.section-register{
-    padding: 9% 0;
+.section-register {
+    padding: 7% 0;
     width: 40%;
     margin: auto;
+}
+
+.form-register {
+    padding: 2em;
+}
+
+.register {
+    position: absolute;
+    top: 335px;
+    right: 70px;
+    cursor: pointer;
+    color: #696969;
+    font-size: 20px;
+}
+
+.confirmRegis {
+    position: absolute;
+    top: 410px;
+    right: 70px;
+    cursor: pointer;
+    color: #696969;
+    font-size: 20px;
+}
+
+@media (min-width:300px) and (max-width:700px) {
+    .section-register {
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+@media (min-width: 701px) and (max-width:1000px) {
+    .section-register {
+        height: 100vh;
+        width: 100%;
+    }
 }

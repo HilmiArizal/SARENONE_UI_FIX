@@ -30,11 +30,13 @@ export const registerUser = (dataRegister) => {
 export const verifiedAccount = (token, headers) => {
     return async () => {
         try {
+            
             await Axios.patch(API_URL_1 + `users/emailVerification`, {}, headers)
             localStorage.setItem('token', token)
 
         } catch (err) {
             // console.log(err)
+            alert('Email invalid!')
         }
     }
 }

@@ -44,7 +44,7 @@ class AboutHome extends Component {
                                 <div style={{ marginTop: 50 }}>
                                     <img src={CompanyProfileImg} alt="W3Schools" width="150" height="200" className="img-CP" />
                                 </div>
-                                <div style={{ marginTop: 20 }}>
+                                <div style={{ margin: 20 }}>
                                     <a href={CompanyProfile} download="Company Profile SarenOne" id="a-about">
                                         <div className="about-download">Download</div>
                                 </a>

@@ -12,6 +12,7 @@ import transactionReducer from './transactionReducer';
 import transactionmethodReducer from './transmethReducer';
 import transactionstatusReducer from './transstatusReducer';
 import transactionHistoryReducer from './transactionHistoryReducer';
+import wishlistReducer from './wishlistReducer';
 
 export default combineReducers({
     user: userReducer,
@@ -26,5 +27,6 @@ export default combineReducers({
     transaction: transactionReducer,
     transactionmethod: transactionmethodReducer,
     transactionstatus: transactionstatusReducer,
-    transactionhistory: transactionHistoryReducer
+    transactionhistory: transactionHistoryReducer,
+    wishlist: wishlistReducer
 })

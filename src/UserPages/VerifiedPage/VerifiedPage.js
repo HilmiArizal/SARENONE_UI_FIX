@@ -3,8 +3,9 @@ import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllUsers, verifiedAccount } from '../../Redux/Actions';
-import { MDBBtn, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBContainer} from 'mdbreact';
+import { MDBBtn, MDBIcon, MDBNavbar, MDBNavbarBrand, MDBContainer } from 'mdbreact';
 import LogoSarenOne from '../../Images/LogoSarenOne.png';
+import NotFound from '../../Images/404.png';
 import Shop from '../../Images/Shop.png';
 
 
@@ -22,11 +23,21 @@ class VerifiedPage extends Component {
     }
 
     render() {
+        let params = queryString.parse(this.props.location.search)
+        let token = params.token;
+
         if (this.props.status === 'verified') {
             return (
                 <Redirect to="/">
 
                 </Redirect>
+            )
+        }
+        if (!token) {
+            return (
+                <div className="text-center">
+                <img src={NotFound} alt="NotFound-Verified" style={{ width: '40%' }} />
+            </div>
             )
         }
         return (

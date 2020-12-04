@@ -13,6 +13,7 @@ import './DetailProductPage.css'
 import '../ProductPage/ProductPage.css';
 import Footer from '../../Components/Footer/Footer';
 import Swal from 'sweetalert2';
+import ReviewDetail from '../ReviewDetailPage/ReviewDetailPage';
 
 
 class DetailProductPage extends Component {
@@ -127,21 +128,32 @@ class DetailProductPage extends Component {
     renderProduct = () => {
         const { dataProduct } = this.state;
         return (
-            <div id="section-detail-product-1">
-                <div id="section-detail-product-left">
-                    <img src={API_URL_1 + dataProduct.productimage} alt="imgDetailProduct" className="img-detailProduct" />
-                </div>
+            <div>
+                <div id="section-detail-product-1">
+                    <div id="section-detail-product-left">
+                        <img src={API_URL_1 + dataProduct.productimage} alt="imgDetailProduct" className="img-detailProduct" />
+                    </div>
 
-                <div id="section-detail-product-right">
-                    <div className="title-detail-product">{dataProduct.productname}{this.state.chooseWeight ? <DoneIcon id="check-detail-product" /> : ""}</div>
-                    <p>{dataProduct.productdescription}</p>
+                    <div id="section-detail-product-right">
+                        <div className="title-detail-product">{dataProduct.productname}{this.state.chooseWeight ? <DoneIcon id="check-detail-product" /> : ""}</div>
+                        <p>{dataProduct.productdescription}</p>
 
-                    {this.renderList()}
+                        {this.renderList()}
 
-                    <div className="section-detail-product-3">
-                        {this.renderInputValueNumber()}
+                        <div className="section-detail-product-3">
+                            {this.renderInputValueNumber()}
+                        </div>
                     </div>
                 </div>
+                {
+                    this.props.iduser === 0
+                        ?
+                        ''
+                        :
+                        < div style={{ marginTop: '2%' }}>
+                            <ReviewDetail productname={dataProduct.productname} idproduct={{idproduct:dataProduct.idproduct}} />
+                        </div>
+                }
             </div>
 
         )
@@ -162,6 +174,7 @@ class DetailProductPage extends Component {
                         <label>Stok Tersedia</label>
                         <span style={{ color: item.totalstock === 0 ? 'red' : 'green' }}>: {item.totalstock === 0 ? 'Sold Out' : item.totalstock + ' pack'}  </span>
                     </div>
+
                     <MDBModal isOpen={this.state.modal3} size="sm" centered>
                         <MDBModalBody>
                             <div className="section-checkbox-detail-product">
@@ -226,9 +239,7 @@ class DetailProductPage extends Component {
         }
         return (
             <div className="body-detail-product">
-                <div style={{ marginBottom: 70 }}>
-                    <NavbarOther />
-                </div>
+                <NavbarOther />
                 <div className="section-detail-product">
                     <div className="title-detail-product"></div>
                     <MDBContainer>

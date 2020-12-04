@@ -48,6 +48,10 @@ class NavbarOther extends Component {
         return (
             <ul id="dropdown-profile-other">
                 <li>
+                    <label><MDBIcon icon="unlock" size="sm" /></label>
+                    <span> <Link to="changepassword">Ubah Password</Link></span>
+                </li>
+                <li>
                     <label><MDBIcon icon="fas fa-history" size="sm" /></label>
                     <span> <Link to="historytransaction">Riwayat Transaksi</Link></span>
                 </li>

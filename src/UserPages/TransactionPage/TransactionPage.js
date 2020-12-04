@@ -79,6 +79,9 @@ class TransactionPage extends Component {
         this.setState({
             copyText: !this.state.copyText
         })
+        setTimeout(() => {
+            this.setState({copyText: false})
+        }, 1000);
         let copy = document.getElementById("copy-value");
         copy.select();
         document.execCommand("copy");
@@ -478,8 +481,8 @@ class TransactionPage extends Component {
                                 <label>
                                     <input type="checkbox" id="myCheck" style={{ cursor: 'pointer' }} onClick={this.onChangeCheckBox} />
                                 </label>
-                                <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="lg">
-                                    <MDBModalHeader toggle={this.toggle(4)}>Konfirmasikan kode transaksi!</MDBModalHeader>
+                                <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="sm">
+                                    <MDBModalHeader toggle={this.toggle(4)} ><div style={{fontSize:'80%'}}>Konfirmasikan kode transaksi!</div></MDBModalHeader>
                                     <MDBModalBody>
                                         <input type="text" className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => this.setState({ transactionCode: e.target.value })} />
                                         <hr />

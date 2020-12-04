@@ -163,7 +163,10 @@ class SuccessTransaction extends Component {
     renderTransactionSuccess = () => {
         let filteredDate = this.props.dataTransactionSuccess.filter(
             (item) => {
-                return item.datetime.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+                return (
+                    item.datetime.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1,
+                    item.transactionId.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+                )
             }
         )
         return (
@@ -273,7 +276,7 @@ class SuccessTransaction extends Component {
                     <div className="w3-container">
                         <div className="container">
                             <form className="form-search-admin">
-                                <input type="text" className="form-control" placeholder="Cari sesuai tanggal &amp; jam" onChange={(e) => this.setState({
+                                <input type="text" className="form-control" placeholder="Cari sesuai tanggal / kode transaksi" onChange={(e) => this.setState({
                                     search: e.target.value
                                 })} />
                             </form>

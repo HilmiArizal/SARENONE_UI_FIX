@@ -100,10 +100,10 @@ class RegisterPage extends Component {
                                     <Link to="/">
                                         <div><MDBIcon far icon="times-circle" size="lg" style={{ color: 'black' }} /></div>
                                     </Link>
-                                    <form>
+                                    <form className="form-register">
                                         <p className="h4 text-center py-4">SILAHKAN DAFTAR!</p>
                                         <MDBContainer>
-                                            <div className="">
+                                            <div className="grey-text">
                                                 <MDBInput
                                                     label="Username"
                                                     icon="user"
@@ -164,26 +164,14 @@ class RegisterPage extends Component {
                                                         ?
                                                         <div>
                                                             {
-                                                                char
+                                                                char && num
                                                                     ?
                                                                     <center>
-                                                                        <div style={{ color: 'green', fontSize: 12 }}>Terlihat bagus</div>
+                                                                        <div style={{ color: 'green', fontSize: 12 }}>Keamanan password baik</div>
                                                                     </center>
                                                                     :
                                                                     <center>
-                                                                        <div style={{ color: 'red', fontSize: 12 }}>Password harus 8 karakter!</div>
-                                                                    </center>
-
-                                                            }
-                                                            {
-                                                                num
-                                                                    ?
-                                                                    <center>
-                                                                        <div style={{ color: 'green', fontSize: 12 }}>Terlihat bagus juga</div>
-                                                                    </center>
-                                                                    :
-                                                                    <center>
-                                                                        <div style={{ color: 'red', fontSize: 12 }}>Password disertai angka!</div>
+                                                                        <div style={{ color: 'red', fontSize: 12 }}>Keamanan password lemah (Huruf pertama besar, disertai angka dan minimal 8 karakter)</div>
                                                                     </center>
 
                                                             }
@@ -205,7 +193,7 @@ class RegisterPage extends Component {
                                                         DAFTAR
                                             </MDBBtn>
                                             }
-                                            <div>Sudah punyak akun ? <Link to="login">Masuk disini</Link></div>
+                                            <div>Sudah punyak akun ? <Link to="login">Klik disini</Link></div>
                                         </center>
                                     </form>
                                 </MDBCardBody>

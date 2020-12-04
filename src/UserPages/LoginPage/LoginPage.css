@@ -67,27 +67,10 @@
 
 .password-icon{
     position: absolute;
-    top:232px;
-    right: 55px;
+    top:230px;
+    left:380px;
     cursor: pointer;
     color: #696969;
     font-size: 20px;
 }
 
-.register{
-    position: absolute;
-    top:307px;
-    right: 55px;
-    cursor: pointer;
-    color: #696969;
-    font-size: 20px;
-}
-
-.confirmRegis{
-    position: absolute;
-    top:380px;
-    right: 55px;
-    cursor: pointer;
-    color: #696969;
-    font-size: 20px;
-}

@@ -1,19 +1,19 @@
 const INITIAL_STATE = {
-    dataProduct: [],
-    dataAllProduct: []
+    dataWishList: [],
+    dataReview: []
 }
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'PRODUCT_SUCCESS':
+        case 'WISHLIST_SUCCESS':
             return {
-                ...state, dataProduct: action.payload
+                ...state, dataWishList: action.payload
             }
-        case 'PRODUCT_ALL_SUCCESS':
+        case 'REVIEW_SUCCESS':
             return {
-                ...state, dataAllProduct: action.payload
+                ...state, dataReview: action.payload
             }
-        case 'PRODUCT_FAIL':
+        case 'WISHLIST_FAIL':
             return INITIAL_STATE
         default:
             return state
