@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { getCategory } from '../../Redux/Actions';
 import { API_URL_1 } from '../../Helpers/API_URL';
 import BestProduct from './BestProductHome';
-import { MDBCard, MDBContainer, MDBBtn } from 'mdbreact';
+import { MDBContainer, MDBBtn } from 'mdbreact';
 import './ProductHome.css';
+import { Link } from 'react-router-dom';
 
 
 class ProductHome extends Component {
@@ -38,9 +39,9 @@ class ProductHome extends Component {
         return this.props.categories.map((item, index) => {
             return (
                 <div className="card-product-home-margin">
-                    <MDBCard style={{ width: "12rem" }}>
-                        <img id="myImg" class="img-category-home" src={API_URL_1 + item.categoryimage} alt="category-Img" waves width="150px" onClick={this.functionModalImg} />
-                    </MDBCard>
+                    {/* <MDBCard style={{ width: "12rem" }}> */}
+                    <img id="myImg" class="img-category-home" src={API_URL_1 + item.categoryimage} alt="category-Img" waves width="150px" onClick={this.functionModalImg} />
+                    {/* </MDBCard> */}
                     <div id="myModal" className="modal">
                         <span className="close" style={{ color: "white" }}>&times;</span>
                         <img className="modal-content" alt="category-Img" id="img01" />
@@ -58,16 +59,18 @@ class ProductHome extends Component {
                     <div className="section-product-home">
                         <MDBContainer>
                             <div className="card-product-home">
-                                    <div className="title-product-home">PRODUK KAMI</div>
+                                <div className="title-product-home">PRODUK KAMI</div>
                                 <div className="sub-section-product-home-1">
                                     <div className="img-product-home">
                                         {this.renderDataCategories()}
                                     </div>
                                     <center>
-                                        <MDBBtn id="btn-product-home" href="product" color="#b71c1c red darken-4" size="sm" style={{ color: '#ffffff', marginTop: 20 }}> LIHAT DETAIL PRODUK</MDBBtn>
+                                        <Link to="/product">
+                                            <MDBBtn id="btn-product-home" color="elegant" size="sm" style={{ color: '#ffffff', marginTop: 20 }}> LIHAT DETAIL PRODUK</MDBBtn>
+                                        </Link>
                                     </center>
                                 </div>
-                                <hr />
+                                <br />
                                 <div>
                                     <BestProduct />
                                 </div>

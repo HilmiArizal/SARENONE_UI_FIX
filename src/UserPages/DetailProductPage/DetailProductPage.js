@@ -105,7 +105,7 @@ class DetailProductPage extends Component {
                 this.setState({ redirectCart: true })
                 , 1000)
         } else {
-            alert('Isi dengan benar!')
+            alert('Mohon isi kuantitasnya terlebih dahulu...')
         }
         this.setState({ showTotalPrice: totalprice })
     }
@@ -243,7 +243,7 @@ class DetailProductPage extends Component {
                 <div className="section-detail-product">
                     <div className="title-detail-product"></div>
                     <MDBContainer>
-                        <div class="jumbotron">
+                        <div class="jumbotron" style={{marginTop:70}}>
                             {
                                 this.props.status === 'unverified' ? this.renderUnverificationAccount() : this.renderProduct()
                             }

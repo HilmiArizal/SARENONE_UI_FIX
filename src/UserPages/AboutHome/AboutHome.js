@@ -41,7 +41,7 @@ class AboutHome extends Component {
                                 </div>
                             </MDBContainer>
                             <center>
-                                <div style={{ marginTop: 50 }}>
+                                <div style={{ marginTop: 70 }}>
                                     <img src={CompanyProfileImg} alt="W3Schools" width="150" height="200" className="img-CP" />
                                 </div>
                                 <div style={{ margin: 20 }}>

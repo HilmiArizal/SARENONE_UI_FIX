@@ -1,6 +1,4 @@
-.card-about-home {
-  background-color: #ffffff;
-}
+
 
 .sub-section-about {
   padding: 1em;
@@ -9,8 +7,8 @@
 .section-about {
   display: flex;
   background-color: #ffcbcb;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px #b13737;
+  border-radius: 3px;
+  box-shadow: 0px 0px 4px #b13737;
 }
 
 .section-left-about {
@@ -39,8 +37,9 @@
 }
 
 .about-download {
-  background-color: #c74545;
-  width: 20%;
+  background-color: #212529;
+  font-size: 80%;
+  width: 15%;
   padding: 5px;
   color: #ffffff;
   border-radius: 3px;

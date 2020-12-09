@@ -9,6 +9,7 @@ const ForgotPassword = () => {
 
     const [email, setEmail] = useState('');
     const [modal, setModal] = useState(true);
+    const [success, setSuccess] = useState(false);
 
     const toggle = () => {
         setModal(false)
@@ -17,16 +18,17 @@ const ForgotPassword = () => {
     const onBtnSendMail = () => {
         Axios.post(API_URL_1 + `users/forgotPassword`, { email })
             .then((res) => {
-                alert(res.data)
-                setModal(false)
+                // alert(res.data)
+                setSuccess(true)
+                // setModal(false)
             })
             .catch((err) => {
                 alert(err.response.data)
             })
     }
 
-    if(!modal){
-        return(
+    if (!modal) {
+        return (
             <Redirect to="login"></Redirect>
         )
     }
@@ -34,22 +36,39 @@ const ForgotPassword = () => {
 
     return (
         <div className="body-forgot-password">
-            <MDBModal isOpen={modal} toggle={setModal} centered>
-                <MDBModalHeader toggle={toggle}>Masukan email anda!</MDBModalHeader>
-                <MDBModalBody>
-                    <div className="card-forgot-password">
-                        <div className="section-forgot-password">
-                            <div>
-                                <input className="form-control" type="text" placeholder="Masukan email" onChange={(e) => setEmail(e.target.value)} />
+            {
+                success
+                    ?
+                    <MDBModal isOpen={modal} toggle={setModal} centered>
+                        <MDBModalHeader toggle={toggle}>Berhasil!</MDBModalHeader>
+                        <MDBModalBody>
+                            <div className="card-forgot-password">
+                                <div className="section-forgot-password">
+                                    <div>
+                                       <div style={{fontSize:'90%', textAlign:"center"}}>Silahkan untuk cek email!</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <hr />
-                        <div>
-                            <div className="btn-forgot-password" onClick={onBtnSendMail}>SUBMIT</div>
-                        </div>
-                    </div>
-                </MDBModalBody>
-            </MDBModal>
+                        </MDBModalBody>
+                    </MDBModal>
+                    :
+                    <MDBModal isOpen={modal} toggle={setModal} centered>
+                        <MDBModalHeader toggle={toggle}>Masukan email anda!</MDBModalHeader>
+                        <MDBModalBody>
+                            <div className="card-forgot-password">
+                                <div className="section-forgot-password">
+                                    <div>
+                                        <input className="form-control" type="text" placeholder="Masukan email" onChange={(e) => setEmail(e.target.value)} style={{fontSize:"90%"}} />
+                                    </div>
+                                </div>
+                                <hr />
+                                <div>
+                                    <div className="btn-forgot-password" onClick={onBtnSendMail}>SUBMIT</div>
+                                </div>
+                            </div>
+                        </MDBModalBody>
+                    </MDBModal>
+            }
         </div>
     )
 }

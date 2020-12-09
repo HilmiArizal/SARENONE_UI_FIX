@@ -19,6 +19,7 @@ class HistoryTransaction extends Component {
         modal: false
     }
 
+
     toggle = () => {
         this.setState({
             modal: !this.state.modal
@@ -28,6 +29,7 @@ class HistoryTransaction extends Component {
     componentDidMount() {
         this.props.getTransactionHistory();
         this.getDetailTransactionHistory();
+        window.scrollTo(0, 0);
     }
 
     getDetailTransactionHistory = async () => {
@@ -72,7 +74,7 @@ class HistoryTransaction extends Component {
                             <MDBModalBody>
                                 <table class="table table-sm">
                                     <thead>
-                                        <tr className="text-center">
+                                        <tr className="table-head-history-transaction">
                                             <th scope="col">Nama Produk</th>
                                             <th scope="col">Harga </th>
                                             <th scope="col">Berat</th>

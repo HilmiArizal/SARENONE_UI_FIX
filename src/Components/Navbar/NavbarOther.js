@@ -66,14 +66,16 @@ class NavbarOther extends Component {
     renderCart = () => {
         return this.props.dataCart.map((item, index) => {
             return (
-                <div key={index}>
-                    <div className="text-center" style={{ border: '2px solid black', margin: 10 }}></div>
-                    <div className="text-center" style={{ fontSize: 15 }}>{item.productname}</div>
-                    <MDBRow style={{ padding: 10 }}>
-                        <MDBCol size="5">
-                            <img src={API_URL_1 + item.productimage} alt="productNav" width="80px" />
+                <div id="cart-detail">
+                    <div className="text-center" style={{ borderTop: '2px solid black', margin: 10 }}></div>
+                    <div className="text-center" style={{ fontSize: 15, fontWeight: "bold" }}>{item.productname}</div>
+                    <MDBRow>
+                        <MDBCol size="6">
+                            <center>
+                                <img src={API_URL_1 + item.productimage} alt="productNav" width="70px" />
+                            </center>
                         </MDBCol>
-                        <MDBCol size="7" style={{ fontSize: 10 }}>
+                        <MDBCol size="6" style={{ fontSize: 12 }}>
                             <div>Berat :{item.weightlist}gr</div>
                             <div>Harga : Rp. {item.pricelist.toLocaleString()} x {item.qty}</div>
                             <div>Total Belanja: Rp. {item.totalprice.toLocaleString()},- </div>
@@ -124,9 +126,11 @@ class NavbarOther extends Component {
                                                     </center>
                                                     :
                                                     <div>
-                                                        <div className="text-center">KERANJANG ANDA</div>
+                                                        <div className="text-center" style={{fontWeight:"bold"}}>KERANJANG BELANJA ANDA</div>
                                                         {this.renderCart()}
                                                         <center>
+                                                            <div className="text-center" style={{ borderTop: '2px solid black', margin: 10 }}></div>
+
                                                             <MDBRow>
                                                                 <MDBCol size="6">
                                                                     <Link to="cart">

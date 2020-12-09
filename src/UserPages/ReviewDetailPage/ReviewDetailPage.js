@@ -9,22 +9,20 @@ import { MDBIcon } from 'mdbreact';
 class ReviewDetail extends Component {
 
     state = {
-        changeReviewText: ''
-    }
+        changeReviewText: '',
+        idproduct: 0,
 
-    componentDidMount() {
-        // let idproduct = this.props.idproduct
-        this.getReviewDetail();
+        openReview: false
     }
+    
 
-    getReviewDetail = () => {
-        let idproduct = this.props.idproduct.idproduct;
-        // console.log(idproduct)
+
+    onChangeProductId = (idproduct) => {
+        this.setState({
+            idproduct: idproduct,
+            openReview: !this.state.openReview
+        })
         this.props.getReviewDetail(idproduct)
-    }
-
-    openReview = () => {
-        this.setState({ closeReview: true })
     }
 
     onAddReview = (idproduct) => {
@@ -34,9 +32,10 @@ class ReviewDetail extends Component {
         let dataReview = { productId, userId, detailreview }
         this.props.addReviewDetail(dataReview)
         $("#myForm")[0].reset();
+        this.setState({ openReview: true, changeReviewText: '' })
     }
 
-    onDeleteReview = (idreview,idproduct) => {
+    onDeleteReview = (idreview, idproduct) => {
         this.props.deleteReviewDetail(idreview, idproduct)
     }
 
@@ -45,7 +44,7 @@ class ReviewDetail extends Component {
             return (
                 <div>
                     <div className="results-review">
-                        <label><div>{item.username.toUpperCase()}</div> <div className="icon-x-review">{this.props.iduser === item.iduser ? <MDBIcon icon="times" id="icon-trash" onClick={() => this.onDeleteReview(item.idreview, item.idproduct)}/> : ''}</div></label>
+                        <label><div>{item.username.toUpperCase()}</div> <div className="icon-x-review">{this.props.iduser === item.iduser ? <MDBIcon icon="times" id="icon-trash" onClick={() => this.onDeleteReview(item.idreview, item.idproduct)} /> : ''}</div></label>
                         <i>{item.detailreview}</i>
                     </div>
                 </div>
@@ -59,14 +58,18 @@ class ReviewDetail extends Component {
             <div className="body-review-detail">
                 <div className="section-review-detail">
                     <div className="card-review-detail">
-                        <div className="title-review-product">Review Produk {this.props.productname}</div>
+                        <div className="title-review-product" onClick={() => this.onChangeProductId(idproduct)}>{this.state.openReview ? `Tutup Review Produk` : `Lihat Review Produk`}</div>
                         <div>
                             {
-                                this.props.dataReview.length === 0
+                                this.state.openReview
                                     ?
-                                    <div style={{ marginTop: '2%' }}>Belum ada review</div>
+                                    this.props.dataReview.length === 0
+                                        ?
+                                        <div>Belum ada Review</div>
+                                        :
+                                        this.renderGetReviewDetail()
                                     :
-                                    this.renderGetReviewDetail()
+                                    ''
                             }
                             <form id="myForm">
                                 <div className="input-group" style={{ marginTop: '2%' }}>

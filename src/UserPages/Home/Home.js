@@ -9,12 +9,17 @@ import Footer from '../../Components/Footer/Footer';
 import ImgBanner from '../../Images/Carousel4.png';
 import { MDBBtn, MDBView, MDBMask, MDBModal, MDBModalBody, MDBModalHeader } from 'mdbreact';
 import './Home.css';
+import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
 
     state = {
         modal14: true
+    }
+
+    componentDidMount(){
+        window.scrollTo(0, 0);
     }
 
     toggle = nr => () => {
@@ -70,7 +75,9 @@ class Home extends Component {
                 <MDBView>
                     <img src={ImgBanner} className="carousel-Img" alt="carousel-Produk" />
                     <div className="carousel-caption d-none d-md-block" id="btn">
-                        <MDBBtn href="/product" color="#b71c1c red darken-4" size="md" id="btn-shop-now">belanja sekarang</MDBBtn>
+                        <Link to="/product">
+                        <MDBBtn color="#b71c1c red darken-4" size="md" id="btn-shop-now">belanja sekarang</MDBBtn>
+                        </Link>
                     </div>
                     <MDBMask pattern={5}>
 
