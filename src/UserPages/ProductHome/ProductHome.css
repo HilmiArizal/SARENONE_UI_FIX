@@ -5,8 +5,9 @@
 
 .card-product-home-margin {
     /* background-color: #ffffff; */
-    padding: 0px 10px;
+    /* padding: 0px 10px; */
     border-radius: 3px;
+    /* width: 50%; */
 }
 
 .sub-section-product-home-1 {
@@ -17,7 +18,7 @@
 }
 
 .title-product-home {
-    font-size: 150%;
+    font-size: 200%;
     font-weight: bold;
     text-transform: uppercase;
     display: flex;
@@ -39,33 +40,36 @@
 
 #title-best-product {
     color: #212529;
-    font-size: 80%;
+    font-size: 100%;
     text-align: center;
     font-weight: bold;
+    width: 100%;
 }
 
-#btn-best-product {
-    font-size: 60%;
-    background-color: #212529;
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
+#link-best-product {
     text-decoration: none;
-    padding: 5%;
-    border-radius: 3px;
-    text-transform: uppercase;
 }
 
-.img-best-product-home {
-    display: flex;
+#img-best-product {
+    border-radius: 3px;
 }
 
 #card-best-product {
+    padding: 1em;
     margin: auto;
-    width: 50%;
+    transition: 0.5s;
+}
+
+#card-best-product:hover{
+    padding: 0.5em;
+    transition: 0.5s;
+    opacity: 0.8;
 }
 
 @media (min-width:300px) and (max-width:700px) {
+    #body-best-product{
+       padding: 2em;
+    }
     .img-product-home {
         flex-direction: column;
         width: 100%;
@@ -80,9 +84,8 @@
     #btn-best-product {
         font-size: 50%;
     }
-    #card-best-product {
-        margin: auto;
-        width: 80%;
+    #col-best-product{
+        margin-bottom: 10%;
     }
 }
 

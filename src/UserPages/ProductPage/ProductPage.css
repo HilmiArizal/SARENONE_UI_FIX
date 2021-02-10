@@ -14,6 +14,13 @@
 
 #card-Product {
     margin: 5% auto;
+    padding: 1em;
+    transition: 0.5s;
+}
+
+#card-Product:hover {
+    padding: 0.5em;
+    transition: 0.5s;
 }
 
 #card-item {
@@ -59,6 +66,7 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+    width: 80%;
 }
 
 .card-img-product{

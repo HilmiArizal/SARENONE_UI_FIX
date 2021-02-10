@@ -4,8 +4,9 @@ import { getGroupByProduct, getCategory, getWishList, addWishList } from '../../
 import NavbarOther from '../../Components/Navbar/NavbarOther';
 import Footer from '../../Components/Footer/Footer';
 import { API_URL_1 } from '../../Helpers/API_URL';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBRow, MDBContainer, MDBIcon } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 import './ProductPage.css';
+import { Link } from 'react-router-dom';
 
 
 class ProductPage extends Component {
@@ -33,19 +34,20 @@ class ProductPage extends Component {
         return this.props.dataAllProduct.map((item, index) => {
             if (this.state.newIdCategory === item.categoryname) {
                 return (
-                    <MDBCol size="3" style={{ maxWidth: "13rem" }} key={index}>
+                    <MDBCol size="3" style={{ maxWidth: "15rem" }} key={index}>
                         <MDBCard id="card-Product">
                             <div className="card-img-product">
                                 <img className="img-product" src={API_URL_1 + item.productimage} alt="img-product" waves />
-                                <div className="icon-favorite">
-                                    <MDBIcon far icon="heart" id="sub-icon-favorite" />
-                                </div>
+                                <Link to={`detailproduct?idproduct=${item.idproduct}`}>
+                                    <div className="icon-favorite">
+                                        Detail Produk
+                            </div>
+                                </Link>
                             </div>
                             <MDBCardBody>
                                 <MDBCardTitle id="title-card-product">
                                     <div>{item.productname}</div>
                                 </MDBCardTitle>
-                                <MDBBtn id="btn-card-product" size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
@@ -53,19 +55,20 @@ class ProductPage extends Component {
 
             } else if (this.state.newIdCategory === "Semua Produk") {
                 return (
-                    <MDBCol size="3" style={{ maxWidth: "13rem" }} key={index}>
+                    <MDBCol size="3" style={{ maxWidth: "15rem" }} key={index}>
                         <MDBCard id="card-Product">
                             <div className="card-img-product">
                                 <img className="img-product" src={API_URL_1 + item.productimage} alt="img-product" waves />
-                                <div className="icon-favorite">
-                                    <MDBIcon far icon="heart" id="sub-icon-favorite" />
+                                <Link to={`detailproduct?idproduct=${item.idproduct}`}>
+                                    <div className="icon-favorite">
+                                        Detail Produk
                                 </div>
+                                </Link>
                             </div>
                             <MDBCardBody>
                                 <MDBCardTitle id="title-card-product">
                                     <div>{item.productname}</div>
                                 </MDBCardTitle>
-                                <MDBBtn id="btn-card-product" size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
@@ -73,19 +76,20 @@ class ProductPage extends Component {
 
             } else if (this.state.newIdCategory === "") {
                 return (
-                    <MDBCol size="3" style={{ maxWidth: "13rem" }} key={index}>
+                    <MDBCol size="3" style={{ maxWidth: "15rem" }} key={index}>
                         <MDBCard id="card-Product">
                             <div className="card-img-product">
                                 <img className="img-product" src={API_URL_1 + item.productimage} alt="img-product" waves />
-                                <div className="icon-favorite">
-                                    <MDBIcon far icon="heart" id="sub-icon-favorite" />
+                                <Link to={`detailproduct?idproduct=${item.idproduct}`}>
+                                    <div className="icon-favorite">
+                                        Detail Produk
                                 </div>
+                                </Link>
                             </div>
                             <MDBCardBody>
                                 <MDBCardTitle id="title-card-product">
                                     <div>{item.productname}</div>
                                 </MDBCardTitle>
-                                <MDBBtn id="btn-card-product" size="sm" color="elegant" href={`detailproduct?idproduct=${item.idproduct}`} >Beli Sekarang</MDBBtn>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
@@ -138,7 +142,6 @@ class ProductPage extends Component {
 }
 
 const mapStatetoProps = ({ user, products, categories, wishlist }) => {
-    console.log(wishlist.dataWishList)
     return {
         dataAllProduct: products.dataAllProduct,
         dataCategory: categories.dataCategory,
